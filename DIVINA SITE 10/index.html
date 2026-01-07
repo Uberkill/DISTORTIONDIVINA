@@ -1693,7 +1693,7 @@
                         <div class="archive-controls" style="margin-bottom: 0;">
                             <button class="archive-btn active" onclick="System.renderGrid('id', this)" data-i18n="btn_sort_tarot" aria-label="Sort by Tarot Number">[ SORT: TAROT ]</button>
                             <button class="archive-btn" onclick="System.renderGrid('name', this)" data-i18n="btn_sort_name" aria-label="Sort Alphabetically">[ SORT: A-Z ]</button>
-                            <button class="archive-btn" onclick="System.renderGrid('id', this)" data-i18n="btn_view_all" aria-label="View All Cards">[ VIEW: ALL ]</button>
+                            <button class="archive-btn" onclick="System.renderGrid('all', this)" data-i18n="btn_view_all" aria-label="View All Cards">[ VIEW: ALL ]</button>
                         </div>
                     </div>
 
@@ -3101,15 +3101,51 @@
             renderGrid(sortType = 'id', clickedBtn = null) {
                 const grid = document.getElementById('cardGrid');
                 if(!grid) return;
+                
                 grid.innerHTML = '';
-                if(clickedBtn) { document.querySelectorAll('.archive-btn').forEach(b => b.classList.remove('active')); clickedBtn.classList.add('active'); }
-                let cards = [...DB.CARDS];
-                if (sortType === 'name') cards.sort((a,b) => a.title[this.lang].localeCompare(b.title[this.lang]));
-                else cards.sort((a,b) => a.id - b.id);
-                cards.forEach(card => {
-                    const el = document.createElement('div'); el.className = 'card-file'; el.innerHTML = `<img src="${card.image}" class="img-loaded"><div class="file-label">${card.title[this.lang]}</div>`;
-                    el.onclick = () => this.openSelector(card); grid.appendChild(el);
-                });
+                
+                // Update Button State
+                if(clickedBtn) { 
+                    document.querySelectorAll('.archive-btn').forEach(b => b.classList.remove('active')); 
+                    clickedBtn.classList.add('active'); 
+                }
+
+                if (sortType === 'all') {
+                    // --- SHOW ALL VARIANTS ---
+                    let variants = [...DB.EMPLOYEES];
+                    variants.sort((a,b) => a.cardId - b.cardId); // Keep tarot order
+                    
+                    variants.forEach(variant => {
+                        const parent = DB.CARDS.find(c => c.id === variant.cardId);
+                        if(!parent) return;
+
+                        const el = document.createElement('div'); 
+                        el.className = 'card-file';
+                        // Show variant image and Character Name + Tarot Name small
+                        el.innerHTML = `
+                            <img src="${variant.variantImage}" class="img-loaded">
+                            <div class="file-label">
+                                <div style="font-size:0.7em;color:var(--gold-dim);margin-bottom:2px;">${parent.title[this.lang]}</div>
+                                ${variant.char[this.lang]}
+                            </div>`;
+                        
+                        // Direct link to viewer (skip selector)
+                        el.onclick = () => this.openViewer(parent, variant); 
+                        grid.appendChild(el);
+                    });
+                } else {
+                    // --- SHOW CATEGORIES (DEFAULT) ---
+                    let cards = [...DB.CARDS];
+                    if (sortType === 'name') cards.sort((a,b) => a.title[this.lang].localeCompare(b.title[this.lang]));
+                    else cards.sort((a,b) => a.id - b.id);
+                    
+                    cards.forEach(card => {
+                        const el = document.createElement('div'); el.className = 'card-file';
+                        el.innerHTML = `<img src="${card.image}" class="img-loaded"><div class="file-label">${card.title[this.lang]}</div>`;
+                        el.onclick = () => this.openSelector(card);
+                        grid.appendChild(el);
+                    });
+                }
             },
 
             renderEmployees() {
@@ -3186,3 +3222,4 @@
     </script>
 </body>
 </html>
+```
