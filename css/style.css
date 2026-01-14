@@ -2533,7 +2533,6 @@
             }
 
             #viewer-card-wrapper {
-                transform: scale(1.0) !important;
                 /* Full size card */
                 height: 100% !important;
                 width: 100% !important;
