@@ -2373,6 +2373,12 @@
         }
 
         @media (max-width: 768px) {
+
+            /* Tweak Vignette for Mobile to be less aggressive on sides */
+            .vignette {
+                background: radial-gradient(circle, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0.8) 150%) !important;
+            }
+
             .login-top-controls {
                 position: relative;
                 top: auto;
@@ -2407,6 +2413,14 @@
                 min-height: 0 !important;
             }
 
+            .login-sub-header {
+                white-space: normal;
+                /* allow wrap */
+                font-size: 0.8rem !important;
+                padding: 0 5%;
+                line-height: 1.4;
+            }
+
             /* Window Header Fixes */
             .window-header .win-title {
                 font-size: 0.8rem !important;
@@ -2415,6 +2429,27 @@
                 text-overflow: ellipsis;
                 max-width: 160px;
                 line-height: 1.2;
+            }
+
+            /* Content Padding Reduction */
+            .window-content {
+                padding: 15px !important;
+                /* Reduced from 25px */
+            }
+
+            /* Responsive Meta and Titles */
+            .brief-meta {
+                font-size: 0.75rem !important;
+                white-space: normal !important;
+                /* Allow wrap */
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .os-bar {
+                padding: 0 10px !important;
+                /* Reduce side padding */
             }
 
             /* Ensure Assistant doesn't cover everything */
