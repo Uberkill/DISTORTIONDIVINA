@@ -868,6 +868,15 @@
             border-radius: 2px;
             opacity: 0;
             transform: scale(0.95) translateY(10px);
+
+            /* PERFORMANCE OPTIMIZATIONS */
+            content-visibility: auto;
+            contain-intrinsic-size: 800px 600px;
+            will-change: transform, opacity;
+
+            /* Glassmorphism */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
             pointer-events: none;
         }
@@ -2384,8 +2393,8 @@
                 top: auto;
                 right: auto;
                 justify-content: center;
-                margin-top: 20px;
-                margin-bottom: 5px;
+                margin-top: 10px;
+                margin-bottom: 0px;
                 width: 100%;
                 flex-wrap: wrap;
             }
@@ -2393,32 +2402,57 @@
             .login-top-controls .ui-scale-btn,
             .login-top-controls .mode-switch-btn {
                 margin-left: 0;
-                font-size: 0.8rem;
-                padding: 6px 12px;
+                font-size: 0.7rem;
+                padding: 4px 10px;
             }
 
             #login-screen {
                 justify-content: flex-start;
-                /* Prevent vertical centering from cutting off top/bottom */
                 overflow-y: auto;
+                padding-top: 10px;
             }
 
             .login-header-wrapper {
-                margin-top: 10px;
+                margin-top: 5px;
             }
 
             .login-logo-img {
-                max-height: 180px !important;
+                max-height: 35vh !important;
+                /* BIGGER LOGO */
                 width: auto !important;
+                max-width: 85% !important;
                 min-height: 0 !important;
             }
 
             .login-sub-header {
                 white-space: normal;
-                /* allow wrap */
-                font-size: 0.8rem !important;
+                font-size: 0.75rem !important;
                 padding: 0 5%;
-                line-height: 1.4;
+                line-height: 1.3;
+                margin-top: 10px !important;
+                opacity: 0.8;
+            }
+
+            #login-wrapper {
+                margin-top: 10px !important;
+            }
+
+            .login-box {
+                width: 90% !important;
+                padding: 10px !important;
+                margin-top: 5px !important;
+                background: transparent !important;
+                border: none !important;
+                box-shadow: none !important;
+            }
+
+            .big-enter-btn {
+                margin-top: 15px !important;
+                padding: 15px 0 !important;
+            }
+
+            .big-enter-btn .btn-main {
+                font-size: 1.1rem !important;
             }
 
             /* Window Header Fixes */
@@ -2434,14 +2468,12 @@
             /* Content Padding Reduction */
             .window-content {
                 padding: 15px !important;
-                /* Reduced from 25px */
             }
 
             /* Responsive Meta and Titles */
             .brief-meta {
                 font-size: 0.75rem !important;
                 white-space: normal !important;
-                /* Allow wrap */
                 display: flex;
                 flex-direction: column;
                 gap: 5px;
@@ -2449,7 +2481,6 @@
 
             .os-bar {
                 padding: 0 10px !important;
-                /* Reduce side padding */
             }
 
             /* Ensure Assistant doesn't cover everything */

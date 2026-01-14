@@ -215,11 +215,11 @@ const System = {
     lang: 'en', loginTimer: null, assistantIdx: 0, assistantSteps: [], isTutorialComplete: false, assistantDragging: false, briefImgIdx: 0, isLoggingIn: false,
 
     briefImages: [
-        { src: "https://i.imgur.com/JtNx9pE.jpeg", key: "brief_fig_main" },
-        { src: "https://i.imgur.com/5m4k3Ur.jpeg", key: "brief_fig_a" },
-        { src: "https://i.imgur.com/q2jD7BO.jpeg", key: "brief_fig_b" },
-        { src: "https://i.imgur.com/49CqhCP.jpeg", key: "brief_fig_c" },
-        { src: "https://i.imgur.com/rEDw6E9.jpeg", key: "brief_fig_d" }
+        { src: "./images/JtNx9pE.jpeg", key: "brief_fig_main" },
+        { src: "./images/5m4k3Ur.jpeg", key: "brief_fig_a" },
+        { src: "./images/q2jD7BO.jpeg", key: "brief_fig_b" },
+        { src: "./images/49CqhCP.jpeg", key: "brief_fig_c" },
+        { src: "./images/rEDw6E9.jpeg", key: "brief_fig_d" }
     ],
 
     init() {
@@ -597,19 +597,24 @@ const System = {
                 const el = document.createElement('div');
                 el.className = 'card-file';
 
-                // Create Image Manually to attach listeners
+                // Optimization: Lazy Loading + Async Decoding
                 const img = new Image();
+                img.loading = "lazy";
+                img.decoding = "async";
                 img.src = variant.variantImage;
                 img.className = "img-loaded";
                 img.onload = updateProgress;
-                img.onerror = updateProgress; // Count errors as done to not stall
-
+                img.onerror = updateProgress;
                 el.appendChild(img);
-                el.innerHTML += `
-                            <div class="file-label">
-                                <div style="font-size:0.7em;color:var(--gold-dim);margin-bottom:2px;">${parent.title[this.lang]}</div>
-                                ${variant.char[this.lang]}
-                            </div>`;
+
+                // Fix: Use appendChild to avoid destroying img listener with innerHTML+=
+                const label = document.createElement('div');
+                label.className = 'file-label';
+                label.innerHTML = `
+                    <div style="font-size:0.7em;color:var(--gold-dim);margin-bottom:2px;">${parent.title[this.lang]}</div>
+                    ${variant.char[this.lang]}
+                `;
+                el.appendChild(label);
 
                 el.onclick = () => this.openViewer(parent, variant);
                 grid.appendChild(el);
@@ -626,13 +631,19 @@ const System = {
                 el.className = 'card-file';
 
                 const img = new Image();
+                img.loading = "lazy";
+                img.decoding = "async";
                 img.src = card.image;
                 img.className = "img-loaded";
                 img.onload = updateProgress;
                 img.onerror = updateProgress;
-
                 el.appendChild(img);
-                el.innerHTML += `<div class="file-label">${card.title[this.lang]}</div>`;
+
+                const label = document.createElement('div');
+                label.className = 'file-label';
+                label.innerText = card.title[this.lang];
+                el.appendChild(label);
+
                 el.onclick = () => this.openSelector(card);
                 grid.appendChild(el);
             });
@@ -713,4 +724,18 @@ const System = {
 
 };
 
+/* --- GLOBAL ERROR HANDLER --- */
+window.onerror = function (msg, url, line, col, error) {
+    console.error("CRITICAL SYSTEM FAILURE DETECTED:", msg);
+    // Only reload if it's a critical script error, avoiding infinite loops on minor issues
+    if (msg.toLowerCase().indexOf('script error') > -1 || msg.toLowerCase().indexOf('is not a function') > -1) {
+        // Force reload after short delay to reset state
+        setTimeout(() => {
+            window.location.reload();
+        }, 1000);
+    }
+    return false; // Let default handler run too
+};
+
 document.addEventListener('DOMContentLoaded', () => System.init());
+
