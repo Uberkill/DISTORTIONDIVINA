@@ -2520,6 +2520,7 @@
             #win-viewer .viewer-layout {
                 gap: 0 !important;
                 height: 100% !important;
+                flex-direction: column !important;
             }
 
             /* 1. Make the Image Area Massive (75%) */
@@ -2536,6 +2537,13 @@
                 /* Full size card */
                 height: 100% !important;
                 width: 100% !important;
+            }
+
+            .card-face,
+            .card-front,
+            .card-back {
+                width: 100% !important;
+                height: 100% !important;
             }
 
             #viewer-img {
