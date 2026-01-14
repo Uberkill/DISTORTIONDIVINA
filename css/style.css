@@ -2499,6 +2499,27 @@
 
             .os-bar {
                 padding: 0 10px !important;
+                justify-content: space-between !important;
+            }
+
+            /* Make top bar buttons icon-only or very compact on mobile */
+            .os-bar .ui-scale-btn,
+            .os-bar .mode-switch-btn {
+                font-size: 0;
+                /* Hide text */
+                padding: 8px !important;
+                margin-left: 5px !important;
+                width: 36px;
+                height: 36px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            /* Ensure icons inside are visible */
+            .os-bar .ui-scale-btn i,
+            .os-bar .mode-switch-btn i {
+                margin: 0 !important;
             }
 
             /* Ensure Assistant doesn't cover everything */
@@ -2525,22 +2546,28 @@
 
             /* 1. Make the Image Area Massive (75%) */
             /* 1. Make the Image Area Balanced (50%) */
+            /* 1. Balanced Layout: Mobile Viewer */
             #win-viewer .viewer-stage {
-                flex: 0 0 50dvh !important;
+                flex: 1 !important;
+                /* Take available space */
+                min-height: 40vh;
+                /* Ensure at least some height */
+                max-height: 55vh;
+                /* Don't dominate too much */
                 border-bottom: none !important;
                 background: transparent !important;
                 display: flex !important;
                 align-items: center !important;
                 justify-content: center !important;
-                padding: 10px 0 !important;
+                padding: 20px 0 !important;
+                position: relative !important;
             }
 
             #viewer-card-wrapper {
-                /* Compact card size */
-                height: 90% !important;
+                height: 100% !important;
                 width: auto !important;
-                max-width: 280px !important;
-                /* Explicit width cap */
+                max-width: 300px !important;
+                /* Slightly larger constraint */
                 aspect-ratio: 2.5/3.5;
             }
 
@@ -2686,5 +2713,10 @@
             .assistant-avatar {
                 width: 40px !important;
                 height: 40px !important;
+            }
+
+            /* Hide 'Connected' label on mobile to save space */
+            .os-bar>div:first-child>div:first-child {
+                display: none !important;
             }
         }

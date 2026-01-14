@@ -173,8 +173,9 @@ const Viewer3D = {
         }, { passive: false });
     },
     reset() {
-        const isMobile = window.innerWidth <= 768; // Explicit check
-        this.state = { scale: isMobile ? 0.85 : 1, rotX: 0, rotY: 0 };
+        // Mobile scale back to 1.0 now that CSS constraints are better
+        const isMobile = window.innerWidth <= 768;
+        this.state = { scale: 1, rotX: 0, rotY: 0 };
         this.updateTransform();
     },
     startDrag(e) {
