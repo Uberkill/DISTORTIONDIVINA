@@ -35,6 +35,7 @@
             icon_tos: "TERMS_OF_SERVICE.TXT",
             icon_settings: "SYSTEM_SETTINGS.EXE",
             icon_assistant: "ASSISTANT_AI.EXE",
+            icon_interest: "INTEREST_CHECK.EXE",
 
             win_overview: "PROJECT_BRIEF.LOG",
             win_archive: "FIRST LIGHT: ARCHIVE_DB.EXE",
@@ -43,6 +44,7 @@
             win_comm: "COMMUNICATION.EXE",
             win_tos: "TERMS_OF_SERVICE.TXT",
             win_settings: "SYSTEM_SETTINGS.EXE",
+            win_interest: "INTEREST_CHECK.EXE",
 
             overview_title: "DISTORTION DIVINA",
             overview_label_goal: "GOAL",
@@ -128,6 +130,10 @@
             tos_pm: "PROJECT MOON",
             tos_mili: "PROJECT MILI",
 
+            interest_header: "INTEREST CHECK FORM",
+            interest_desc: "Please indicate your interest in purchasing First Light packs. This data will be used to determine print run quantities.",
+            btn_interest: "[ OPEN FORM ]",
+
             time_days: "D",
             time_hours: "H",
             time_mins: "M",
@@ -193,6 +199,7 @@
             icon_tos: "이용_약관.TXT",
             icon_settings: "시스템_설정.EXE",
             icon_assistant: "어시스턴트_AI.EXE",
+            icon_interest: "수요_조사.EXE",
 
             win_overview: "프로젝트_브리핑.LOG",
             win_archive: "FIRST LIGHT: 아카이브_DB.EXE",
@@ -201,6 +208,7 @@
             win_comm: "통신.EXE",
             win_tos: "이용_약관.TXT",
             win_settings: "시스템_설정.EXE",
+            win_interest: "수요_조사.EXE",
 
             overview_title: "디스토션 디비나",
             overview_label_goal: "목표",
@@ -286,6 +294,10 @@
             tos_pm: "프로젝트 문",
             tos_mili: "프로젝트 밀리",
 
+            interest_header: "수요 조사 양식",
+            interest_desc: "First Light 팩 구매 의향을 표시해 주십시오. 이 데이터는 인쇄 수량을 결정하는 데 사용됩니다.",
+            btn_interest: "[ 양식 열기 ]",
+
             time_days: "일",
             time_hours: "시",
             time_mins: "분",
@@ -350,6 +362,7 @@
             icon_tos: "利用規約.TXT",
             icon_settings: "システム設定.EXE",
             icon_assistant: "アシスタント_AI.EXE",
+            icon_interest: "興味調査.EXE",
 
             win_overview: "プロジェクト概要.LOG",
             win_archive: "FIRST LIGHT: アーカイブ_DB.EXE",
@@ -358,6 +371,7 @@
             win_comm: "通信.EXE",
             win_tos: "利用規約.TXT",
             win_settings: "システム設定.EXE",
+            win_interest: "興味調査.EXE",
 
             overview_title: "ディストーション・ディヴィナ",
             overview_label_goal: "目標",
@@ -442,6 +456,10 @@
             tos_guidelines_header: "公式ガイドライン",
             tos_pm: "プロジェクト・ムーン",
             tos_mili: "プロジェクト・ミリ",
+
+            interest_header: "興味調査フォーム",
+            interest_desc: "First Lightパックの購入希望についてお知らせください。このデータは印刷部数の決定に使用されます。",
+            btn_interest: "[ フォームを開く ]",
 
             time_days: "日",
             time_hours: "時",

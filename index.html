@@ -160,6 +160,12 @@
                     <div class="icon-img"><i data-lucide="settings" width="64" height="64"></i></div>
                     <div data-i18n="icon_settings" class="icon-label">SYSTEM_SETTINGS.EXE</div>
                 </div>
+                <!-- NEW: INTEREST CHECK -->
+                <div class="desktop-icon" data-window="win-interest" tabindex="0" role="button"
+                    aria-label="Interest Check">
+                    <div class="icon-img"><i data-lucide="clipboard-list" width="64" height="64"></i></div>
+                    <div data-i18n="icon_interest" class="icon-label">INTEREST_CHECK.EXE</div>
+                </div>
                 <div class="desktop-icon" data-window="win-tos" tabindex="0" role="button"
                     aria-label="Terms of Service">
                     <div class="icon-img"><i data-lucide="file-check" width="64" height="64"></i></div>
@@ -265,7 +271,7 @@
                                     style="text-align: center; font-size: 0.75rem; color: #666; margin-top: 5px; font-family: 'Share Tech Mono';">
                                     [ 1 / 5]</div>
                             </div>
-                            <div
+                            <div class="brief-system-notes"
                                 style="margin-top: 20px; border: 1px dashed #333; padding: 15px; font-size: 0.85rem; color: #666;">
                                 <div style="color: var(--terminal-green); margin-bottom: 8px;"
                                     data-i18n="brief_sys_notes_label">>SYSTEM NOTES:</div>
@@ -557,7 +563,8 @@
                             <img src="./images/5lZVsjG.png" style="width: 100%; height: 100%; object-fit: cover;"
                                 alt="Event Visual" loading="lazy" decoding="async">
                         </div>
-                    </div>!-- Event 3 -->
+                    </div>
+                    <!-- Event 3 -->
                     <div class="shop-item"
                         style="border-color: var(--gold-primary); background: rgba(212,175,55,0.05);">
                         <h3 data-i18n="event_3_title" style="color: #fff; font-size: 1.5rem;">ONLINE STORE OPENING</h3>
@@ -755,142 +762,187 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- WINDOW: VIEWER -->
-            <div id="win-viewer" class="os-window"
-                style="display: none; top: 5%; left: 10%; width: 85%; height: 85%; z-index: 2000;">
-                <div class="window-header" style="background: var(--gold-dim); color: black;">
-                    <div style="display: flex; align-items: center;">
-                        <div class="mobile-back-btn" onclick="WindowManager.close('win-viewer')" aria-label="Back"><i
-                                data-lucide="arrow-left" width="36" height="36" color="black"></i></div>
-                        <span data-i18n="viewer_title" class="win-title" style="color:black">ARTIFACT_VIEWER.EXE</span>
-                    </div>
-                    <div class="win-controls">
-                        <div class="win-btn" style="border-color: black; color: black;"
-                            onclick="WindowManager.toggleMaximize('win-viewer')" aria-label="Maximize Window"><i
-                                data-lucide="maximize" width="14"></i></div>
-                        <div class="win-btn close" style="border-color: black; color: black;" aria-label="Close Window"
-                            onclick="WindowManager.close('win-viewer')"><i data-lucide="x" width="14"></i></div>
-                    </div>
+            </div>
+        </div>
+
+        <!-- WINDOW: INTEREST CHECK -->
+        <div id="win-interest" class="os-window" style="top: 25%; left: 30%; width: 500px; height: 450px;">
+            <div class="window-header">
+                <div style="display: flex; align-items: center;">
+                    <div class="mobile-back-btn" onclick="WindowManager.close('win-interest')" aria-label="Back"><i
+                            data-lucide="arrow-left" width="36" height="36"></i></div>
+                    <span data-i18n="win_interest" class="win-title">INTEREST_CHECK.EXE</span>
                 </div>
-                <div class="window-content" style="position:relative;">
-                    <div class="viewer-layout" style="display:flex; flex-direction:column; height:100%; gap:30px;">
-                        <!-- 3D STAGE CONTAINER -->
-                        <div class="viewer-stage" id="viewer-stage">
-                            <div id="viewer-loader"
-                                style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:var(--terminal-green); display:none; font-size: 1.5rem;">
-                                LOADING...</div>
-                            <!-- Wrapper for 3D Transforms -->
-                            <div class="viewer-card-wrapper" id="viewer-card-wrapper">
-                                <div class="card-face card-front">
-                                    <img id="viewer-img" src=""
-                                        onerror="this.src='https://placehold.co/400x600/000/333?text=ASSET+MISSING'"
-                                        alt="Artifact Image">
-                                </div>
-                                <div class="card-face card-back">
-                                    <div class="card-back-inner">
-                                        <div class="back-pattern"></div>
-                                        <img src="./images/EurbXn1.png" alt="Distortion Corp" class="card-back-logo">
-                                        <div class="card-back-text">DISTORTION CORP<br>SECURE ASSET</div>
-                                        <div class="card-back-scanline"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Floating Controls -->
-                            <div class="viewer-controls-overlay">
-                                <button class="v-btn" onclick="Viewer3D.adjustZoom(-0.2)" title="Zoom Out"
-                                    aria-label="Zoom Out"><i data-lucide="minus" width="20"></i></button>
-                                <span class="zoom-display" id="zoom-val">100%</span>
-                                <button class="v-btn" onclick="Viewer3D.adjustZoom(0.2)" title="Zoom In"
-                                    aria-label="Zoom In"><i data-lucide="plus" width="20"></i></button>
-                                <div style="width: 1px; height: 24px; background: #444; margin: 0 10px;"></div>
-                                <button class="v-btn" onclick="Viewer3D.reset()" title="Reset View"
-                                    aria-label="Reset View"><i data-lucide="refresh-cw" width="20"></i></button>
+                <div class="win-controls">
+                    <div class="win-btn" aria-label="Minimize Window" onclick="WindowManager.minimize('win-interest')">
+                        <i data-lucide="minus" width="14"></i>
+                    </div>
+                    <div class="win-btn" aria-label="Maximize Window"
+                        onclick="WindowManager.toggleMaximize('win-interest')"><i data-lucide="maximize" width="14"></i>
+                    </div>
+                    <div class="win-btn close" aria-label="Close Window" onclick="WindowManager.close('win-interest')">
+                        <i data-lucide="x" width="14"></i></div>
+                </div>
+            </div>
+            <div class="window-content">
+                <h2 data-i18n="interest_header"
+                    style="font-family: 'Cinzel'; margin-bottom: 25px; font-size: 2rem; color: #fff;">INTEREST
+                    CHECK
+                </h2>
+                <p data-i18n="interest_desc"
+                    style="line-height: 1.6; color: #ccc; margin-bottom: 35px; font-size: 1.1rem;">
+                    Please indicate your interest in purchasing First Light packs. This data will be used to
+                    determine
+                    print run quantities.
+                </p>
+
+                <div
+                    style="display: flex; justify-content: center; padding: 20px; border: 1px dashed var(--gold-dim); background: rgba(0,0,0,0.3);">
+                    <a href="#" target="_blank" class="shop-link-btn" data-i18n="btn_interest"
+                        aria-label="Open Interest Form"
+                        style="width: 100%; text-align: center; justify-content: center;">
+                        [ OPEN FORM ]
+                    </a>
+                </div>
+                <p style="color: #666; font-size: 0.85rem; margin-top: 15px; text-align: center;">
+                    > SECURE FORM LINK // EXTERNAL
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- WINDOW: VIEWER -->
+    <div id="win-viewer" class="os-window"
+        style="display: none; top: 5%; left: 10%; width: 85%; height: 85%; z-index: 2000;">
+        <div class="window-header" style="background: var(--gold-dim); color: black;">
+            <div style="display: flex; align-items: center;">
+                <div class="mobile-back-btn" onclick="WindowManager.close('win-viewer')" aria-label="Back"><i
+                        data-lucide="arrow-left" width="36" height="36" color="black"></i></div>
+                <span data-i18n="viewer_title" class="win-title" style="color:black">ARTIFACT_VIEWER.EXE</span>
+            </div>
+            <div class="win-controls">
+                <div class="win-btn" style="border-color: black; color: black;"
+                    onclick="WindowManager.toggleMaximize('win-viewer')" aria-label="Maximize Window"><i
+                        data-lucide="maximize" width="14"></i></div>
+                <div class="win-btn close" style="border-color: black; color: black;" aria-label="Close Window"
+                    onclick="WindowManager.close('win-viewer')"><i data-lucide="x" width="14"></i></div>
+            </div>
+        </div>
+        <div class="window-content" style="position:relative;">
+            <div class="viewer-layout" style="display:flex; flex-direction:column; height:100%; gap:30px;">
+                <!-- 3D STAGE CONTAINER -->
+                <div class="viewer-stage" id="viewer-stage">
+                    <div id="viewer-loader"
+                        style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:var(--terminal-green); display:none; font-size: 1.5rem;">
+                        LOADING...</div>
+                    <!-- Wrapper for 3D Transforms -->
+                    <div class="viewer-card-wrapper" id="viewer-card-wrapper">
+                        <div class="card-face card-front">
+                            <img id="viewer-img" src=""
+                                onerror="this.src='https://placehold.co/400x600/000/333?text=ASSET+MISSING'"
+                                alt="Artifact Image">
+                        </div>
+                        <div class="card-face card-back">
+                            <div class="card-back-inner">
+                                <div class="back-pattern"></div>
+                                <img src="./images/EurbXn1.png" alt="Distortion Corp" class="card-back-logo">
+                                <div class="card-back-text">DISTORTION CORP<br>SECURE ASSET</div>
+                                <div class="card-back-scanline"></div>
                             </div>
                         </div>
-                        <div class="viewer-info" style="flex:1;">
-                            <div
-                                style="border-bottom: 1px solid var(--gold-dim); padding-bottom: 15px; margin-bottom: 25px;">
-                                <div style="font-size: 0.9rem; color: #666;"><span
-                                        data-i18n="viewer_asset_id">ID:</span><span id="viewer-id"></span></div>
-                                <h2 id="viewer-title"
-                                    style="font-family: 'Cinzel'; font-size: 2.5rem; color: var(--gold-primary);"></h2>
-                            </div>
-                            <p id="viewer-desc"
-                                style="line-height: 1.6; color: #ccc; margin-bottom: 35px; font-size: 1.2rem;"></p>
+                    </div>
+                    <!-- Floating Controls -->
+                    <div class="viewer-controls-overlay">
+                        <button class="v-btn" onclick="Viewer3D.adjustZoom(-0.2)" title="Zoom Out"
+                            aria-label="Zoom Out"><i data-lucide="minus" width="20"></i></button>
+                        <span class="zoom-display" id="zoom-val">100%</span>
+                        <button class="v-btn" onclick="Viewer3D.adjustZoom(0.2)" title="Zoom In" aria-label="Zoom In"><i
+                                data-lucide="plus" width="20"></i></button>
+                        <div style="width: 1px; height: 24px; background: #444; margin: 0 10px;"></div>
+                        <button class="v-btn" onclick="Viewer3D.reset()" title="Reset View" aria-label="Reset View"><i
+                                data-lucide="refresh-cw" width="20"></i></button>
+                    </div>
+                </div>
+                <div class="viewer-info" style="flex:1;">
+                    <div style="border-bottom: 1px solid var(--gold-dim); padding-bottom: 15px; margin-bottom: 25px;">
+                        <div style="font-size: 0.9rem; color: #666;"><span data-i18n="viewer_asset_id">ID:</span><span
+                                id="viewer-id"></span></div>
+                        <h2 id="viewer-title"
+                            style="font-family: 'Cinzel'; font-size: 2.5rem; color: var(--gold-primary);"></h2>
+                    </div>
+                    <p id="viewer-desc" style="line-height: 1.6; color: #ccc; margin-bottom: 35px; font-size: 1.2rem;">
+                    </p>
 
-                            <div style="background: rgba(255,255,255,0.05); padding: 20px;">
-                                <h3 data-i18n="viewer_artist_label"
-                                    style="font-size: 1rem; color: #888; margin-bottom: 15px;">EMPLOYEE DATA</h3>
-                                <div id="viewer-artist" style="font-size: 1.4rem; margin-bottom: 15px; color: white;">
-                                </div>
-                                <div id="viewer-socials" style="display: flex; gap: 15px; flex-wrap: wrap;"></div>
-                            </div>
+                    <div style="background: rgba(255,255,255,0.05); padding: 20px;">
+                        <h3 data-i18n="viewer_artist_label" style="font-size: 1rem; color: #888; margin-bottom: 15px;">
+                            EMPLOYEE DATA</h3>
+                        <div id="viewer-artist" style="font-size: 1.4rem; margin-bottom: 15px; color: white;">
                         </div>
+                        <div id="viewer-socials" style="display: flex; gap: 15px; flex-wrap: wrap;"></div>
                     </div>
-                </div>
-            </div>
-
-            <!-- ASSISTANT OVERLAY -->
-            <div id="assistant-overlay">
-                <div class="assistant-bubble">
-                    <button class="assistant-close-btn" onclick="System.hideBubble()" aria-label="Hide Text"><i
-                            data-lucide="x" width="16" height="16"></i></button>
-                    <!-- UPDATED NAME HERE -->
-                    <span id="assistant-text">Welcome, Agent. I am OOBOT. I can guide you through the archive.</span>
-                    <div class="assistant-controls">
-                        <button class="assistant-btn" onclick="System.nextAssistantStep()"
-                            aria-label="Next Step">NEXT></button>
-                        <button class="assistant-btn" onclick="System.closeAssistant()"
-                            aria-label="Dismiss Assistant">DISMISS</button>
-                    </div>
-                </div>
-                <div class="assistant-avatar">
-                    <button class="avatar-close-btn" onclick="System.closeAssistant()"
-                        title="Close Assistant">x</button>
-                    <i data-lucide="cat" width="50" height="50" color="#D4AF37"></i>
-                </div>
-            </div>
-
-            <!-- TASKBAR -->
-            <div class="taskbar">
-                <!-- Mobile Home Button -->
-                <div class="mobile-home-btn" onclick="WindowManager.showDesktop()" aria-label="Show Desktop">
-                    <i data-lucide="grid" width="24"></i>
-                </div>
-
-                <div class="start-btn" onmouseenter="AudioManager.play('hover')" onclick="AudioManager.play('click')"
-                    aria-label="System Menu">
-                    <i data-lucide="power" width="20" height="20" style="margin-right: 8px;"></i>
-                    <span data-i18n="btn_system">SYSTEM</span>
-                </div>
-
-                <div id="task-list" style="display:flex;"></div>
-
-                <!-- SIGNAL WIDGET (Moved to Bottom Right) -->
-                <div class="signal-widget">
-                    <!-- Bars ... -->
-                    <div class="signal-graph">
-                        <div class="sig-bar"></div>
-                        <div class="sig-bar"></div>
-                        <div class="sig-bar"></div>
-                        <div class="sig-bar"></div>
-                    </div>
-                    <!-- Data Text -->
-                    <div class="signal-data" style="display: none; @media(min-width:768px){display:flex;}">
-                        <div class="sig-label" data-i18n="sig_hash">HASH</div>
-                        <div class="enc-hash" id="enc-hash-display">A7F2-9X00</div>
-                    </div>
-                    <!-- Latency Text -->
-                    <div class="signal-data">
-                        <div class="sig-label" data-i18n="sig_ping">PING</div>
-                        <div class="sig-value" id="sig-latency">34ms</div>
-                    </div>
-                    <i data-lucide="lock" width="16" height="16" color="#444"></i>
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- ASSISTANT OVERLAY -->
+    <div id="assistant-overlay">
+        <div class="assistant-bubble">
+            <button class="assistant-close-btn" onclick="System.hideBubble()" aria-label="Hide Text"><i data-lucide="x"
+                    width="16" height="16"></i></button>
+            <!-- UPDATED NAME HERE -->
+            <span id="assistant-text">Welcome, Agent. I am OOBOT. I can guide you through the archive.</span>
+            <div class="assistant-controls">
+                <button class="assistant-btn" onclick="System.nextAssistantStep()" aria-label="Next Step">NEXT></button>
+                <button class="assistant-btn" onclick="System.closeAssistant()"
+                    aria-label="Dismiss Assistant">DISMISS</button>
+            </div>
+        </div>
+        <div class="assistant-avatar">
+            <button class="avatar-close-btn" onclick="System.closeAssistant()" title="Close Assistant">x</button>
+            <i data-lucide="cat" width="50" height="50" color="#D4AF37"></i>
+        </div>
+    </div>
+
+    <!-- TASKBAR -->
+    <div class="taskbar">
+        <!-- Mobile Home Button -->
+        <div class="mobile-home-btn" onclick="WindowManager.showDesktop()" aria-label="Show Desktop">
+            <i data-lucide="grid" width="24"></i>
+        </div>
+
+        <div class="start-btn" onmouseenter="AudioManager.play('hover')" onclick="AudioManager.play('click')"
+            aria-label="System Menu">
+            <i data-lucide="power" width="20" height="20" style="margin-right: 8px;"></i>
+            <span data-i18n="btn_system">SYSTEM</span>
+        </div>
+
+        <div id="task-list" style="display:flex;"></div>
+
+        <!-- SIGNAL WIDGET (Moved to Bottom Right) -->
+        <div class="signal-widget">
+            <!-- Bars ... -->
+            <div class="signal-graph">
+                <div class="sig-bar"></div>
+                <div class="sig-bar"></div>
+                <div class="sig-bar"></div>
+                <div class="sig-bar"></div>
+            </div>
+            <!-- Data Text -->
+            <div class="signal-data" style="display: none; @media(min-width:768px){display:flex;}">
+                <div class="sig-label" data-i18n="sig_hash">HASH</div>
+                <div class="enc-hash" id="enc-hash-display">A7F2-9X00</div>
+            </div>
+            <!-- Latency Text -->
+            <div class="signal-data">
+                <div class="sig-label" data-i18n="sig_ping">PING</div>
+                <div class="sig-value" id="sig-latency">34ms</div>
+            </div>
+            <i data-lucide="lock" width="16" height="16" color="#444"></i>
+        </div>
+    </div>
+    </div>
     </div>
 
     <!-- SCRIPTS -->

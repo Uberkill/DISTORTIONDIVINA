@@ -2491,4 +2491,160 @@
                 right: auto !important;
                 transform: none !important;
             }
+
+            /* --- MOBILE VIEWER FIXES --- */
+            #win-viewer .window-content {
+                padding: 0 !important;
+                /* Remove padding to maximize space */
+                overflow: hidden !important;
+            }
+
+            #win-viewer .viewer-layout {
+                gap: 0 !important;
+                height: 100% !important;
+            }
+
+            /* 1. Make the Image Area Massive (75%) */
+            #win-viewer .viewer-stage {
+                flex: 0 0 75% !important;
+                border-bottom: none !important;
+                /* Remove border for seamless look */
+                background: transparent !important;
+                /* Let glassmorphism show */
+            }
+
+            #viewer-card-wrapper {
+                transform: scale(1.0) !important;
+                /* Full size card */
+            }
+
+            /* 2. Compact Info Area (25%) */
+            #win-viewer .viewer-info {
+                flex: 1 !important;
+                overflow-y: auto !important;
+                padding: 15px 20px !important;
+                background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%) !important;
+                /* Subtle gradient */
+                border-top: 1px solid rgba(212, 175, 55, 0.1);
+                /* Subtle separator */
+            }
+
+            /* Controls - moved up slightly to not overlap bottom of card too much */
+            .viewer-controls-overlay {
+                bottom: 20px !important;
+                transform: translateX(-50%) scale(0.9);
+                background: rgba(0, 0, 0, 0.7) !important;
+                border: 1px solid var(--gold-dim);
+                border-radius: 20px;
+            }
+
+            /* Typography Refinements for small space */
+            #win-viewer #viewer-title {
+                font-size: 1.5rem !important;
+                margin-top: 0;
+                margin-bottom: 5px;
+                color: var(--gold-primary);
+                text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+            }
+
+            #win-viewer #viewer-desc {
+                font-size: 0.9rem !important;
+                line-height: 1.3 !important;
+                color: #ddd;
+                margin-bottom: 15px !important;
+            }
+
+            #win-viewer #viewer-artist {
+                font-size: 0.9rem !important;
+                margin-bottom: 10px !important;
+            }
+
+            /* Hide ID to save space */
+            #win-viewer .viewer-info>div:first-child {
+                padding-bottom: 5px !important;
+                margin-bottom: 10px !important;
+                border-bottom: none !important;
+            }
+
+            #win-viewer .viewer-info>div:first-child>div:first-child {
+                font-size: 0.7rem !important;
+                opacity: 0.7;
+            }
+
+            /* --- MOBILE PROJECT BRIEF REORDER --- */
+            #win-overview .brief-layout {
+                display: flex !important;
+                flex-direction: column !important;
+            }
+
+            /* 1. Title (Distortion Divina + Header) */
+            /* This is inside .brief-text-col, so we need to use flex order on the children of .brief-text-col? 
+               Actually, the HTML structure is .brief-layout > .brief-text-col, .brief-visual-col.
+               The user wants: Title ("Distortion Divina") -> Image -> Rest of Text.
+               The Title is INSIDE .brief-text-col. The Image is in .brief-visual-col.
+               To interleave them, we would need to change HTML or use display:contents.
+               Let's try display: contents on the columns to unwrap them into the grid/flex parent.
+            */
+
+            #win-overview .brief-text-col,
+            #win-overview .brief-visual-col {
+                display: contents !important;
+            }
+
+            /* Now all children are direct children of .brief-layout. 
+               We need to assign orders. 
+               Structure of .brief-text-col children: h1 (Title), .brief-section-title (Goal), p, ...
+               Structure of .brief-visual-col children: .brief-frame, .brief-caption
+            */
+
+            /* Order 1: Title */
+            #win-overview h1 {
+                order: 1 !important;
+                margin-bottom: 15px !important;
+                text-align: center;
+            }
+
+            /* Order 2: Image Frame */
+            #win-overview .brief-frame {
+                order: 2 !important;
+                margin-bottom: 20px !important;
+                width: 100% !important;
+                height: auto !important;
+                /* Allow content (image + caption) to dictate height */
+            }
+
+            /* Order 3: System Notes */
+            .brief-system-notes {
+                order: 3 !important;
+                margin-top: 25px !important;
+                margin-bottom: 25px !important;
+                width: 100%;
+            }
+
+            /* Order 10+: Everything else (Goal, Text, etc) */
+            #win-overview .brief-section-title,
+            #win-overview p,
+            #win-overview button {
+                order: 10 !important;
+            }
+
+            /* --- TYPOGRAPHY & LAYOUT TWEAKS --- */
+            .window-content h1 {
+                font-size: 1.8rem !important;
+                margin-bottom: 15px !important;
+            }
+
+            #assistant-bubble {
+                width: 90% !important;
+                left: 5% !important;
+                bottom: 80px !important;
+                /* Move up slightly to avoid navbar collision if any */
+                font-size: 0.9rem !important;
+                padding: 15px !important;
+            }
+
+            .assistant-avatar {
+                width: 40px !important;
+                height: 40px !important;
+            }
         }
