@@ -174,7 +174,7 @@ const Viewer3D = {
     },
     reset() {
         const isMobile = window.innerWidth <= 768; // Explicit check
-        this.state = { scale: isMobile ? 1.5 : 1, rotX: 0, rotY: 0 };
+        this.state = { scale: isMobile ? 0.85 : 1, rotX: 0, rotY: 0 };
         this.updateTransform();
     },
     startDrag(e) {

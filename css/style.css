@@ -2524,32 +2524,37 @@
             }
 
             /* 1. Make the Image Area Massive (75%) */
+            /* 1. Make the Image Area Balanced (50%) */
             #win-viewer .viewer-stage {
-                flex: 0 0 75dvh !important;
+                flex: 0 0 50dvh !important;
                 border-bottom: none !important;
-                /* Remove border for seamless look */
                 background: transparent !important;
-                /* Let glassmorphism show */
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                padding: 10px 0 !important;
             }
 
             #viewer-card-wrapper {
-                /* Full size card */
-                height: 85% !important;
+                /* Compact card size */
+                height: 90% !important;
                 width: auto !important;
+                max-width: 280px !important;
+                /* Explicit width cap */
+                aspect-ratio: 2.5/3.5;
             }
 
             .card-face,
             .card-front,
             .card-back {
-                width: auto !important;
+                width: 100% !important;
                 height: 100% !important;
             }
 
             #viewer-img {
-                width: auto !important;
+                width: 100% !important;
                 height: 100% !important;
-                max-width: none !important;
-                max-height: none !important;
+                max-width: 100% !important;
                 object-fit: contain !important;
             }
 
