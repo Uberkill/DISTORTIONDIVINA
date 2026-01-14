@@ -2534,19 +2534,19 @@
 
             #viewer-card-wrapper {
                 /* Full size card */
-                height: 100% !important;
-                width: 100% !important;
+                height: 85% !important;
+                width: auto !important;
             }
 
             .card-face,
             .card-front,
             .card-back {
-                width: 100% !important;
+                width: auto !important;
                 height: 100% !important;
             }
 
             #viewer-img {
-                width: 100% !important;
+                width: auto !important;
                 height: 100% !important;
                 max-width: none !important;
                 max-height: none !important;

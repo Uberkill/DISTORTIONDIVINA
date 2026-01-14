@@ -173,8 +173,8 @@ const Viewer3D = {
         }, { passive: false });
     },
     reset() {
-        const isMobile = document.body.classList.contains('is-mobile');
-        this.state = { scale: isMobile ? 1.35 : 1, rotX: 0, rotY: 0 };
+        const isMobile = window.innerWidth <= 768; // Explicit check
+        this.state = { scale: isMobile ? 1.5 : 1, rotX: 0, rotY: 0 };
         this.updateTransform();
     },
     startDrag(e) {
