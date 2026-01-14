@@ -281,10 +281,10 @@ const System = {
             bar.style.transition = 'none';
             bar.style.transform = 'scaleX(0)'; // Reset using transform
             void bar.offsetWidth; // Force Reflow
-            bar.style.transition = 'transform 5s linear'; // Animate transform
+            bar.style.transition = 'transform 10s linear'; // Animate transform
             bar.style.transform = 'scaleX(1)'; // End state
         }
-        this.loginTimer = setTimeout(() => { if (document.getElementById('login-input').value === '') this.performAutoFill(); }, 5000);
+        this.loginTimer = setTimeout(() => { if (document.getElementById('login-input').value === '') this.performAutoFill(); }, 10000);
     },
 
     performAutoFill() {

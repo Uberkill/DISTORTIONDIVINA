@@ -56,7 +56,7 @@
         <div id="login-screen">
 
             <!-- Mode Switcher on Login -->
-            <div style="position: absolute; top: 20px; right: 20px; display: flex;">
+            <div class="login-top-controls">
                 <button class="ui-scale-btn" onclick="System.toggleUIScale()" aria-label="Toggle Interface Size">[SIZE:
                     NORMAL] </button>
                 <button class="mode-switch-btn" onclick="System.toggleMode()"
@@ -84,12 +84,14 @@
                         <span class="input-prefix">></span>
                         <input type="text" id="login-input" class="login-input" placeholder="ENTER_ACCESS_CODE..."
                             autocomplete="off" spellcheck="false" aria-label="Access Code Input">
-                        <button class="login-submit-btn" onclick="System.login()" title="ENTER SYSTEM"
-                            aria-label="Enter System">
-                            <i data-lucide="arrow-right" width="28" height="28"></i> <!-- Larger Icon -->
-                        </button>
                     </div>
                 </div>
+
+                <!-- NEW BIG ENTER BUTTON -->
+                <button class="big-enter-btn" onclick="System.login()" aria-label="Initialize Connection">
+                    <span class="btn-main">> INITIALIZE_CONNECTION << /span>
+                            <span class="btn-sub">PRESS TO ENTER</span>
+                </button>
 
                 <div id="login-message" class="login-msg" data-i18n="login_verifying">VERIFYING CREDENTIALS...</div>
 
