@@ -2412,6 +2412,24 @@
                 padding-top: 10px;
             }
 
+            /* --- FORCE FULLSCREEN WINDOWS ON MOBILE --- */
+            .os-window {
+                width: 100vw !important;
+                height: 100dvh !important;
+                top: 0 !important;
+                left: 0 !important;
+                border-radius: 0 !important;
+                border-left: none !important;
+                border-right: none !important;
+                border-bottom: none !important;
+                transform: none !important;
+                /* Disable drag position if any */
+            }
+
+            .window-header {
+                border-radius: 0 !important;
+            }
+
             .login-header-wrapper {
                 margin-top: 5px;
             }
@@ -2518,6 +2536,14 @@
                 /* Full size card */
                 height: 100% !important;
                 width: 100% !important;
+            }
+
+            #viewer-img {
+                width: 100% !important;
+                height: 100% !important;
+                max-width: none !important;
+                max-height: none !important;
+                object-fit: contain !important;
             }
 
             /* 2. Compact Info Area (25%) */
