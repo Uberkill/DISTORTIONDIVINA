@@ -2289,7 +2289,10 @@
         body.is-mobile .login-logo-img {
             min-height: auto !important;
             max-height: 25vh !important;
-            width: 65% !important;
+            width: 80% !important;
+            /* Increased slightly for better visibility */
+            height: auto !important;
+            object-fit: contain !important;
             margin-bottom: 10px !important;
         }
 
