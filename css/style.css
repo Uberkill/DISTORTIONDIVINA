@@ -2506,7 +2506,7 @@
 
             /* 1. Make the Image Area Massive (75%) */
             #win-viewer .viewer-stage {
-                flex: 0 0 75% !important;
+                flex: 0 0 75dvh !important;
                 border-bottom: none !important;
                 /* Remove border for seamless look */
                 background: transparent !important;
@@ -2516,6 +2516,8 @@
             #viewer-card-wrapper {
                 transform: scale(1.0) !important;
                 /* Full size card */
+                height: 100% !important;
+                width: 100% !important;
             }
 
             /* 2. Compact Info Area (25%) */
