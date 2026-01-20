@@ -228,6 +228,7 @@ const System = {
     ],
 
     init() {
+        this.initSecurity(); // THEATRICAL SECURITY PROTOCOL
         AudioManager.init();
         this.setupDrag();
         this.setupAssistantDrag();
@@ -303,6 +304,59 @@ const System = {
         }, 60);
     },
 
+    // --- THEATRICAL SECURITY ---
+    initSecurity() {
+        // 1. Console Warning
+        this.showConsoleWarning();
+
+        // 2. Input Lockdown (Right Click & F12)
+        document.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            this.triggerSecurityAlert("UNAUTHORIZED_ACCESS_ATTEMPT");
+        });
+
+        document.addEventListener('keydown', (e) => {
+            // F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+            if (e.key === 'F12' ||
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
+                (e.ctrlKey && e.key === 'U')) {
+                e.preventDefault();
+                this.triggerSecurityAlert("DEBUGGING_INTERFACE_LOCKED");
+            }
+        });
+    },
+
+    showConsoleWarning() {
+        const style1 = "color: #ff0000; font-size: 40px; font-weight: bold; -webkit-text-stroke: 1px black;";
+        const style2 = "color: #00ff00; font-size: 20px; font-family: monospace;";
+        console.log("%c STOP! %c\n\n> GOVERNMENT TERMINAL DETECTED.\n> UNAUTHORIZED DEBUGGING IS A CLASS-A FELONY.\n> IP ADDRESS HAS BEEN LOGGED.", style1, style2);
+    },
+
+    triggerSecurityAlert(code) {
+        AudioManager.play('hiss'); // Use hiss as error sound
+        const toast = document.createElement('div');
+        toast.className = 'security-toast';
+        toast.innerHTML = `
+            <div style="display:flex; align-items:center; gap:10px;">
+                <i data-lucide="shield-alert" width="24" color="red"></i>
+                <div>
+                    <div style="color:red; font-weight:bold;">SECURITY ALERT</div>
+                    <div style="font-size:0.8rem; letter-spacing:1px;">${code}</div>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(toast);
+        if (window.lucide) lucide.createIcons({ root: toast });
+
+        // Animation
+        setTimeout(() => toast.classList.add('visible'), 10);
+        setTimeout(() => {
+            toast.classList.remove('visible');
+            setTimeout(() => toast.remove(), 500);
+        }, 3000);
+    },
+    // ---------------------------
+
     checkMobile() {
         const isMobile = window.innerWidth < 768;
         document.body.classList.toggle('is-mobile', isMobile);
@@ -368,8 +422,28 @@ const System = {
         this.isLoggingIn = true;
         if (this.loginTimer) clearTimeout(this.loginTimer);
         const wrapper = document.getElementById('login-wrapper');
+        const inputVal = document.getElementById('login-input').value; // Security: Get value
         const msg = document.getElementById('login-message');
         const labels = DB.TRANSLATIONS[this.lang];
+
+        // --- SECURITY: INPUT VALIDATION ---
+        // Only allow letters and numbers. No symbols. No scripts.
+        const safePattern = /^[a-zA-Z0-9]*$/;
+        if (!safePattern.test(inputVal)) {
+            // "Theatrical" Rejection
+            AudioManager.play('hiss');
+            wrapper.classList.add('error-shake');
+            msg.style.opacity = '1';
+            msg.innerText = "> ERROR: ILLEGAL CHARACTERS DETECTED";
+            msg.style.color = "var(--glitch-red)";
+            setTimeout(() => {
+                wrapper.classList.remove('error-shake');
+                msg.style.opacity = '0';
+            }, 1000);
+            this.isLoggingIn = false; // Reset lock
+            return; // STOP EXECUTION
+        }
+
         wrapper.classList.add('focused');
         msg.style.opacity = '1'; msg.innerText = labels.login_verifying;
         AudioManager.play('login');
