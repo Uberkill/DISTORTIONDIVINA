@@ -219,15 +219,10 @@ const Viewer3D = {
 const System = {
     lang: 'en', loginTimer: null, assistantIdx: 0, assistantSteps: [], isTutorialComplete: false, assistantDragging: false, briefImgIdx: 0, isLoggingIn: false,
 
-    briefImages: [
-        { src: "./images/JtNx9pE.jpeg", key: "brief_fig_main" },
-        { src: "./images/5m4k3Ur.jpeg", key: "brief_fig_a" },
-        { src: "./images/q2jD7BO.jpeg", key: "brief_fig_b" },
-        { src: "./images/49CqhCP.jpeg", key: "brief_fig_c" },
-        { src: "./images/rEDw6E9.jpeg", key: "brief_fig_d" }
-    ],
+    briefImages: [],
 
     init() {
+        this.briefImages = DB.BRIEF_IMAGES; // Load from DB
         this.initSecurity(); // THEATRICAL SECURITY PROTOCOL
         this.registerServiceWorker(); // OPTIMIZATION: SERVICE WORKER
         AudioManager.init();
@@ -256,17 +251,60 @@ const System = {
         this.renderGrid();
         this.setLanguage('en');
 
+        this.renderGrid();
+        this.setLanguage('en');
+
+        // REPLACED OLD LOADER WITH THEATRICAL BOOT SEQUENCE
+        this.runBootSequence();
+    },
+
+    runBootSequence() {
+        const loader = document.getElementById('system-loader');
+        if (!loader) return;
+
+        // Remove spinner if it exists
+        const spinner = loader.querySelector('.loader-spinner');
+        if (spinner) spinner.remove();
+
+        // Create console container
+        const term = document.createElement('div');
+        term.className = 'boot-console';
+        loader.appendChild(term);
+        loader.querySelector('.loader-text').remove(); // Remove old text logic
+
+        const logs = [
+            { text: "> SYSTEM KERNEL ... OK", delay: 100 },
+            { text: "> LOADING DRIVERS ... OK", delay: 300 },
+            { text: "> CHECKING MEMORY ... 64TB OK", delay: 400 },
+            { text: "> ESTABLISHING SECURE CONNECTION...", delay: 800 },
+            { text: "> ENCRYPTING TRAFFIC ... [AES-4096]", delay: 1100 },
+            { text: "> CONNECTED TO DISTORTION_NET", delay: 1500 },
+            { text: "> ACCESS GRANTED.", delay: 1800, color: "var(--terminal-green)" }
+        ];
+
+        let totalDelay = 0;
+        logs.forEach(log => {
+            setTimeout(() => {
+                const line = document.createElement('div');
+                line.className = 'boot-line';
+                line.innerText = log.text;
+                if (log.color) line.style.color = log.color;
+                term.appendChild(line);
+                AudioManager.play('click');
+            }, log.delay);
+            totalDelay = Math.max(totalDelay, log.delay);
+        });
+
+        // Fade out
         setTimeout(() => {
-            const loader = document.getElementById('system-loader');
-            if (loader) { loader.style.opacity = '0'; setTimeout(() => loader.remove(), 500); }
-        }, 1500);
+            loader.style.opacity = '0';
+            setTimeout(() => loader.remove(), 500);
+        }, totalDelay + 800);
     },
 
     updateCountdowns() {
         const now = new Date().getTime();
         const labels = DB.TRANSLATIONS[this.lang];
-        const evt1 = new Date('2026-02-15T11:30:00+09:00').getTime();
-        const evt2 = new Date('2026-02-21T12:00:00+09:00').getTime();
         const updateElement = (id, targetTime) => {
             const el = document.getElementById(id);
             if (!el) return;
@@ -279,7 +317,11 @@ const System = {
             const p = (n) => n.toString().padStart(2, '0');
             el.innerText = `${labels.time_tminus}: ${days}${labels.time_days} ${p(hours)}${labels.time_hours} ${p(mins)}${labels.time_mins} ${p(secs)}${labels.time_secs}`;
         };
-        updateElement('countdown-1', evt1); updateElement('countdown-2', evt2);
+
+        DB.EVENTS.forEach(evt => {
+            const time = new Date(evt.time).getTime();
+            updateElement(evt.id, time);
+        });
     },
 
     startAutoLoginTimer() {
@@ -333,9 +375,7 @@ const System = {
         console.log("%c STOP! %c\n\n> GOVERNMENT TERMINAL DETECTED.\n> UNAUTHORIZED DEBUGGING IS A CLASS-A FELONY.\n> IP ADDRESS HAS BEEN LOGGED.", style1, style2);
     },
 
-    triggerSecurityAlert(code) {
-        // ... (Existing Code)
-    },
+
 
     // --- SERVICE WORKER REGISTRATION ---
     registerServiceWorker() {
@@ -378,7 +418,7 @@ const System = {
     },
     // -----------------------------------
 
-    checkMobile() {
+    triggerSecurityAlert(code) {
         AudioManager.play('hiss'); // Use hiss as error sound
         const toast = document.createElement('div');
         toast.className = 'security-toast';
