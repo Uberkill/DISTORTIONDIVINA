@@ -229,6 +229,7 @@ const System = {
 
     init() {
         this.initSecurity(); // THEATRICAL SECURITY PROTOCOL
+        this.registerServiceWorker(); // OPTIMIZATION: SERVICE WORKER
         AudioManager.init();
         this.setupDrag();
         this.setupAssistantDrag();
@@ -333,6 +334,51 @@ const System = {
     },
 
     triggerSecurityAlert(code) {
+        // ... (Existing Code)
+    },
+
+    // --- SERVICE WORKER REGISTRATION ---
+    registerServiceWorker() {
+        if ('serviceWorker' in navigator) {
+            // MOVED TO ROOT: Now standard /sw.js path works everywhere without headers
+            navigator.serviceWorker.register('/sw.js')
+                .then(reg => {
+                    console.log('[System] Service Worker Registered', reg);
+
+                    // Check for updates
+                    reg.onupdatefound = () => {
+                        const installingWorker = reg.installing;
+                        installingWorker.onstatechange = () => {
+                            if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                // New update available
+                                this.triggerUpdateToast();
+                            }
+                        };
+                    };
+                })
+                .catch(err => console.error('[System] SW Registration Failed', err));
+        }
+    },
+
+    triggerUpdateToast() {
+        const toast = document.createElement('div');
+        toast.className = 'security-toast'; // Reuse existing style
+        toast.innerHTML = `
+            <div style="display:flex; align-items:center; gap:10px; cursor:pointer;" onclick="window.location.reload()">
+                <i data-lucide="refresh-cw" width="24" color="var(--terminal-green)"></i>
+                <div>
+                    <div style="color:var(--terminal-green); font-weight:bold;">SYSTEM UPDATE AVAILABLE</div>
+                    <div style="font-size:0.8rem;">> CLICK TO REBOOT SYSTEM</div>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(toast);
+        if (window.lucide) lucide.createIcons({ root: toast });
+        setTimeout(() => toast.classList.add('visible'), 100);
+    },
+    // -----------------------------------
+
+    checkMobile() {
         AudioManager.play('hiss'); // Use hiss as error sound
         const toast = document.createElement('div');
         toast.className = 'security-toast';
