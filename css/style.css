@@ -2802,3 +2802,22 @@
                 border-color: transparent;
             }
         }
+
+        /* --- BOOT CONSOLE --- */
+        .boot-console {
+            font-family: 'Share Tech Mono', monospace;
+            color: var(--gold-primary);
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            z-index: 20001;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .boot-line {
+            margin-bottom: 8px;
+            text-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
