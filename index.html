@@ -61,25 +61,18 @@
                     NORMAL] </button>
                 <button class="mode-switch-btn" onclick="System.toggleMode()"
                     aria-label="Toggle View Mode">[UI_MODE_LOADING] </button>
-                <button class="mode-switch-btn" onclick="window.emergencyReset()"
-                    style="border-color: var(--glitch-red); color: var(--glitch-red);"
-                    aria-label="Force Reset System">[RESET_SYSTEM] </button>
             </div>
             <script>
-                // EMERGENCY INLINE RESET - Bypass script.js cache
-                window.emergencyReset = async () => {
-                    if (!confirm("FORCE SYSTEM REBOOT? This will clear local cache and reload.")) return;
-                    console.log("INITIATING EMERGENCY RESET...");
-                    if ('serviceWorker' in navigator) {
-                        const regist = await navigator.serviceWorker.getRegistrations();
-                        for (const r of regist) { await r.unregister(); console.log("SW Unregistered"); }
-                    }
-                    if ('caches' in window) {
-                        const keys = await caches.keys();
-                        for (const k of keys) { await caches.delete(k); console.log("Cache Deleted:", k); }
-                    }
-                    window.location.reload(true);
-                };
+                // AUTO-CLEANUP: Unregister legacy Service Workers
+                if ('serviceWorker' in navigator) {
+                    navigator.serviceWorker.getRegistrations().then(function (registrations) {
+                        for (let registration of registrations) {
+                            registration.unregister().then(function (boolean) {
+                                console.log('Service Worker Unregistered:', boolean);
+                            });
+                        }
+                    });
+                }
             </script>
         </div>
         <!-- Title Moved Outside Box -->
@@ -212,7 +205,8 @@
                         onclick="WindowManager.toggleMaximize('win-overview')"><i data-lucide="maximize" width="14"></i>
                     </div>
                     <div class="win-btn close" aria-label="Close Window" onclick="WindowManager.close('win-overview')">
-                        <i data-lucide="x" width="14"></i></div>
+                        <i data-lucide="x" width="14"></i>
+                    </div>
                 </div>
             </div>
             <div class="window-content">
@@ -428,7 +422,8 @@
                     <div class="win-btn" onclick="WindowManager.toggleMaximize('win-selector')"
                         aria-label="Maximize Window"><i data-lucide="maximize" width="14"></i></div>
                     <div class="win-btn close" aria-label="Close Window" onclick="WindowManager.close('win-selector')">
-                        <i data-lucide="x" width="14"></i></div>
+                        <i data-lucide="x" width="14"></i>
+                    </div>
                 </div>
             </div>
             <div class="window-content">
@@ -457,7 +452,8 @@
                         onclick="WindowManager.toggleMaximize('win-employees')"><i data-lucide="maximize"
                             width="14"></i></div>
                     <div class="win-btn close" aria-label="Close Window" onclick="WindowManager.close('win-employees')">
-                        <i data-lucide="x" width="14"></i></div>
+                        <i data-lucide="x" width="14"></i>
+                    </div>
                 </div>
             </div>
             <div class="window-content">
@@ -695,7 +691,8 @@
                         onclick="WindowManager.toggleMaximize('win-settings')"><i data-lucide="maximize" width="14"></i>
                     </div>
                     <div class="win-btn close" aria-label="Close Window" onclick="WindowManager.close('win-settings')">
-                        <i data-lucide="x" width="14"></i></div>
+                        <i data-lucide="x" width="14"></i>
+                    </div>
                 </div>
             </div>
             <div class="window-content">

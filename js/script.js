@@ -224,7 +224,7 @@ const System = {
     init() {
         this.briefImages = DB.BRIEF_IMAGES; // Load from DB
         this.initSecurity(); // THEATRICAL SECURITY PROTOCOL
-        this.registerServiceWorker(); // OPTIMIZATION: SERVICE WORKER
+        this.initSecurity(); // THEATRICAL SECURITY PROTOCOL
         AudioManager.init();
         this.setupDrag();
         this.setupAssistantDrag();
@@ -260,32 +260,6 @@ const System = {
         this.runBootSequence();
     },
 
-    hardReset: async () => {
-        if (!confirm("FORCE SYSTEM REBOOT? This will clear local cache and reload.")) return;
-
-        console.log("INITIATING HARD RESET...");
-
-        // 1. Unregister Service Workers
-        if ('serviceWorker' in navigator) {
-            const registrations = await navigator.serviceWorker.getRegistrations();
-            for (const registration of registrations) {
-                await registration.unregister();
-                console.log("Service Worker Unregistered");
-            }
-        }
-
-        // 2. Delete Cache Storage
-        if ('caches' in window) {
-            const keys = await caches.keys();
-            for (const key of keys) {
-                await caches.delete(key);
-                console.log("Cache Deleted:", key);
-            }
-        }
-
-        // 3. Force Reload
-        window.location.reload(true);
-    },
 
     runBootSequence() {
         const loader = document.getElementById('system-loader');
@@ -406,45 +380,6 @@ const System = {
 
 
 
-    // --- SERVICE WORKER REGISTRATION ---
-    registerServiceWorker() {
-        if ('serviceWorker' in navigator) {
-            // MOVED TO ROOT: Now standard /sw.js path works everywhere without headers
-            navigator.serviceWorker.register('/sw.js')
-                .then(reg => {
-                    console.log('[System] Service Worker Registered', reg);
-
-                    // Check for updates
-                    reg.onupdatefound = () => {
-                        const installingWorker = reg.installing;
-                        installingWorker.onstatechange = () => {
-                            if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                                // New update available
-                                this.triggerUpdateToast();
-                            }
-                        };
-                    };
-                })
-                .catch(err => console.error('[System] SW Registration Failed', err));
-        }
-    },
-
-    triggerUpdateToast() {
-        const toast = document.createElement('div');
-        toast.className = 'security-toast'; // Reuse existing style
-        toast.innerHTML = `
-            <div style="display:flex; align-items:center; gap:10px; cursor:pointer;" onclick="window.location.reload()">
-                <i data-lucide="refresh-cw" width="24" color="var(--terminal-green)"></i>
-                <div>
-                    <div style="color:var(--terminal-green); font-weight:bold;">SYSTEM UPDATE AVAILABLE</div>
-                    <div style="font-size:0.8rem;">> CLICK TO REBOOT SYSTEM</div>
-                </div>
-            </div>
-        `;
-        document.body.appendChild(toast);
-        if (window.lucide) lucide.createIcons({ root: toast });
-        setTimeout(() => toast.classList.add('visible'), 100);
-    },
     // -----------------------------------
 
     triggerSecurityAlert(code) {
