@@ -4,7 +4,7 @@
  * IMPORTANT: To release a new update to users, you MUST change the CACHE_NAME below.
  * Example: 'distortion-os-v1' -> 'distortion-os-v2'
  */
-const CACHE_NAME = 'distortion-os-v1';
+const CACHE_NAME = 'distortion-os-v2';
 const ASSETS_TO_CACHE = [
     '/',
     '/index.html',

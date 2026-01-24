@@ -894,14 +894,25 @@ const System = {
 /* --- GLOBAL ERROR HANDLER --- */
 window.onerror = function (msg, url, line, col, error) {
     console.error("CRITICAL SYSTEM FAILURE DETECTED:", msg);
-    // Only reload if it's a critical script error, avoiding infinite loops on minor issues
-    if (msg.toLowerCase().indexOf('script error') > -1 || msg.toLowerCase().indexOf('is not a function') > -1) {
-        // Force reload after short delay to reset state
-        setTimeout(() => {
-            window.location.reload();
-        }, 1000);
-    }
-    return false; // Let default handler run too
+
+    // Display error on screen for debugging
+    const errorBox = document.createElement('div');
+    errorBox.style.position = 'fixed';
+    errorBox.style.top = '0';
+    errorBox.style.left = '0';
+    errorBox.style.width = '100%';
+    errorBox.style.background = 'rgba(255, 0, 0, 0.9)';
+    errorBox.style.color = 'white';
+    errorBox.style.padding = '20px';
+    errorBox.style.zIndex = '999999';
+    errorBox.style.fontFamily = 'monospace';
+    errorBox.style.fontSize = '16px';
+    errorBox.style.whiteSpace = 'pre-wrap';
+    errorBox.innerHTML = '<strong>CRITICAL ERROR:</strong><br>' + msg + '<br><br>Line: ' + line + '<br>Column: ' + col;
+
+    document.body.appendChild(errorBox);
+
+    return false;
 };
 
 document.addEventListener('DOMContentLoaded', () => System.init());
