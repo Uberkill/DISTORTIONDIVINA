@@ -232,7 +232,7 @@ const System = {
         this.checkMobile();
         Viewer3D.init();
         window.addEventListener('resize', () => { this.checkMobile(); });
-        this.startAutoLoginTimer();
+
 
         setInterval(() => {
             document.getElementById('clock').innerText = new Date().toLocaleTimeString('en-US', { hour12: false });
@@ -248,9 +248,6 @@ const System = {
         }, 1000);
 
         if (window.lucide) lucide.createIcons();
-        this.renderGrid();
-        this.setLanguage('en');
-
         this.renderGrid();
         this.setLanguage('en');
 
@@ -324,49 +321,13 @@ const System = {
         });
     },
 
-    startAutoLoginTimer() {
-        const bar = document.getElementById('auto-login-bar');
-        if (bar) {
-            bar.style.transition = 'none';
-            bar.style.transform = 'scaleX(0)'; // Reset using transform
-            void bar.offsetWidth; // Force Reflow
-            bar.style.transition = 'transform 10s linear'; // Animate transform
-            bar.style.transform = 'scaleX(1)'; // End state
-        }
-        this.loginTimer = setTimeout(() => { if (document.getElementById('login-input').value === '') this.performAutoFill(); }, 10000);
-    },
+    // Auto-Login Removed
 
-    performAutoFill() {
-        const input = document.getElementById('login-input');
-        const bar = document.getElementById('auto-login-bar');
-        if (bar) bar.style.opacity = '0';
-        const code = "DISTORTIONDIVINA"; let i = 0;
-        const typeInterval = setInterval(() => {
-            if (i < code.length) { input.value += code.charAt(i); i++; }
-            else { clearInterval(typeInterval); setTimeout(() => this.login(), 400); }
-        }, 60);
-    },
 
     // --- THEATRICAL SECURITY ---
     initSecurity() {
-        // 1. Console Warning
+        // 1. Console Warning (Passive only)
         this.showConsoleWarning();
-
-        // 2. Input Lockdown (Right Click & F12)
-        document.addEventListener('contextmenu', (e) => {
-            e.preventDefault();
-            this.triggerSecurityAlert("UNAUTHORIZED_ACCESS_ATTEMPT");
-        });
-
-        document.addEventListener('keydown', (e) => {
-            // F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
-            if (e.key === 'F12' ||
-                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
-                (e.ctrlKey && e.key === 'U')) {
-                e.preventDefault();
-                this.triggerSecurityAlert("DEBUGGING_INTERFACE_LOCKED");
-            }
-        });
     },
 
     showConsoleWarning() {
