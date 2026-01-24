@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYSTEM RESET // DISTORTION DIVINA</title>
+    <style>
+        body {
+            background: #000;
+            color: #ff003c;
+            font-family: monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        button {
+            background: #ff003c;
+            color: #000;
+            border: none;
+            padding: 20px 40px;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>EMERGENCY SYSTEM RESET</h1>
+    <p>This will unregister all Service Workers and delete all Caches.</p>
+    <button onclick="nuke()">EXECUTE RESET</button>
+    <div id="log" style="margin-top:20px; color: #33ff00;"></div>
+
+    <script>
+        async function nuke() {
+            const log = document.getElementById('log');
+            const logMsg = (msg) => log.innerHTML += `> ${msg}<br>`;
+
+            logMsg("INITIALIZING WIPE...");
+
+            try {
+                if ('serviceWorker' in navigator) {
+                    const registrations = await navigator.serviceWorker.getRegistrations();
+                    for (const registration of registrations) {
+                        await registration.unregister();
+                        logMsg("Service Worker: UNREGISTERED");
+                    }
+                } else {
+                    logMsg("Service Worker: NOT FOUND");
+                }
+
+                if ('caches' in window) {
+                    const keys = await caches.keys();
+                    for (const key of keys) {
+                        await caches.delete(key);
+                        logMsg(`Cache Cleared: ${key}`);
+                    }
+                }
+
+                logMsg("SUCCESS. REDIRECTING IN 3 SECONDS...");
+                setTimeout(() => {
+                    window.location.href = "/";
+                }, 3000);
+
+            } catch (e) {
+                logMsg("ERROR: " + e.message);
+                console.error(e);
+            }
+        }
+        // Auto-run if query param ?auto=true is present
+        if (window.location.search.includes('auto=true')) nuke();
+    </script>
+</body>
+
+</html>
