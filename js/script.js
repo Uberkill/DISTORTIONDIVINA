@@ -260,6 +260,33 @@ const System = {
         this.runBootSequence();
     },
 
+    hardReset: async () => {
+        if (!confirm("FORCE SYSTEM REBOOT? This will clear local cache and reload.")) return;
+
+        console.log("INITIATING HARD RESET...");
+
+        // 1. Unregister Service Workers
+        if ('serviceWorker' in navigator) {
+            const registrations = await navigator.serviceWorker.getRegistrations();
+            for (const registration of registrations) {
+                await registration.unregister();
+                console.log("Service Worker Unregistered");
+            }
+        }
+
+        // 2. Delete Cache Storage
+        if ('caches' in window) {
+            const keys = await caches.keys();
+            for (const key of keys) {
+                await caches.delete(key);
+                console.log("Cache Deleted:", key);
+            }
+        }
+
+        // 3. Force Reload
+        window.location.reload(true);
+    },
+
     runBootSequence() {
         const loader = document.getElementById('system-loader');
         if (!loader) return;
