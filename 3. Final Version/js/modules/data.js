@@ -1,4 +1,6 @@
-﻿const DB = {
+
+// --- 1. DATA REPOSITORY (Namespace: DB) ---
+export const DB = {
     TRANSLATIONS: {
         en: {
             app_title: "DISTORTION CORP",
@@ -11,7 +13,7 @@
             ui_mode_desktop: "VIEW: DESKTOP",
             ui_mode_mobile: "VIEW: MOBILE",
             btn_system: "SYSTEM",
-            btn_rotate: "ROTATE",
+            btn_system: "SYSTEM",
             btn_visit: "[ VISIT LINK ]",
             btn_email: "[ SEND TRANSMISSION ]",
             btn_guidelines: "[ VIEW GUIDELINES ]",
@@ -147,7 +149,6 @@
                 "Use 'EMPLOYEE_DB' to view the team roster.",
                 "Use 'ARCHIVE_DB' to inspect the tarot artifacts. Click any file to analyze metadata.",
                 "Check 'EVENT_LOG' for upcoming timeline incursions and store openings.",
-                "Secure communication channels are available in 'COMMUNICATION.EXE'.",
                 "You can drag windows to organize your workspace. Good luck."
             ],
             cat_lines: [
@@ -175,7 +176,7 @@
             ui_mode_desktop: "보기: 데스크톱",
             ui_mode_mobile: "보기: 모바일",
             btn_system: "시스템",
-            btn_rotate: "회전",
+            btn_system: "시스템",
             btn_visit: "[ 링크 방문 ]",
             btn_email: "[ 전송 보내기 ]",
             btn_guidelines: "[ 가이드라인 보기 ]",
@@ -338,7 +339,7 @@
             ui_mode_desktop: "表示: デスクトップ",
             ui_mode_mobile: "表示: モバイル",
             btn_system: "システム",
-            btn_rotate: "回転",
+            btn_system: "システム",
             btn_visit: "[ リンクを開く ]",
             btn_email: "[ 送信 ]",
             btn_guidelines: "[ ガイドラインを見る ]",
@@ -513,41 +514,36 @@
         { id: 18, title: { en: "XVIII. THE MOON", ko: "XVIII. 달", ja: "XVIII. 月" }, description: { en: "Illusion, fear, anxiety, subconscious, intuition.", ko: "환상, 두려움, 불안, 잠재의식, 직관.", ja: "幻想、恐怖、不安、潜在意識、直感。" }, image: "./images/yklk4pi.png" },
         { id: 19, title: { en: "XIX. THE SUN", ko: "XIX. 태양", ja: "XIX. 太陽" }, description: { en: "Positivity, fun, warmth, success, vitality.", ko: "긍정, 즐거움, 따뜻함, 성공, 활력.", ja: "前向き、楽しさ、暖かさ、成功、活力。" }, image: "./images/rhjpg3r.png" },
         { id: 20, title: { en: "XX. JUDGEMENT", ko: "XX. 심판", ja: "XX. 審判" }, description: { en: "Judgement, rebirth, inner calling, absolution.", ko: "심판, 부활, 내면의 부름, 사면.", ja: "審判、再生、内なる呼び声、赦し。" }, image: "./images/kwhqryr.png" },
-        { id: 21, title: { en: "XXI. THE WORLD", ko: "XXI. 세계", ja: "XXI. 世界" }, description: { en: "Completion, integration, accomplishment, travel.", ko: "완성, 통합, 성취, 여행.", ja: "完成、統合、達成、旅。" }, image: "./images/fyi05v5.png" }
+        { id: 21, title: { en: "XXI. THE WORLD", ko: "XXI. 세계", ja: "XXI. 세계" }, description: { en: "Completion, integration, accomplishment, travel.", ko: "완성, 통합, 성취, 여행.", ja: "完成、統合、達成、旅。" }, image: "./images/fyi05v5.png" }
     ],
     EMPLOYEES: [
-        { cardId: 0, no: "0", card: "The Fool", char: { en: "Hod", ko: "호드", ja: "ホド" }, artist: "Herokatz", pen: "Herocatz", role: { en: "Main Illustrator", ko: "메인 일러스트레이터", ja: "メインイラストレーター" }, variantImage: "./images/crukz4f.png", socials: { twitter: "https://x.com/AhoHeroCatz" } },
-        { cardId: 1, no: "I", card: "The Magician", char: { en: "Malkuth", ko: "말쿠트", ja: "マルクト" }, artist: "Nolm", pen: "Nolm", role: { en: "Artist", ko: "일러스트레이터", ja: "イラストレーター" }, variantImage: "./images/syy5gkx.png", socials: { twitter: "https://x.com/nolm_zi" } },
-        { cardId: 2, no: "II", card: "The High Priestess", char: { en: "Yi Sang", ko: "이상", ja: "イサン" }, artist: "Sik", pen: "Sik", role: { en: "Artist", ko: "일러스트레이터", ja: "イラストレーター" }, variantImage: "./images/uaq9pgs.png", socials: { twitter: "https://x.com/sik_limbus" } },
-        { cardId: 3, no: "III", card: "The Empress", char: { en: "Ishmael", ko: "이스마엘", ja: "イシュメール" }, artist: "Mae", pen: "Mae", role: { en: "Artist", ko: "일러스트레이터", ja: "イラストレーター" }, variantImage: "./images/whrqndi.png", socials: { twitter: "https://x.com/mae_limbus" } },
-        { cardId: 4, no: "IV", card: "The Emperor", char: { en: "Meursault", ko: "뫼르소", ja: "ムルソー" }, artist: "Dudler", pen: "Dudler", role: { en: "Artist", ko: "일러스트레이터", ja: "イラストレーター" }, variantImage: "./images/fyi05v5.png", socials: { twitter: "https://x.com/dudler_limbus" } },
-        { cardId: 5, no: "V", card: "The Hierophant", char: { en: "Heathcliff", ko: "히스클리프", ja: "ヒースクリフ" }, artist: "Nokso", pen: "Nokso", role: { en: "Artist", ko: "일러스트레이터", ja: "イラストレーター" }, variantImage: "./images/yjiancf.png", socials: { twitter: "https://x.com/nokso_limbus" } },
-        { cardId: 6, no: "VI", card: "The Lovers", char: { en: "Catherine", ko: "캐서린", ja: "キャサリン" }, artist: "Viper", pen: "Viper", role: { en: "Artist", ko: "일러스트레이터", ja: "イラストレーター" }, variantImage: "./images/oc3ucop.png", socials: { twitter: "https://x.com/viper_limbus" } },
-        { cardId: 7, no: "VII", card: "The Chariot", char: { en: "Charon", ko: "카론", ja: "カロン" }, artist: "Bell", pen: "Bell", role: { en: "Artist", ko: "일러스트레이터", ja: "イラストレーター" }, variantImage: "./images/soi92ln.png", socials: { twitter: "https://x.com/bell_limbus" } },
-        { cardId: 8, no: "VIII", card: "Strength", char: { en: "Don Quixote", ko: "돈키호테", ja: "ドンキホーテ" }, artist: "Moom", pen: "Moom", role: { en: "Artist", ko: "일러스트레이터", ja: "イラストレーター" }, variantImage: "./images/yn6qpdp.png", socials: { twitter: "https://x.com/moom_limbus" } },
-        { cardId: 9, no: "IX", card: "The Hermit", char: { en: "Faust", ko: "파우스트", ja: "ファウスト" }, artist: "Kuro", pen: "Kuro", role: { en: "Artist", ko: "일러스트레이터", ja: "イラストレーター" }, variantImage: "./images/xeen4ee.png", socials: { twitter: "https://x.com/kuro_limbus" } },
-        { cardId: 10, no: "X", card: "Wheel of Fortune", char: { en: "Hong Lu", ko: "홍루", ja: "ホンル" }, artist: "Rin", pen: "Rin", role: { en: "Artist", ko: "일러스트레이터", ja: "イラストレーター" }, variantImage: "./images/r0z9fuo.png", socials: { twitter: "https://x.com/rin_limbus" } },
-        { cardId: 11, no: "XI", card: "Justice", char: { en: "Sinclair", ko: "싱클레어", ja: "シンクレア" }, artist: "Hana", pen: "Hana", role: { en: "Artist", ko: "일러스트레이터", ja: "イラストレーター" }, variantImage: "./images/mxqfydy.png", socials: { twitter: "https://x.com/hana_limbus" } },
-        { cardId: 12, no: "XII", card: "The Hanged Man", char: { en: "Gregor", ko: "그레고르", ja: "グレゴール" }, artist: "Moth", pen: "Moth", role: { en: "Artist", ko: "일러스트레이터", ja: "イラストレーター" }, variantImage: "./images/awduzsc.png", socials: { twitter: "https://x.com/moth_limbus" } },
-        { cardId: 13, no: "XIII", card: "Death", char: { en: "Ryoshu", ko: "료슈", ja: "良秀" }, artist: "Ash", pen: "Ash", role: { en: "Artist", ko: "일러스트레이터", ja: "イラストレーター" }, variantImage: "./images/5lrfk3j.jpeg", socials: { twitter: "https://x.com/ash_limbus" } },
-        { cardId: 14, no: "XIV", card: "Temperance", char: { en: "Rodion", ko: "로쟈", ja: "ロージャ" }, artist: "Nix", pen: "Nix", role: { en: "Artist", ko: "일러스트레이터", ja: "イラストレーター" }, variantImage: "./images/lldhpbo.png", socials: { twitter: "https://x.com/nix_limbus" } },
-        { cardId: 15, no: "XV", card: "The Devil", char: { en: "Kromer", ko: "크로머", ja: "クローマー" }, artist: "Void", pen: "Void", role: { en: "Artist", ko: "일러스트레이터", ja: "イラストレーター" }, variantImage: "./images/5tmkarj.png", socials: { twitter: "https://x.com/void_limbus" } },
-        { cardId: 16, no: "XVI", card: "The Tower", char: { en: "Outis", ko: "오티스", ja: "ウーティス" }, artist: "Grim", pen: "Grim", role: { en: "Artist", ko: "일러스트레이터", ja: "イラストレーター" }, variantImage: "./images/1dfh7kg.png", socials: { twitter: "https://x.com/grim_limbus" } },
-        { cardId: 17, no: "XVII", card: "The Star", char: { en: "Demian", ko: "데미안", ja: "デミアン" }, artist: "Lux", pen: "Lux", role: { en: "Artist", ko: "일러스트레이터", ja: "イラストレーター" }, variantImage: "./images/lp9ohvk.png", socials: { twitter: "https://x.com/lux_limbus" } },
-        { cardId: 18, no: "XVIII", card: "The Moon", char: { en: "Angela", ko: "앤젤라", ja: "アンジェラ" }, artist: "Pale", pen: "Pale", role: { en: "Artist", ko: "일러스트레이터", ja: "イラストレーター" }, variantImage: "./images/q4swynn.png", socials: { twitter: "https://x.com/pale_limbus" } },
-        { cardId: 19, no: "XIX", card: "The Sun", char: { en: "Carmen", ko: "카르멘", ja: "カルメン" }, artist: "Sol", pen: "Sol", role: { en: "Artist", ko: "일러스트레이터", ja: "イラストレーター" }, variantImage: "./images/rhjpg3r.png", socials: { twitter: "https://x.com/sol_limbus" } },
-        { cardId: 20, no: "XX", card: "Judgement", char: { en: "Binah", ko: "비나", ja: "ビナー" }, artist: "Arbiter", pen: "Arbiter", role: { en: "Artist", ko: "일러스트레이터", ja: "イラストレーター" }, variantImage: "./images/zyc6cdh.png", socials: { twitter: "https://x.com/arbiter_limbus" } },
-        { cardId: 21, no: "XXI", card: "The World", char: { en: "Ayin", ko: "아인", ja: "アイン" }, artist: "Manager", pen: "Manager", role: { en: "Artist", ko: "일러스트레이터", ja: "イラストレーター" }, variantImage: "./images/iimtset.png", socials: { twitter: "https://x.com/manager_limbus" } }
+        { cardId: 0, no: "0", card: "The Fool", char: { en: "Hod", ko: "호드", ja: "ホド" }, artist: "Herokatz", pen: "Herocatz", role: { en: "Geologist", ko: "지질학자", ja: "地質学者" }, variantImage: "./images/crukz4f.png", socials: { twitter: "https://x.com/AhoHeroCatz" } },
+        { cardId: 1, no: "1", card: "The Magician", char: { en: "Tellulu", ko: "텔루루", ja: "テルル" }, artist: "Violetta", pen: "Violetta", role: { en: "Magician", ko: "마법사", ja: "魔術師" }, variantImage: "./images/uaq9pgs.png", socials: { twitter: "https://x.com/violetta25sora", instagram: "https://instagram.com/violetta25sora" } },
+        { cardId: 2, no: "2", card: "The High Priestess", char: { en: "Faust", ko: "파우스트", ja: "ファ우スト" }, artist: "Sinn/Square", pen: "19sinnt", role: { en: "Unemployed", ko: "백수", ja: "無職" }, variantImage: "./images/soi92ln.png", socials: { twitter: "https://x.com/19sinnt" } },
+        { cardId: 3, no: "3", card: "The Empress", char: { en: "Carmen", ko: "카르멘", ja: "カルメン" }, artist: "Uni", pen: "Uni_teto", role: { en: "Librarian", ko: "사서", ja: "司書" }, variantImage: "./images/xeen4ee.png", socials: { instagram: "https://instagram.com/uni_teto0o0o" } },
+        { cardId: 3, no: "3", card: "The Empress", char: { en: "Ryoshu", ko: "료슈", ja: "良秀" }, artist: "miyo", pen: "Lets_lament", role: { en: "The bus lamenter", ko: "버스 비탄자", ja: "バスの嘆き手" }, variantImage: "./images/1dfh7kg.png", socials: { twitter: "https://x.com/lets_lam3nt" } },
+        { cardId: 4, no: "4", card: "The Emperor", char: { en: "Ayin", ko: "아인", ja: "アイン" }, artist: "Sierra", pen: "seikanaru", role: { en: "Grade 9 fixer", ko: "9급 해결사", ja: "9級フィクサー" }, variantImage: "./images/yjiancf.png", socials: { twitter: "https://x.com/seikanaru" } },
+        { cardId: 5, no: "5", card: "The Hierophant", char: { en: "Meursault", ko: "뫼르소", ja: "ムルソー" }, artist: "Vel", pen: "Vel zeGret", role: { en: "Dieci fixer", ko: "디에치 해결사", ja: "ディエチフィクサー" }, variantImage: "./images/lp9ohvk.png", socials: { twitter: "https://x.com/velzegret_art" } },
+        { cardId: 6, no: "6", card: "The Lovers", char: { en: "Ghost&doll", ko: "유령과 인형", ja: "幽霊と人形" }, artist: "33", pen: "biexuejianzhu", role: { en: "Rubber human", ko: "고무 인간", ja: "ゴム人間" }, variantImage: "./images/oc3ucop.png", socials: { twitter: "https://x.com/biexuejianzhu" } },
+        { cardId: 7, no: "7", card: "The Chariot", char: { en: "Outis", ko: "오티스", ja: "ウーティス" }, artist: "Moozy", pen: "moozyfreak", role: { en: "Gunner", ko: "사수", ja: "射手" }, variantImage: "./images/abirnnj.png", socials: { instagram: "https://www.instagram.com/goodmorningtonie/#" } },
+        { cardId: 8, no: "8", card: "Strength", char: { en: "The Red Mist", ko: "붉은 안개", ja: "赤い霧" }, artist: "Steph", pen: "A_Secret", role: { en: "L Corp remnant", ko: "L사 잔당", ja: "L社 残党" }, variantImage: "./images/lldhpbo.png", socials: { twitter: "https://x.com/Creepy_Crypt1c" } },
+        { cardId: 9, no: "9", card: "The Hermit", char: { en: "Yi Sang", ko: "이상", ja: "이산" }, artist: "Karii", pen: "Cheriishu_", role: { en: "the middle little sister", ko: "중지 작은 누나", ja: "中指の妹" }, variantImage: "./images/58dju1b.png", socials: { twitter: "https://x.com/Shinnigummy", instagram: "https://instagram.com/Cheriishu_" } },
+        { cardId: 10, no: "10", card: "Wheel of Fortune", char: { en: "Hokma", ko: "호크마", ja: "ホクマー" }, artist: "Victor", pen: "Soukoku4life", role: { en: "Archivist", ko: "기록자", ja: "記録者" }, variantImage: "./images/whrqndi.png", socials: { twitter: "https://x.com/Soukoku4life" } },
+        { cardId: 11, no: "11", card: "Justice", char: { en: "Sancho", ko: "산초", ja: "サンチョ" }, artist: "Ruri", pen: "Kaname Ruri", role: { en: "La manchaland’s bloodbag", ko: "라만차랜드의 혈액팩", ja: "ラマンチャランドの血液パック" }, variantImage: "./images/yn6qpdp.png", socials: { twitter: "https://x.com/kaname_ruri" } },
+        { cardId: 12, no: "12", card: "The Hanged Man", char: { en: "Lefty", ko: "레프티", ja: "レフティ" }, artist: "Muta", pen: "myonkill", role: { en: "Watchdog", ko: "감시견", ja: "番犬" }, variantImage: "./images/wpnp759.png", socials: { twitter: "https://x.com/myonkill" } },
+        { cardId: 13, no: "13", card: "Death", char: { en: "Argalia", ko: "아르갈리아", ja: "アルガリア" }, artist: "Meowtail", pen: "gh0stcarnival", role: { en: "LCE researcher", ko: "LCE 연구원", ja: "LCE 研究員" }, variantImage: "./images/awduzsc.png", socials: { twitter: "https://x.com/gh0stcarnival" } },
+        { cardId: 13, no: "13", card: "Death", char: { en: "Angela", ko: "앤젤라", ja: "アンジェラ" }, artist: "Sin", pen: "scoliosin", role: { en: "Mechanic", ko: "정비공", ja: "整備士" }, variantImage: "./images/5tmkarj.png", socials: { twitter: "https://x.com/scoliosin" } },
+        { cardId: 14, no: "14", card: "Temperance", char: { en: "Hong Lu", ko: "홍루", ja: "ホンル" }, artist: "KαlliΩpe", pen: "KαlliΩpe", role: { en: "Fixer", ko: "해결사", ja: "フィクサー" }, variantImage: "./images/mxqfydy.png", socials: { twitter: "https://x.com/kalliope_orc" } },
+        { cardId: 15, no: "15", card: "The Devil", char: { en: "Bong Bong", ko: "봉봉", ja: "ボンボン" }, artist: "oob", pen: "Oober", role: { en: "K2 researcher", ko: "K2 연구원", ja: "K2 연구員" }, variantImage: "./images/r0z9fuo.png", socials: { twitter: "https://x.com/0o0ber" } },
+        { cardId: 16, no: "16", card: "The Tower", char: { en: "Xiao", ko: "샤오", ja: "シャオ" }, artist: "Sajoy", pen: "Sajoyvy", role: { en: "Hamhampangpang food tester", ko: "햄햄팡팡 시식가", ja: "ハムハムパンパン試食係" }, variantImage: "./images/iimtset.png", socials: { twitter: "https://x.com/Zukinan_" } },
+        { cardId: 16, no: "16", card: "The Tower", char: { en: "Haehwan", ko: "해환", ja: "ヘファン" }, artist: "Poyo", pen: "minialily", role: { en: "Moon light bird", ko: "달빛 새", ja: "月光の鳥" }, variantImage: "./images/hiwycrv.png", socials: { twitter: "https://x.com/minialily" } },
+        { cardId: 17, no: "17", card: "The Star", char: { en: "Don", ko: "돈키호테", ja: "ドンキホーテ" }, artist: "Wenli", pen: "eyesbuttered", role: { en: "The only grade 10 fixer", ko: "유일한 10급 해결사", ja: "唯一の10級フィクサー" }, variantImage: "./images/4w0aqos.png", socials: { twitter: "https://twitter.com/eyesbuttered" } },
+        { cardId: 18, no: "18", card: "The Moon", char: { en: "Rodion", ko: "로디온", ja: "ロージャ" }, artist: "Laser", pen: "Laser覚明", role: { en: "Mysterious Intern", ko: "미스터리한 인턴", ja: "謎のインターン" }, variantImage: "./images/yklk4pi.png", socials: { twitter: "https://x.com/Juemingziwww" } },
+        { cardId: 18, no: "18", card: "The Moon", char: { en: "Torino", ko: "토리노", ja: "トリノ" }, artist: "Muta", pen: "myonkill", role: { en: "Unknown", ko: "불명", ja: "不明" }, variantImage: "./images/zyc6cdh.png", socials: { twitter: "https://x.com/myonkill" } },
+        { cardId: 19, no: "19", card: "The Sun", char: { en: "Ishmael", ko: "이스마엘", ja: "イシュメール" }, artist: "Accio", pen: "urchinspines", role: { en: "The ring pontilist student", ko: "고리 점묘파 학생", ja: "指輪点描派の学生" }, variantImage: "./images/rhjpg3r.png", socials: { twitter: "https://x.com/kamiyamahigh" } },
+        { cardId: 20, no: "20", card: "Judgment", char: { en: "Sinclair", ko: "싱클레어", ja: "シンクレア" }, artist: "Nori", pen: "Nor1san23", role: { en: "LCE", ko: "LCE", ja: "LCE" }, variantImage: "./images/kwhqryr.png", socials: { twitter: "https://x.com/Nor1san23" } },
+        { cardId: 20, no: "20", card: "Judgement", char: { en: "Binah", ko: "비나", ja: "ビナー" }, artist: "Tako", pen: "tako0mari", role: { en: "Arbiter", ko: "조율자", ja: "調律者" }, variantImage: "./images/llsw9au.png", socials: { twitter: "https://x.com/tako0mari" } },
+        { cardId: 20, no: "20", card: "Judgment", char: { en: "Purple Girl", ko: "보라색 소녀", ja: "紫의 소녀" }, artist: "Ooya", pen: "OOYA", role: { en: "Milk delivery person", ko: "우유 배달부", ja: "牛乳配達員" }, variantImage: "./images/syy5gkx.png", socials: { twitter: "https://x.com/July_26_" } },
+        { cardId: 21, no: "21", card: "The World", char: { en: "Excalibur", ko: "엑스칼리버", ja: "エクスカリバー" }, artist: "Rou Rou", pen: "RouRou", role: { en: "Florist", ko: "플로리스트", ja: "フローリスト" }, variantImage: "./images/fyi05v5.png", socials: { twitter: "https://x.com/rousheep" } }
     ],
-    BRIEF_IMAGES: [
-        { src: "./images/jtnx9pe.jpeg", key: "brief_fig_main" },
-        { src: "./images/5m4k3ur.jpeg", key: "brief_fig_a" },
-        { src: "./images/q2jd7bo.jpeg", key: "brief_fig_b" },
-        { src: "./images/49cqhcp.jpeg", key: "brief_fig_c" },
-        { src: "./images/redw6e9.jpeg", key: "brief_fig_d" }
-    ],
-    EVENTS: [
-        { time: '2026-02-15T11:30:00+09:00', id: 'countdown-1' },
-        { time: '2026-02-21T12:00:00+09:00', id: 'countdown-2' }
-    ]
 };
