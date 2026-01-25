@@ -17,6 +17,7 @@ export const System = {
     init() {
         AudioManager.init();
         this.setupDrag();
+        this.setupGlobalRecoveryDrag();
         this.setupAssistantDrag();
         this.setupListeners();
         this.checkMobile();
@@ -331,6 +332,63 @@ export const System = {
         document.addEventListener('mousedown', start); document.addEventListener('touchstart', start, { passive: false });
         document.addEventListener('mousemove', move); document.addEventListener('touchmove', move, { passive: false });
         document.addEventListener('mouseup', end); document.addEventListener('touchend', end);
+    },
+
+    setupGlobalRecoveryDrag() {
+        let isRecovering = false;
+        let startX = 0, startY = 0;
+
+        const start = (e) => {
+            if (!e.shiftKey) return;
+            // Allow recovery drag from anywhere if Shift is held
+            isRecovering = true;
+            startX = e.clientX;
+            startY = e.clientY;
+            e.preventDefault(); // Prevent text selection
+            document.body.style.cursor = 'move';
+        };
+
+        const move = (e) => {
+            if (!isRecovering) return;
+            e.preventDefault();
+            const dx = e.clientX - startX;
+            const dy = e.clientY - startY;
+            startX = e.clientX;
+            startY = e.clientY;
+
+            document.querySelectorAll('.os-window').forEach(win => {
+                // If window is visible/display flex
+                if (window.getComputedStyle(win).display === 'none') return;
+
+                const style = window.getComputedStyle(win);
+                // Reset transform if present so we can move purely with pixel top/left
+                if (style.transform !== 'none') {
+                    const rect = win.getBoundingClientRect();
+                    win.style.transform = 'none';
+                    win.style.left = rect.left + 'px';
+                    win.style.top = rect.top + 'px';
+                    win.style.animation = 'none';
+                }
+
+                // Apply delta
+                const currentLeft = parseFloat(win.style.left) || 0; // After reset, these should be set
+                const currentTop = parseFloat(win.style.top) || 0;
+
+                win.style.left = (currentLeft + dx) + 'px';
+                win.style.top = (currentTop + dy) + 'px';
+            });
+        };
+
+        const end = () => {
+            if (isRecovering) {
+                isRecovering = false;
+                document.body.style.cursor = '';
+            }
+        };
+
+        document.addEventListener('mousedown', start);
+        document.addEventListener('mousemove', move);
+        document.addEventListener('mouseup', end);
     },
 
     setupAssistantDrag() {

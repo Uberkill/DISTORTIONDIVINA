@@ -24,7 +24,7 @@ echo   [NOTE] Keep this window open while using the site!
 echo.
 
 :: Start http-server and open browser
-start "" "http://localhost:8081/index.html"
-call npx http-server "3. Final Version" -p 8081 -c-1 --silent
+start "" "http://localhost:8082/index.html"
+call npx http-server . -p 8082 -c-1 --silent
 
 pause
