@@ -194,7 +194,7 @@ export const System = {
     updateModeButtons() {
         const isMobile = document.body.classList.contains('is-mobile');
         const labels = DB.TRANSLATIONS[this.lang];
-        document.querySelectorAll('.mode-switch-btn').forEach(btn => {
+        document.querySelectorAll('.mode-switch-btn[data-action="toggle-mode"]').forEach(btn => {
             btn.innerHTML = isMobile ? `<i data-lucide="smartphone" width="18"></i> ${labels.ui_mode_mobile}` : `<i data-lucide="monitor" width="18"></i> ${labels.ui_mode_desktop}`;
         });
         if (window.lucide) lucide.createIcons();
@@ -300,11 +300,34 @@ export const System = {
         });
     },
 
+    resetLayout() {
+        document.querySelectorAll('.os-window').forEach(win => {
+            const id = win.id;
+            // Respect mobile/desktop differences if needed, but for "Reset" we default to safety (Center)
+            win.style.top = '50%';
+            win.style.left = '50%';
+            win.style.width = ''; // Reset custom sizes
+            win.style.height = '';
+            win.style.transform = 'translate(-50%, -50%)'; // Ensure centering transform is active
+            win.classList.remove('maximized', 'minimized');
+            // Ensure they are hidden or shown appropriately? 
+            // Better to just reset positions of OPEN windows. Closed ones can stay closed.
+            if (win.classList.contains('window-open')) {
+                // Keep it open, just move it.
+            }
+        });
+        AudioManager.play('click');
+        // Optional: Notify user
+        this.triggerSecurityAlert("WORKSPACE_REORGANIZED");
+    },
+
     setupDrag() {
         let isDragging = false, currentWindow = null, dx = 0, dy = 0;
         const start = (e) => {
             const win = e.target.closest('.os-window');
+            // Only allow dragging from the header
             if (!win || !e.target.closest('.window-header') || e.target.closest('.win-controls')) return;
+
             isDragging = true; currentWindow = win; WindowManager.bringToFront(win);
             const cx = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
             const cy = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
@@ -326,7 +349,29 @@ export const System = {
             if (!isDragging) return;
             const cx = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
             const cy = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
-            currentWindow.style.left = (cx - dx) + 'px'; currentWindow.style.top = (cy - dy) + 'px';
+
+            // Apply Boundary Constraints
+            let newLeft = cx - dx;
+            let newTop = cy - dy;
+
+            const winRect = currentWindow.getBoundingClientRect();
+            // Constraint: Keep 50px of the header visible horizontally
+            const minVisibleWidth = 50;
+            const maxX = window.innerWidth - minVisibleWidth;
+            const minX = -winRect.width + minVisibleWidth;
+
+            // Constraint: Keep header from going above top or below bottom
+            const headerHeight = 50; // Approximated
+            const maxY = window.innerHeight - headerHeight;
+
+            // Clamp Values
+            if (newTop < 0) newTop = 0; // Don't hide under top bar
+            if (newTop > maxY) newTop = maxY; // Don't loose below screen
+            if (newLeft < minX) newLeft = minX;
+            if (newLeft > maxX) newLeft = maxX;
+
+            currentWindow.style.left = newLeft + 'px';
+            currentWindow.style.top = newTop + 'px';
         };
         const end = () => { isDragging = false; };
         document.addEventListener('mousedown', start); document.addEventListener('touchstart', start, { passive: false });

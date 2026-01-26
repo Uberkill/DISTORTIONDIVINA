@@ -17,14 +17,14 @@ if %errorlevel% neq 0 (
     exit
 )
 
-echo   [SUCCESS] Node.js detected. Starting Server on port 8081...
+echo   [SUCCESS] Node.js detected. Starting Server on port 8083...
 echo   The browser will open automatically.
 echo.
 echo   [NOTE] Keep this window open while using the site!
 echo.
 
 :: Start http-server and open browser
-start "" "http://localhost:8082/index.html"
-call npx http-server . -p 8082 -c-1 --silent
+start "" "http://localhost:8083/index.html"
+call npx http-server . -p 8083 -c-1 --silent
 
 pause

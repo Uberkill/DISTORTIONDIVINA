@@ -309,7 +309,8 @@
                 <button class="ui-scale-btn" onclick="System.toggleUIScale()" aria-label="Toggle Interface Size">
                     [SIZE: NORMAL]
                 </button>
-                <button class="mode-switch-btn" onclick="System.toggleMode()" aria-label="Toggle View Mode">
+                <button class="mode-switch-btn" data-action="toggle-mode" onclick="System.toggleMode()"
+                    aria-label="Toggle View Mode">
                     [UI_MODE_LOADING]
                 </button>
             </div>
@@ -379,12 +380,17 @@
                 <button class="ui-scale-btn" onclick="System.toggleUIScale()" aria-label="Toggle Interface Size">
                     [SIZE]
                 </button>
-                <button class="mode-switch-btn" onclick="System.toggleMode()" aria-label="Toggle View Mode">
+                <button class="mode-switch-btn" data-action="toggle-mode" onclick="System.toggleMode()"
+                    aria-label="Toggle View Mode">
                     [UI_MODE]
                 </button>
             </div>
 
             <div class="top-right-group">
+                <button class="mode-switch-btn" onclick="System.resetLayout()" title="Reset Window Positions"
+                    data-i18n="btn_reset_layout">
+                    [ RESET LAYOUT ]
+                </button>
                 <div id="clock" aria-label="System Clock">00:00:00</div>
             </div>
         </div>

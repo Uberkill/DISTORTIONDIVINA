@@ -15,9 +15,42 @@ export const WindowManager = {
                 win.style.height = "";
                 win.style.transform = "";
             } else {
-                // CENTER WINDOW ON OPEN
-                win.style.top = '50%';
-                win.style.left = '50%';
+                // SMART POSITIONING: Check if window is off-screen
+                const rect = win.getBoundingClientRect();
+                const viewportWidth = window.innerWidth;
+                const viewportHeight = window.innerHeight;
+
+                // Check if the window is currently off-screen (e.g. from a previous session on a larger screen)
+                // Use computed style because rect might be 0 if display is none
+                const style = window.getComputedStyle(win);
+                const currentLeft = parseFloat(style.left) || 0;
+                const currentTop = parseFloat(style.top) || 0;
+
+                // Heuristic: If top is negative or left is way off
+                // Since we don't know exact width if hidden, we assume a safe zone
+
+                // Simply default to Center if it has no manual position set OR if it seems weird
+                // But to persist positions, we trust the browser unless it's obviously bad.
+                // Actually, the safest "Smart Open" is to just respect strict bounds if they are set.
+
+                // If it's the first open (no inline style), it defaults to CSS center.
+                // If it has inline style, check it.
+                if (win.style.left && win.style.top) {
+                    // It has a saved position. Validate it.
+                    const headerHeight = 50;
+                    if (currentTop < 0 || currentTop > viewportHeight - headerHeight ||
+                        currentLeft < -200 || currentLeft > viewportWidth - 50) {
+                        // Reset to center
+                        win.style.top = '50%';
+                        win.style.left = '50%';
+                        win.style.transform = 'translate(-50%, -50%)';
+                    }
+                } else {
+                    // No saved position, ensure center
+                    win.style.top = '50%';
+                    win.style.left = '50%';
+                    win.style.transform = 'translate(-50%, -50%)';
+                }
             }
 
             win.style.display = 'flex';
