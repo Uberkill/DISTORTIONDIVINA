@@ -66,13 +66,13 @@ export const System = {
         if (loader.querySelector('.loader-text')) loader.querySelector('.loader-text').remove();
 
         const logs = [
-            { text: "> SYSTEM KERNEL ... OK", delay: 100 },
-            { text: "> LOADING DRIVERS ... OK", delay: 300 },
-            { text: "> CHECKING MEMORY ... 64TB OK", delay: 400 },
-            { text: "> ESTABLISHING SECURE CONNECTION...", delay: 800 },
-            { text: "> ENCRYPTING TRAFFIC ... [AES-4096]", delay: 1100 },
-            { text: "> CONNECTED TO DISTORTION_NET", delay: 1500 },
-            { text: "> ACCESS GRANTED.", delay: 1800, color: "var(--terminal-green)" }
+            { text: "> SYSTEM KERNEL ... OK", delay: 50 },
+            { text: "> LOADING DRIVERS ... OK", delay: 150 },
+            { text: "> CHECKING MEMORY ... 64TB OK", delay: 200 },
+            { text: "> ESTABLISHING SECURE CONNECTION...", delay: 400 },
+            { text: "> ENCRYPTING TRAFFIC ... [AES-4096]", delay: 550 },
+            { text: "> CONNECTED TO DISTORTION_NET", delay: 750 },
+            { text: "> ACCESS GRANTED.", delay: 900, color: "var(--terminal-green)" }
         ];
 
         let totalDelay = 0;
@@ -90,7 +90,7 @@ export const System = {
 
         setTimeout(() => {
             loader.style.opacity = '0';
-            setTimeout(() => loader.remove(), 500);
+            setTimeout(() => loader.remove(), 300);
 
             // Explicitly ensure login screen is visible (JS path)
             const login = document.getElementById('login-screen');
@@ -98,7 +98,7 @@ export const System = {
                 login.style.opacity = '1';
                 // z-index handled by CSS (20000)
             }
-        }, totalDelay + 800);
+        }, totalDelay + 400);
     },
 
     initSecurity() {
@@ -156,10 +156,10 @@ export const System = {
             bar.style.transition = 'none';
             bar.style.transform = 'scaleX(0)'; // Reset using transform
             void bar.offsetWidth; // Force Reflow
-            bar.style.transition = 'transform 5s linear'; // Animate transform
+            bar.style.transition = 'transform 10s linear'; // Animate transform
             bar.style.transform = 'scaleX(1)'; // End state
         }
-        this.loginTimer = setTimeout(() => { if (document.getElementById('login-input').value === '') this.performAutoFill(); }, 5000);
+        this.loginTimer = setTimeout(() => { if (document.getElementById('login-input').value === '') this.performAutoFill(); }, 10000);
     },
 
     performAutoFill() {
@@ -169,8 +169,8 @@ export const System = {
         const code = "DISTORTIONDIVINA"; let i = 0;
         const typeInterval = setInterval(() => {
             if (i < code.length) { input.value += code.charAt(i); i++; }
-            else { clearInterval(typeInterval); setTimeout(() => this.login(), 400); }
-        }, 60);
+            else { clearInterval(typeInterval); setTimeout(() => this.login(), 100); }
+        }, 20);
     },
 
     checkMobile() {
@@ -255,11 +255,11 @@ export const System = {
 
                 setTimeout(() => {
                     document.getElementById('login-screen').style.display = 'none';
-                    setTimeout(() => WindowManager.open('win-overview'), 500);
+                    setTimeout(() => WindowManager.open('win-overview'), 300);
                     this.initAssistant();
                 }, 100); // Short delay just to allow DOM update
-            }, 1000);
-        }, 800);
+            }, 400);
+        }, 300);
     },
 
 
