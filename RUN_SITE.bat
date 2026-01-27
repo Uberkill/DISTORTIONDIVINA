@@ -25,6 +25,6 @@ echo.
 
 :: Start http-server and open browser
 start "" "http://localhost:8083/index.html"
-call npx http-server . -p 8083 -c-1 --silent
+call npx -y http-server . -p 8083 -c-1 --silent
 
 pause

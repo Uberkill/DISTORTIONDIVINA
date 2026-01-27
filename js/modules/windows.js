@@ -1,6 +1,7 @@
 
 import { AudioManager } from './audio.js';
 
+
 export const WindowManager = {
     zIndex: 30000, // Start above overlays (9999) and loader (20000)
     maximizedState: {},
@@ -87,17 +88,32 @@ export const WindowManager = {
         if (document.body.classList.contains('is-mobile')) return;
         const win = document.getElementById(id);
         if (!win) return;
+
         if (win.classList.contains('maximized')) {
             win.classList.remove('maximized');
             const state = this.maximizedState[id] || {};
-            win.style.top = state.top || '10%';
-            win.style.left = state.left || '10%';
+            win.style.top = state.top || '50%';
+            win.style.left = state.left || '50%';
             win.style.width = state.width || '600px';
             win.style.height = state.height || '500px';
+            win.style.transform = state.transform || '';
         } else {
-            this.maximizedState[id] = { top: win.style.top, left: win.style.left, width: win.style.width, height: win.style.height };
+            this.maximizedState[id] = {
+                top: win.style.top,
+                left: win.style.left,
+                width: win.style.width,
+                height: win.style.height,
+                transform: win.style.transform
+            };
             win.classList.add('maximized');
-            win.style.top = '70px'; win.style.left = '0'; win.style.width = '100%'; win.style.height = 'calc(100% - 125px)';
+
+            // Standard maximized positioning
+            win.style.top = '70px';
+            win.style.left = '0';
+            win.style.width = '100%';
+            win.style.height = 'calc(100% - 125px)';
+            win.style.transform = 'none';
+            win.style.animation = 'none';
         }
         this.bringToFront(win);
         AudioManager.play('click');
