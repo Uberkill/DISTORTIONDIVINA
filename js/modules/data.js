@@ -55,7 +55,7 @@ export const DB = {
             overview_text_plan: "We are building this vision in phases. Our first chapter, First Light, is dedicated to proving our creative process. Our priority right now is simply to deliver stunning, high-quality illustrations that pay proper homage to the source material.",
             overview_label_acquisition: "ACQUISITION",
             overview_text_acquisition: "First Light packs will be available exclusively at upcoming offline events. Check our schedule for locations.",
-            overview_text_note: "This is a passion project currently running on personal funds. Every penny of profit goes directly to our amazing artists and brings us one step closer to the full game. We hope you'll join us on this journey.",
+            overview_text_note: "This is a passion project currently running on personal funds. All proceeds are used strictly to cover the high costs of production, shipping, and to provide a modest honorarium to our contributing artists to cover their material/tool expenses.\n\nOur goal is a strict break-even, ensuring this project remains a tribute to the world of Project Moon and Project Mili. Any unintended surplus will be used to improve the quality of the final cards for everyone. Thank you for supporting this labor of love!",
             brief_id: "ID: 001-GENESIS-DIVINA",
             brief_clearance: "CLEARANCE: PUBLIC",
             brief_fig_main: "FIG_0: PROJECT_CONCEPT",
@@ -107,7 +107,7 @@ export const DB = {
             event_2_title: "ONE MILLION MOON CONCERT",
             event_2_loc: "LOCATION: JAPAN",
             event_2_date: "21 FEB 2026",
-            event_3_title: "ONLINE STORE OPENING",
+            event_3_title: "ONLINE DISTRIBUTION",
             event_3_desc: "STATUS: COMING SOON",
 
             comm_header: "SECURE UPLINKS",
@@ -133,7 +133,7 @@ export const DB = {
             tos_mili: "PROJECT MILI",
 
             interest_header: "INTEREST CHECK FORM",
-            interest_desc: "Please indicate your interest in purchasing First Light packs. This data will be used to determine print run quantities.",
+            interest_desc: "Please indicate your interest in obtaining First Light packs. This data will be used to determine print run quantities.",
             btn_interest: "[ OPEN FORM ]",
 
             time_days: "D",
@@ -219,7 +219,7 @@ export const DB = {
             overview_text_plan: "우리는 이 비전을 단계별로 구축하고 있습니다. 첫 번째 장인 'First Light'는 우리의 창작 과정을 증명하는 데 전념합니다. 현재 우리의 우선순위는 원작에 경의를 표하는 고품질의 일러스트레이션을 제공하는 것입니다.",
             overview_label_acquisition: "획득",
             overview_text_acquisition: "First Light 팩은 향후 오프라인 이벤트에서 독점적으로 판매될 예정입니다. 일정에서 위치를 확인하세요.",
-            overview_text_note: "이것은 개인 자금으로 운영되는 열정 프로젝트입니다. 모든 수익금은 훌륭한 아티스트들에게 직접 전달되며, 정식 게임 제작에 한 걸음 더 다가가는 데 사용됩니다.",
+            overview_text_note: "This is a passion project currently running on personal funds. All proceeds are used strictly to cover the high costs of production, shipping, and to provide a modest honorarium to our contributing artists to cover their material/tool expenses.\n\nOur goal is a strict break-even, ensuring this project remains a strict tribute to the world of Project Moon and Project Mili. Any unintended surplus will be used to improve the quality of the final cards for everyone. Thank you for supporting this labor of love!",
             brief_id: "ID: 001-GENESIS-DIVINA",
             brief_clearance: "보안 등급: 공개",
             brief_fig_main: "그림_0: 프로젝트_컨셉",
@@ -271,7 +271,7 @@ export const DB = {
             event_2_title: "ONE MILLION MOON 콘서트",
             event_2_loc: "장소: 일본",
             event_2_date: "2026년 2월 21일",
-            event_3_title: "온라인 스토어 오픈",
+            event_3_title: "온라인 배포 개시",
             event_3_desc: "상태: 출시 예정",
 
             comm_header: "보안 업링크",
@@ -297,7 +297,7 @@ export const DB = {
             tos_mili: "프로젝트 밀리",
 
             interest_header: "수요 조사 양식",
-            interest_desc: "First Light 팩 구매 의향을 표시해 주십시오. 이 데이터는 인쇄 수량을 결정하는 데 사용됩니다.",
+            interest_desc: "First Light 팩 소장 희망을 표시해 주십시오. 이 데이터는 인쇄 수량을 결정하는 데 사용됩니다.",
             btn_interest: "[ 양식 열기 ]",
 
             time_days: "일",
@@ -383,7 +383,7 @@ export const DB = {
             overview_text_plan: "私たちは段階的にこのビジョンを構築しています。最初の章「First Light」は、私たちの制作プロセスを証明することに専念しています。現在の優先事項は、原作に敬意を表した高品質なイラストを提供することです。",
             overview_label_acquisition: "入手方法",
             overview_text_acquisition: "First Lightパックは、今後のオフラインイベントで独占的に販売される予定です。場所はスケジュールを確認してください。",
-            overview_text_note: "これは個人資金で運営されている情熱プロジェクトです。収益はすべて素晴らしいアーティストたちに直接還元され、フルゲームの制作に一歩近づきます。",
+            overview_text_note: "This is a passion project currently running on personal funds. All proceeds are used strictly to cover the high costs of production, shipping, and to provide a modest honorarium to our contributing artists to cover their material/tool expenses.\n\nOur goal is a strict break-even, ensuring this project remains a tribute to the world of Project Moon and Project Mili. Any unintended surplus will be used to improve the quality of the final cards for everyone. Thank you for supporting this labor of love!",
             brief_id: "ID: 001-GENESIS-DIVINA",
             brief_clearance: "クリアランス: 公開",
             brief_fig_main: "図_0: プロジェクトコンセプト",
@@ -435,7 +435,7 @@ export const DB = {
             event_2_title: "ONE MILLION MOON コンサート",
             event_2_loc: "場所: 日本",
             event_2_date: "2026年 2月 21日",
-            event_3_title: "オンラインストア開店",
+            event_3_title: "オンライン頒布開始",
             event_3_desc: "ステータス: 近日公開",
 
             comm_header: "セキュアアップリンク",
@@ -461,7 +461,7 @@ export const DB = {
             tos_mili: "プロジェクト・ミリ",
 
             interest_header: "興味調査フォーム",
-            interest_desc: "First Lightパックの購入希望についてお知らせください。このデータは印刷部数の決定に使用されます。",
+            interest_desc: "First Lightパックの入手希望についてお知らせください。このデータは印刷部数の決定に使用されます。",
             btn_interest: "[ フォームを開く ]",
 
             time_days: "日",

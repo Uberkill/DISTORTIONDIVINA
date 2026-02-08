@@ -1,6 +1,6 @@
 @echo off
 echo ===================================================
-echo   DISTORTION CORP // SECURE TERMINAL LAUNCHER
+echo   DISTORTION CORP // SECURE TERMINAL (BACKUP)
 echo ===================================================
 echo.
 echo   [!] initializing local server environment...
