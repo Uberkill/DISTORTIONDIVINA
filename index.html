@@ -40,8 +40,9 @@
 
 
     <script>if ("serviceWorker" in navigator) navigator.serviceWorker.getRegistrations().then(r => r.forEach(reg => reg.unregister()));</script>
-    <link rel="stylesheet" href="css/style.css?v=recovery_feature">
-    <script type="module" src="js/main.js?v=recovery_feature"></script>
+    <link rel="stylesheet" href="css/style.css?v=v22">
+    <link rel="stylesheet" href="css/caged_styles.css?v=v16">
+    <script type="module" src="js/main_v4.js?v=v39"></script>
 
     <!-- VERCEL ANALYTICS & SPEED INSIGHTS -->
     <script>
@@ -441,9 +442,15 @@
                 <div data-i18n="icon_tos" class="icon-label">TERMS_OF_SERVICE.TXT</div>
             </div>
 
+            <!-- NEW: DIVINATION TOOL -->
+            <div class="desktop-icon" data-window="win-divination" tabindex="0" role="button"
+                aria-label="Divination Tool">
+                <div class="icon-img"><i data-lucide="sparkles" width="64" height="64"></i></div>
+                <div data-i18n="icon_divination" class="icon-label">FIRST LIGHT: DIVINATION.EXE</div>
+            </div>
+
             <!-- NEW: ASSISTANT WIDGET -->
-            <div class="desktop-icon" onclick="System.openAssistant(); AudioManager.play('click')" tabindex="0"
-                role="button" aria-label="Open AI Assistant">
+            <div class="desktop-icon assistant-icon" tabindex="0" role="button" aria-label="Open AI Assistant">
                 <div class="icon-img"><i data-lucide="bot" width="64" height="64"></i></div>
                 <div data-i18n="icon_assistant" class="icon-label">ASSISTANT_AI.EXE</div>
             </div>
@@ -751,6 +758,33 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
+        </div>
+
+        <!-- WINDOW: DIVINATION -->
+        <div id="win-divination" class="os-window">
+            <div class="window-header">
+                <div class="flex-center">
+                    <div class="mobile-back-btn" onclick="WindowManager.close('win-divination')" aria-label="Back"
+                        role="button" tabindex="0"><i data-lucide="arrow-left" width="36" height="36"></i></div>
+                    <span data-i18n="win_divination" class="win-title">FIRST LIGHT: DIVINATION.EXE</span>
+                </div>
+                <div class="win-controls">
+                    <div class="win-btn" aria-label="Minimize Window" onclick="WindowManager.minimize('win-divination')"
+                        role="button" tabindex="0">
+                        <i data-lucide="minus" width="14"></i>
+                    </div>
+                    <div class="win-btn" aria-label="Maximize Window"
+                        onclick="WindowManager.toggleMaximize('win-divination')" role="button" tabindex="0"><i
+                            data-lucide="maximize" width="14"></i></div>
+                    <div class="win-btn close" aria-label="Close Window" onclick="WindowManager.close('win-divination')"
+                        role="button" tabindex="0">
+                        <i data-lucide="x" width="14"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="window-content" id="divination-root">
+                <!-- Content injected by divination.js -->
             </div>
         </div>
 
@@ -1181,10 +1215,13 @@
 
         <!-- ASSISTANT OVERLAY -->
         <div id="assistant-overlay">
+            <!-- PERMANENT CLOSE BUTTON -->
+            <button class="assistant-permanent-close" onclick="System.permanentlyCloseAssistant()"
+                aria-label="Permanently Close Assistant" title="Close OOBOT permanently">
+                <i data-lucide="x" width="20" height="20"></i>
+            </button>
+
             <div class="assistant-bubble">
-                <button class="assistant-close-btn" onclick="System.closeAssistant()" aria-label="Close Assistant">
-                    <i data-lucide="x" width="16" height="16"></i>
-                </button>
                 <!-- UPDATED NAME HERE -->
                 <span id="assistant-text">Welcome, Agent. I am OOBOT. I can guide you through the archive.</span>
                 <div class="assistant-controls">

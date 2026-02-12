@@ -104,16 +104,20 @@ export const System = {
 
     initSecurity() {
         this.showConsoleWarning();
+        // TEMPORARILY DISABLED FOR DEBUGGING - allows F12 and right-click
+        /*
         document.addEventListener('contextmenu', (e) => {
             e.preventDefault();
-            this.triggerSecurityAlert("UNAUTHORIZED_ACCESS_ATTEMPT");
+            this.triggerSecurityAlert('CONTEXT_MENU_BLOCKED');
         });
+
         document.addEventListener('keydown', (e) => {
             if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) || (e.ctrlKey && e.key === 'U')) {
                 e.preventDefault();
-                this.triggerSecurityAlert("DEBUGGING_INTERFACE_LOCKED");
+                this.triggerSecurityAlert('DEVTOOLS_BLOCKED');
             }
         });
+        */
     },
 
     showConsoleWarning() {
@@ -220,6 +224,9 @@ export const System = {
         }
         this.updateModeButtons(); this.updateScaleButtons();
         this.renderGrid('all'); this.renderEmployees(); this.updateCountdowns();
+
+        // Dispatch custom event for modules that need to know about language changes
+        document.dispatchEvent(new CustomEvent('language-changed', { detail: { lang } }));
     },
 
     changeBriefImage(dir) {
@@ -292,6 +299,28 @@ export const System = {
                 icon.onclick = () => WindowManager.open(winId);
             }
         });
+
+        // ASSISTANT ICON - Special handler to open OOBOT (no window)
+        const assistantIcon = document.querySelector('.desktop-icon.assistant-icon');
+        if (assistantIcon) {
+            assistantIcon.onclick = () => {
+                const overlay = document.getElementById('assistant-overlay');
+                if (overlay) {
+                    overlay.style.display = 'flex';
+                    overlay.classList.add('active');
+
+                    // Properly initialize state
+                    this.assistantIdx = 0;
+                    this.assistantSteps = DB.TRANSLATIONS[this.lang].assistant_steps;
+                    this.setAssistantText(this.assistantSteps[0]);
+
+                    // Show controls for tutorial
+                    const controls = overlay.querySelector('.assistant-controls');
+                    if (controls) controls.style.display = 'flex';
+                }
+                AudioManager.play('click');
+            };
+        }
 
         // Global Window Open Listener
         document.addEventListener('window-opened', (e) => {
@@ -473,19 +502,29 @@ export const System = {
     getRandomCatLine() { return DB.TRANSLATIONS[this.lang].cat_lines[Math.floor(Math.random() * DB.TRANSLATIONS[this.lang].cat_lines.length)]; },
     setAssistantText(msg) { if (document.getElementById('assistant-text')) document.getElementById('assistant-text').innerText = msg; },
 
-    initAssistant() { setTimeout(() => this.openAssistant(), 2000); },
+    initAssistant() {
+        // Always init - removed localStorage check that was causing issues
+        setTimeout(() => {
+            this.openAssistant();
+            // Open overview window for tutorial flow only
+            WindowManager.open('win-overview');
+        }, 2000);
+    },
 
     openAssistant() {
         const overlay = document.getElementById('assistant-overlay');
         if (overlay) {
+            // Force show in case it was hidden
+            overlay.style.display = 'flex';
             overlay.classList.add('active');
+
             this.assistantIdx = 0;
             this.assistantSteps = DB.TRANSLATIONS[this.lang].assistant_steps;
             this.showBubble(this.assistantSteps[0]);
 
             const controls = overlay.querySelector('.assistant-controls');
             if (controls) controls.style.display = 'flex';
-            WindowManager.open('win-overview');
+
             if (this.chatterInterval) clearInterval(this.chatterInterval);
         }
     },
@@ -536,11 +575,29 @@ export const System = {
     },
 
     closeAssistant() {
-        if (document.getElementById('assistant-overlay')) {
-            document.getElementById('assistant-overlay').classList.remove('active');
+        const overlay = document.getElementById('assistant-overlay');
+        if (overlay) {
+            overlay.classList.remove('active');
+            overlay.style.display = 'none'; // Remove inline style set by openAssistant
             if (this.chatterInterval) clearInterval(this.chatterInterval);
         }
     },
+
+    permanentlyCloseAssistant() {
+        const overlay = document.getElementById('assistant-overlay');
+        if (overlay) {
+            // Play goodbye sound
+            AudioManager.play('hiss');
+
+            // Clear any intervals
+            if (this.chatterInterval) clearInterval(this.chatterInterval);
+
+            // Close it - remove both class and inline style
+            overlay.classList.remove('active');
+            overlay.style.display = 'none'; // Remove inline style set by openAssistant
+        }
+    },
+
 
     renderGrid(sortType = 'id', clickedBtn = null) {
         const grid = document.getElementById('cardGrid');

@@ -1,0 +1,145 @@
+Product Requirements Document (PRD): First Light Divination Widget
+
+1. Overview
+
+Product Name: First Light Divination Engine (Distortion_OS v0.9.3)
+Type: Embeddable React Widget / Web Application
+Purpose: A digital "Grimoire" or "Decoder" tool that allows users to input physical tarot cards they have drawn in real life and receive a lore-accurate, psychological reading based on Project Moon and Project Mili characters.
+
+2. Aesthetic & Design Language
+
+Theme: "Distortion OS" / Cyber-Occult Terminal.
+
+Color Palette:
+
+Background: Deep Black (#000000 / bg-black)
+
+Primary Text/Accents: Amber/Orange (#f59e0b / text-amber-500)
+
+Secondary Text: Zinc Gray (#71717a / text-zinc-500)
+
+Borders: Dim Amber (border-amber-900)
+
+Typography:
+
+UI/Labels: Monospace (e.g., font-mono, Courier New).
+
+Narrative Text: Serif (e.g., font-serif, Times New Roman) to distinguish "lore" from "system".
+
+Visual Effects:
+
+Scanlines/Grid background (CRT monitor feel).
+
+Blinking cursors.
+
+Slow fades and slide-up animations for results.
+
+3. Core Features & User Flow
+
+3.1. The Spread (Visual Progress)
+
+Display: A horizontal row of 5 "Slots" representing the spread positions.
+
+State: Slots can be Empty (+), Active (Highlighted), or Filled (Card Name).
+
+Interaction: Users can click a filled slot to re-edit it.
+
+3.2. The Ritual Input (Data Entry)
+
+Mechanism: Single-input search bar with autocomplete/filtering.
+
+Guidance Protocol: Before the user types a card, a "Guidance Box" must appear describing the current position (e.g., "HEAD: Focus on your mindset...").
+
+Filtering: As the user types, a list of matching cards (by Name or Character) appears below the input.
+
+Selection: Clicking a card fills the current ActiveSlot and automatically advances to the next empty slot.
+
+3.3. The Results (Analysis)
+
+Trigger: Automatically triggers when all 5 slots are filled.
+
+View Modes:
+
+Narrative Mode (Default): Displays the reading as a cohesive story. Uses transition phrases (e.g., "However, lurking in your shadow is...") to connect the cards.
+
+Data Mode: Displays the reading as a raw list (Slot Name -> Card Name -> Meaning).
+
+Resonance Summary: A final footer section that dynamically pulls keywords from the first (Head) and last (Soul) cards to create a summary sentence.
+
+4. Technical Specifications
+
+4.1. Data Structure (The "Arcana Archive")
+
+The system relies on a hardcoded JSON array of 28 specific cards. Each card object MUST contain:
+
+id: Unique string (e.g., "i_magician_tellulu").
+
+name: Display name (e.g., "I - The Magician").
+
+character: The specific character mapping (e.g., "Tellulu").
+
+keywords: Array of 3 strings (e.g., ["Alchemy", "Recipe", "Obsession"]).
+
+readings: Array of exactly 5 strings, corresponding to the 5 positions.
+
+4.2. Positional Logic
+
+The meaning of a card is determined by its Index in the user's selection array:
+
+Index 0 (Head): Pulls card.readings[0].
+
+Index 1 (Heart): Pulls card.readings[1].
+
+Index 2 (Hand): Pulls card.readings[2].
+
+Index 3 (Shadow): Pulls card.readings[3].
+
+Index 4 (Soul): Pulls card.readings[4].
+
+4.3. Tech Stack Requirements
+
+Framework: React (Functional Components, Hooks).
+
+Styling: Tailwind CSS (Critical for the specific color utility classes).
+
+Icons: Lucide React (Sparkles, Terminal, BookOpen, etc.).
+
+Scroll Behavior: The page should smooth-scroll to the results section upon completion.
+
+5. Specific Content Requirements (Lore)
+
+Project Moon Cards: * Hod (Fool), Malkuth (Magician), Faust (Priestess), Carmen (Empress), Ryoshu (Emperor), Ayin (Hierophant), Meursault (Lovers), Outis (Chariot), Red Mist (Strength), Yi Sang (Hermit), Hokma (Wheel), Sancho (Justice), Argalia (Death), Angela (Temperance), Hong Lu (Devil), Bong Bong (Tower), Xiao (Star), Rodion (Moon), Ishmael (Sun), Sinclair (Judgement), Binah (Judgement), Roland (World).
+
+Project Mili Cards:
+
+Tellulu (Magician - Scientific Witchery).
+
+Ghost & Doll (Lovers - Dancing Ghost's Ball Jointed Darling).
+
+Lefty (Hanged Man - Rubber Human).
+
+Haehwan (Moon - Salt, Pepper, Birds, Thought Police).
+
+Torino (Moon - Mili Mascot).
+
+Purple Girl (Judgement - Patches of Violet).
+
+Excalibur (World - Excalibur).
+
+6. Implementation Checklist
+
+[ ] Setup React component structure.
+
+[ ] Copy full CARD_DATABASE JSON with all 28 entries.
+
+[ ] Implement "CRT/Scanline" background using CSS.
+
+[ ] Build the 5-slot progress grid.
+
+[ ] Build the Input section with filter() logic for the dropdown.
+
+[ ] Implement the "Guidance Protocol" box that changes text based on activeSlotIndex.
+
+[ ] Build the Result view with the "Narrative/Data" toggle switch.
+
+[ ] Ensure "Reset" button clears all state.

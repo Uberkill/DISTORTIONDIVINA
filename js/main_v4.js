@@ -1,14 +1,16 @@
-
 import { System } from './modules/system.js';
 import { WindowManager } from './modules/windows.js';
 import { AudioManager } from './modules/audio.js';
 import { Viewer3D } from './modules/viewer.js';
+import { DivinationSystem } from './modules/divination_v4.js?v=nuclear';
 
 // Expose modules to global scope for HTML event handlers (legacy support)
 window.System = System;
 window.WindowManager = WindowManager;
 window.AudioManager = AudioManager;
+window.DivinationSystem = DivinationSystem;
 window.Viewer3D = Viewer3D;
+window.DivinationSystem = DivinationSystem;
 
 // Initialize System on DOM Content Loaded
 document.addEventListener('DOMContentLoaded', () => {
@@ -24,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     try {
         System.init();
+        DivinationSystem.init();
     } catch (e) {
         console.error("CRITICAL SYSTEM INIT ERROR:", e);
         // Ensure UI is usable even if init failed

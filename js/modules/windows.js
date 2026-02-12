@@ -47,9 +47,11 @@ export const WindowManager = {
                         win.style.transform = 'translate(-50%, -50%)';
                     }
                 } else {
-                    // No saved position, ensure center
-                    win.style.top = '50%';
-                    win.style.left = '50%';
+                    // No saved position, ensure center with cascade
+                    const openWindows = document.querySelectorAll('.window-open').length;
+                    const offset = openWindows * 30; // 30px offset per window
+                    win.style.top = `calc(50% + ${offset}px)`;
+                    win.style.left = `calc(50% + ${offset}px)`;
                     win.style.transform = 'translate(-50%, -50%)';
                 }
             }

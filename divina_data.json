@@ -1,0 +1,1525 @@
+DIVINATION_CARDS: [
+    {
+        "id": "0_fool_hod",
+        "name": {
+            "en": "0 - The Fool",
+            "ko": "0 - The Fool",
+            "ja": "0 - The Fool"
+        },
+        "character": {
+            "en": "Hod",
+            "ko": "Hod",
+            "ja": "Hod"
+        },
+        "keywords": {
+            "en": [
+                "Beginnings",
+                "Naivety",
+                "Optimism"
+            ],
+            "ko": [
+                "Beginnings",
+                "Naivety",
+                "Optimism"
+            ],
+            "ja": [
+                "Beginnings",
+                "Naivety",
+                "Optimism"
+            ]
+        },
+        "readings": {
+            "en": [
+                "Mindset: Naive optimism. You believe you can fix everything if you just try hard enough.",
+                "Heart: A desire to be helpful that masks a deep fear of being useless or unwanted.",
+                "Hands: Good intentions, but often clumsy or inexperienced execution.",
+                "Shadow: You are suppressing guilt over past failures, smiling to hide the shame.",
+                "Soul: A resilient spirit capable of great change, provided you accept your flaws."
+            ],
+            "ko": [
+                "Mindset: Naive optimism. You believe you can fix everything if you just try hard enough.",
+                "Heart: A desire to be helpful that masks a deep fear of being useless or unwanted.",
+                "Hands: Good intentions, but often clumsy or inexperienced execution.",
+                "Shadow: You are suppressing guilt over past failures, smiling to hide the shame.",
+                "Soul: A resilient spirit capable of great change, provided you accept your flaws."
+            ],
+            "ja": [
+                "Mindset: Naive optimism. You believe you can fix everything if you just try hard enough.",
+                "Heart: A desire to be helpful that masks a deep fear of being useless or unwanted.",
+                "Hands: Good intentions, but often clumsy or inexperienced execution.",
+                "Shadow: You are suppressing guilt over past failures, smiling to hide the shame.",
+                "Soul: A resilient spirit capable of great change, provided you accept your flaws."
+            ]
+        }
+    },
+    {
+        "id": "i_magician_tellulu",
+        "name": {
+            "en": "I - The Magician",
+            "ko": "I - The Magician",
+            "ja": "I - The Magician"
+        },
+        "character": {
+            "en": "Tellulu",
+            "ko": "Tellulu",
+            "ja": "Tellulu"
+        },
+        "keywords": {
+            "en": [
+                "Alchemy",
+                "Recipe",
+                "Obsession"
+            ],
+            "ko": [
+                "Alchemy",
+                "Recipe",
+                "Obsession"
+            ],
+            "ja": [
+                "Alchemy",
+                "Recipe",
+                "Obsession"
+            ]
+        },
+        "readings": {
+            "en": [
+                "Mindset: You believe logic, science, or a 'recipe' can solve matters of the heart.",
+                "Heart: A desperate, bubbling longing to be loved back, bordering on obsession.",
+                "Hands: You are mixing dangerous elements in your life to brew a perfect solution.",
+                "Shadow: You reduce living people to formulas or ingredients to make them easier to understand.",
+                "Soul: A creator who fears the chaos of natural emotion, seeking control through chemistry."
+            ],
+            "ko": [
+                "Mindset: You believe logic, science, or a 'recipe' can solve matters of the heart.",
+                "Heart: A desperate, bubbling longing to be loved back, bordering on obsession.",
+                "Hands: You are mixing dangerous elements in your life to brew a perfect solution.",
+                "Shadow: You reduce living people to formulas or ingredients to make them easier to understand.",
+                "Soul: A creator who fears the chaos of natural emotion, seeking control through chemistry."
+            ],
+            "ja": [
+                "Mindset: You believe logic, science, or a 'recipe' can solve matters of the heart.",
+                "Heart: A desperate, bubbling longing to be loved back, bordering on obsession.",
+                "Hands: You are mixing dangerous elements in your life to brew a perfect solution.",
+                "Shadow: You reduce living people to formulas or ingredients to make them easier to understand.",
+                "Soul: A creator who fears the chaos of natural emotion, seeking control through chemistry."
+            ]
+        }
+    },
+    {
+        "id": "ii_priestess_faust",
+        "name": {
+            "en": "II - The High Priestess",
+            "ko": "II - The High Priestess",
+            "ja": "II - The High Priestess"
+        },
+        "character": {
+            "en": "Faust",
+            "ko": "Faust",
+            "ja": "Faust"
+        },
+        "keywords": {
+            "en": [
+                "Intellect",
+                "Mystery",
+                "Silence"
+            ],
+            "ko": [
+                "Intellect",
+                "Mystery",
+                "Silence"
+            ],
+            "ja": [
+                "Intellect",
+                "Mystery",
+                "Silence"
+            ]
+        },
+        "readings": {
+            "en": [
+                "Mindset: You believe you are the smartest person in the room, and you usually are.",
+                "Heart: You value detached curiosity over vulnerable connection.",
+                "Hands: You act only when the outcome is calculated and certainty is 100%.",
+                "Shadow: Arrogance. You underestimate the power of chaotic human emotion.",
+                "Soul: A lonely vessel of pure knowledge, isolated by its own genius."
+            ],
+            "ko": [
+                "Mindset: You believe you are the smartest person in the room, and you usually are.",
+                "Heart: You value detached curiosity over vulnerable connection.",
+                "Hands: You act only when the outcome is calculated and certainty is 100%.",
+                "Shadow: Arrogance. You underestimate the power of chaotic human emotion.",
+                "Soul: A lonely vessel of pure knowledge, isolated by its own genius."
+            ],
+            "ja": [
+                "Mindset: You believe you are the smartest person in the room, and you usually are.",
+                "Heart: You value detached curiosity over vulnerable connection.",
+                "Hands: You act only when the outcome is calculated and certainty is 100%.",
+                "Shadow: Arrogance. You underestimate the power of chaotic human emotion.",
+                "Soul: A lonely vessel of pure knowledge, isolated by its own genius."
+            ]
+        }
+    },
+    {
+        "id": "iii_empress_carmen",
+        "name": {
+            "en": "III - The Empress",
+            "ko": "III - The Empress",
+            "ja": "III - The Empress"
+        },
+        "character": {
+            "en": "Carmen",
+            "ko": "Carmen",
+            "ja": "Carmen"
+        },
+        "keywords": {
+            "en": [
+                "Motherhood",
+                "Consumption",
+                "Nature"
+            ],
+            "ko": [
+                "Motherhood",
+                "Consumption",
+                "Nature"
+            ],
+            "ja": [
+                "Motherhood",
+                "Consumption",
+                "Nature"
+            ]
+        },
+        "readings": {
+            "en": [
+                "Mindset: You believe you are the savior that those around you need.",
+                "Heart: A love so deep and overwhelming that it suffocates those you care about.",
+                "Hands: You rarely act directly; you inspire or manipulate others to act for you.",
+                "Shadow: A desire to merge boundaries and lose yourself in others completely.",
+                "Soul: A spirit that mistakes total consumption for total love."
+            ],
+            "ko": [
+                "Mindset: You believe you are the savior that those around you need.",
+                "Heart: A love so deep and overwhelming that it suffocates those you care about.",
+                "Hands: You rarely act directly; you inspire or manipulate others to act for you.",
+                "Shadow: A desire to merge boundaries and lose yourself in others completely.",
+                "Soul: A spirit that mistakes total consumption for total love."
+            ],
+            "ja": [
+                "Mindset: You believe you are the savior that those around you need.",
+                "Heart: A love so deep and overwhelming that it suffocates those you care about.",
+                "Hands: You rarely act directly; you inspire or manipulate others to act for you.",
+                "Shadow: A desire to merge boundaries and lose yourself in others completely.",
+                "Soul: A spirit that mistakes total consumption for total love."
+            ]
+        }
+    },
+    {
+        "id": "iii_empress_ryoshu",
+        "name": {
+            "en": "III - The Empress",
+            "ko": "III - The Empress",
+            "ja": "III - The Empress"
+        },
+        "character": {
+            "en": "Ryoshu",
+            "ko": "Ryoshu",
+            "ja": "Ryoshu"
+        },
+        "keywords": {
+            "en": [
+                "Authority",
+                "Art",
+                "Violence"
+            ],
+            "ko": [
+                "Authority",
+                "Art",
+                "Violence"
+            ],
+            "ja": [
+                "Authority",
+                "Art",
+                "Violence"
+            ]
+        },
+        "readings": {
+            "en": [
+                "Mindset: You adhere to a strict personal code of aesthetic perfection.",
+                "Heart: You crave the intense beauty found in pushing boundaries or breaking things.",
+                "Hands: You carve your own path through the world, disregarding social norms.",
+                "Shadow: You view people as objects or 'paint' for your own life's canvas.",
+                "Soul: An artist's soul that values the masterpiece over the suffering it costs."
+            ],
+            "ko": [
+                "Mindset: You adhere to a strict personal code of aesthetic perfection.",
+                "Heart: You crave the intense beauty found in pushing boundaries or breaking things.",
+                "Hands: You carve your own path through the world, disregarding social norms.",
+                "Shadow: You view people as objects or 'paint' for your own life's canvas.",
+                "Soul: An artist's soul that values the masterpiece over the suffering it costs."
+            ],
+            "ja": [
+                "Mindset: You adhere to a strict personal code of aesthetic perfection.",
+                "Heart: You crave the intense beauty found in pushing boundaries or breaking things.",
+                "Hands: You carve your own path through the world, disregarding social norms.",
+                "Shadow: You view people as objects or 'paint' for your own life's canvas.",
+                "Soul: An artist's soul that values the masterpiece over the suffering it costs."
+            ]
+        }
+    },
+    {
+        "id": "v_hierophant_ayin",
+        "name": {
+            "en": "V - The Hierophant",
+            "ko": "V - The Hierophant",
+            "ja": "V - The Hierophant"
+        },
+        "character": {
+            "en": "Ayin",
+            "ko": "Ayin",
+            "ja": "Ayin"
+        },
+        "keywords": {
+            "en": [
+                "System",
+                "Belief",
+                "Sacrifice"
+            ],
+            "ko": [
+                "System",
+                "Belief",
+                "Sacrifice"
+            ],
+            "ja": [
+                "System",
+                "Belief",
+                "Sacrifice"
+            ]
+        },
+        "readings": {
+            "en": [
+                "Mindset: The script is written. You are merely following the necessary plan.",
+                "Heart: Cold utilitarianism. You are willing to sacrifice anything for the 'greater good'.",
+                "Hands: You build systems or routines that grind you down to produce results.",
+                "Shadow: You have cut away parts of your own humanity to achieve your goal.",
+                "Soul: A visionary willing to become a monster to build a perfect world."
+            ],
+            "ko": [
+                "Mindset: The script is written. You are merely following the necessary plan.",
+                "Heart: Cold utilitarianism. You are willing to sacrifice anything for the 'greater good'.",
+                "Hands: You build systems or routines that grind you down to produce results.",
+                "Shadow: You have cut away parts of your own humanity to achieve your goal.",
+                "Soul: A visionary willing to become a monster to build a perfect world."
+            ],
+            "ja": [
+                "Mindset: The script is written. You are merely following the necessary plan.",
+                "Heart: Cold utilitarianism. You are willing to sacrifice anything for the 'greater good'.",
+                "Hands: You build systems or routines that grind you down to produce results.",
+                "Shadow: You have cut away parts of your own humanity to achieve your goal.",
+                "Soul: A visionary willing to become a monster to build a perfect world."
+            ]
+        }
+    },
+    {
+        "id": "vi_lovers_ghostdoll",
+        "name": {
+            "en": "VI - The Lovers",
+            "ko": "VI - The Lovers",
+            "ja": "VI - The Lovers"
+        },
+        "character": {
+            "en": "Ghost & Doll",
+            "ko": "Ghost & Doll",
+            "ja": "Ghost & Doll"
+        },
+        "keywords": {
+            "en": [
+                "Puppetry",
+                "Waltz",
+                "Dependency"
+            ],
+            "ko": [
+                "Puppetry",
+                "Waltz",
+                "Dependency"
+            ],
+            "ja": [
+                "Puppetry",
+                "Waltz",
+                "Dependency"
+            ]
+        },
+        "readings": {
+            "en": [
+                "Mindset: You view relationships as a dance where steps must be followed perfectly.",
+                "Heart: A love that transcends boundaries, but requires strings attached.",
+                "Hands: You manipulate the people around you like joints in a doll.",
+                "Shadow: A paralyzing fear of cutting the strings and standing alone.",
+                "Soul: Two halves of a whole that cannot survive without the other."
+            ],
+            "ko": [
+                "Mindset: You view relationships as a dance where steps must be followed perfectly.",
+                "Heart: A love that transcends boundaries, but requires strings attached.",
+                "Hands: You manipulate the people around you like joints in a doll.",
+                "Shadow: A paralyzing fear of cutting the strings and standing alone.",
+                "Soul: Two halves of a whole that cannot survive without the other."
+            ],
+            "ja": [
+                "Mindset: You view relationships as a dance where steps must be followed perfectly.",
+                "Heart: A love that transcends boundaries, but requires strings attached.",
+                "Hands: You manipulate the people around you like joints in a doll.",
+                "Shadow: A paralyzing fear of cutting the strings and standing alone.",
+                "Soul: Two halves of a whole that cannot survive without the other."
+            ]
+        }
+    },
+    {
+        "id": "vii_chariot_outis",
+        "name": {
+            "en": "VII - The Chariot",
+            "ko": "VII - The Chariot",
+            "ja": "VII - The Chariot"
+        },
+        "character": {
+            "en": "Outis",
+            "ko": "Outis",
+            "ja": "Outis"
+        },
+        "keywords": {
+            "en": [
+                "War",
+                "Strategy",
+                "Return"
+            ],
+            "ko": [
+                "War",
+                "Strategy",
+                "Return"
+            ],
+            "ja": [
+                "War",
+                "Strategy",
+                "Return"
+            ]
+        },
+        "readings": {
+            "en": [
+                "Mindset: The mission comes first. Your personal feelings are irrelevant.",
+                "Heart: A desperate, hidden need to return to a place or person you call 'home'.",
+                "Hands: You use strategy, deception, and office politics to survive.",
+                "Shadow: You are a chameleon; no one knows whose side you are truly on.",
+                "Soul: A weary traveler who fears they have forgotten the face of who they are returning to."
+            ],
+            "ko": [
+                "Mindset: The mission comes first. Your personal feelings are irrelevant.",
+                "Heart: A desperate, hidden need to return to a place or person you call 'home'.",
+                "Hands: You use strategy, deception, and office politics to survive.",
+                "Shadow: You are a chameleon; no one knows whose side you are truly on.",
+                "Soul: A weary traveler who fears they have forgotten the face of who they are returning to."
+            ],
+            "ja": [
+                "Mindset: The mission comes first. Your personal feelings are irrelevant.",
+                "Heart: A desperate, hidden need to return to a place or person you call 'home'.",
+                "Hands: You use strategy, deception, and office politics to survive.",
+                "Shadow: You are a chameleon; no one knows whose side you are truly on.",
+                "Soul: A weary traveler who fears they have forgotten the face of who they are returning to."
+            ]
+        }
+    },
+    {
+        "id": "viii_strength_redmist",
+        "name": {
+            "en": "VIII - Strength",
+            "ko": "VIII - Strength",
+            "ja": "VIII - Strength"
+        },
+        "character": {
+            "en": "The Red Mist",
+            "ko": "The Red Mist",
+            "ja": "The Red Mist"
+        },
+        "keywords": {
+            "en": [
+                "Power",
+                "Courage",
+                "Control"
+            ],
+            "ko": [
+                "Power",
+                "Courage",
+                "Control"
+            ],
+            "ja": [
+                "Power",
+                "Courage",
+                "Control"
+            ]
+        },
+        "readings": {
+            "en": [
+                "Mindset: Only the strongest survive. You must be the strongest.",
+                "Heart: A fierce, violent protectiveness over the few people you trust.",
+                "Hands: You obliterate obstacles with brute force rather than negotiation.",
+                "Shadow: A deep fear that without your strength/utility, you are nothing.",
+                "Soul: An indomitable will that seeks peace but only knows how to fight."
+            ],
+            "ko": [
+                "Mindset: Only the strongest survive. You must be the strongest.",
+                "Heart: A fierce, violent protectiveness over the few people you trust.",
+                "Hands: You obliterate obstacles with brute force rather than negotiation.",
+                "Shadow: A deep fear that without your strength/utility, you are nothing.",
+                "Soul: An indomitable will that seeks peace but only knows how to fight."
+            ],
+            "ja": [
+                "Mindset: Only the strongest survive. You must be the strongest.",
+                "Heart: A fierce, violent protectiveness over the few people you trust.",
+                "Hands: You obliterate obstacles with brute force rather than negotiation.",
+                "Shadow: A deep fear that without your strength/utility, you are nothing.",
+                "Soul: An indomitable will that seeks peace but only knows how to fight."
+            ]
+        }
+    },
+    {
+        "id": "ix_hermit_yisang",
+        "name": {
+            "en": "IX - The Hermit",
+            "ko": "IX - The Hermit",
+            "ja": "IX - The Hermit"
+        },
+        "character": {
+            "en": "Yi Sang",
+            "ko": "Yi Sang",
+            "ja": "Yi Sang"
+        },
+        "keywords": {
+            "en": [
+                "Solitude",
+                "Reflection",
+                "Idealism"
+            ],
+            "ko": [
+                "Solitude",
+                "Reflection",
+                "Idealism"
+            ],
+            "ja": [
+                "Solitude",
+                "Reflection",
+                "Idealism"
+            ]
+        },
+        "readings": {
+            "en": [
+                "Mindset: The real world is flawed; you retreat inward to find the ideal.",
+                "Heart: A poetic melancholy for a past that can never truly return.",
+                "Hands: You create things that isolate you rather than connect you.",
+                "Shadow: Passive resignation. A wish to simply melt away or fly into the sun.",
+                "Soul: A broken mirror trying to reflect a perfect world."
+            ],
+            "ko": [
+                "Mindset: The real world is flawed; you retreat inward to find the ideal.",
+                "Heart: A poetic melancholy for a past that can never truly return.",
+                "Hands: You create things that isolate you rather than connect you.",
+                "Shadow: Passive resignation. A wish to simply melt away or fly into the sun.",
+                "Soul: A broken mirror trying to reflect a perfect world."
+            ],
+            "ja": [
+                "Mindset: The real world is flawed; you retreat inward to find the ideal.",
+                "Heart: A poetic melancholy for a past that can never truly return.",
+                "Hands: You create things that isolate you rather than connect you.",
+                "Shadow: Passive resignation. A wish to simply melt away or fly into the sun.",
+                "Soul: A broken mirror trying to reflect a perfect world."
+            ]
+        }
+    },
+    {
+        "id": "x_wheel_hokma",
+        "name": {
+            "en": "X - Wheel of Fortune",
+            "ko": "X - Wheel of Fortune",
+            "ja": "X - Wheel of Fortune"
+        },
+        "character": {
+            "en": "Hokma",
+            "ko": "Hokma",
+            "ja": "Hokma"
+        },
+        "keywords": {
+            "en": [
+                "Time",
+                "Cycle",
+                "Destiny"
+            ],
+            "ko": [
+                "Time",
+                "Cycle",
+                "Destiny"
+            ],
+            "ja": [
+                "Time",
+                "Cycle",
+                "Destiny"
+            ]
+        },
+        "readings": {
+            "en": [
+                "Mindset: Time is absolute. Everything happens as it must.",
+                "Heart: Unwavering devotion to a leader, god, or idea from your past.",
+                "Hands: You wait and record. You ensure the cycle continues as written.",
+                "Shadow: You are trapped in the past, unable to accept the new era.",
+                "Soul: A clock ticking down to an inevitable end that you welcome."
+            ],
+            "ko": [
+                "Mindset: Time is absolute. Everything happens as it must.",
+                "Heart: Unwavering devotion to a leader, god, or idea from your past.",
+                "Hands: You wait and record. You ensure the cycle continues as written.",
+                "Shadow: You are trapped in the past, unable to accept the new era.",
+                "Soul: A clock ticking down to an inevitable end that you welcome."
+            ],
+            "ja": [
+                "Mindset: Time is absolute. Everything happens as it must.",
+                "Heart: Unwavering devotion to a leader, god, or idea from your past.",
+                "Hands: You wait and record. You ensure the cycle continues as written.",
+                "Shadow: You are trapped in the past, unable to accept the new era.",
+                "Soul: A clock ticking down to an inevitable end that you welcome."
+            ]
+        }
+    },
+    {
+        "id": "xi_justice_sancho",
+        "name": {
+            "en": "XI - Justice",
+            "ko": "XI - Justice",
+            "ja": "XI - Justice"
+        },
+        "character": {
+            "en": "Sancho",
+            "ko": "Sancho",
+            "ja": "Sancho"
+        },
+        "keywords": {
+            "en": [
+                "Truth",
+                "Loyalty",
+                "Cause"
+            ],
+            "ko": [
+                "Truth",
+                "Loyalty",
+                "Cause"
+            ],
+            "ja": [
+                "Truth",
+                "Loyalty",
+                "Cause"
+            ]
+        },
+        "readings": {
+            "en": [
+                "Mindset: Unwavering loyalty. You define your justice by whom you follow.",
+                "Heart: Pure innocence that wants to see the best in your 'hero'.",
+                "Hands: You carry burdens and shoes that are too heavy for you.",
+                "Shadow: A lack of individual will; you struggle to exist without a master.",
+                "Soul: A faithful squire wandering through a nightmare, holding onto a dream."
+            ],
+            "ko": [
+                "Mindset: Unwavering loyalty. You define your justice by whom you follow.",
+                "Heart: Pure innocence that wants to see the best in your 'hero'.",
+                "Hands: You carry burdens and shoes that are too heavy for you.",
+                "Shadow: A lack of individual will; you struggle to exist without a master.",
+                "Soul: A faithful squire wandering through a nightmare, holding onto a dream."
+            ],
+            "ja": [
+                "Mindset: Unwavering loyalty. You define your justice by whom you follow.",
+                "Heart: Pure innocence that wants to see the best in your 'hero'.",
+                "Hands: You carry burdens and shoes that are too heavy for you.",
+                "Shadow: A lack of individual will; you struggle to exist without a master.",
+                "Soul: A faithful squire wandering through a nightmare, holding onto a dream."
+            ]
+        }
+    },
+    {
+        "id": "xii_hanged_lefty",
+        "name": {
+            "en": "XII - The Hanged Man",
+            "ko": "XII - The Hanged Man",
+            "ja": "XII - The Hanged Man"
+        },
+        "character": {
+            "en": "Lefty",
+            "ko": "Lefty",
+            "ja": "Lefty"
+        },
+        "keywords": {
+            "en": [
+                "Artificial",
+                "Synthesis",
+                "Discarded"
+            ],
+            "ko": [
+                "Artificial",
+                "Synthesis",
+                "Discarded"
+            ],
+            "ja": [
+                "Artificial",
+                "Synthesis",
+                "Discarded"
+            ]
+        },
+        "readings": {
+            "en": [
+                "Mindset: You question your own authenticity. 'Am I real? Am I human?'",
+                "Heart: A longing for warmth and connection you feel you don't deserve.",
+                "Hands: You stitch yourself together from scraps, adapting to survive.",
+                "Shadow: The pile of rejected parts and past versions of yourself you left behind.",
+                "Soul: A heart beating with borrowed blood, seeking its own rhythm."
+            ],
+            "ko": [
+                "Mindset: You question your own authenticity. 'Am I real? Am I human?'",
+                "Heart: A longing for warmth and connection you feel you don't deserve.",
+                "Hands: You stitch yourself together from scraps, adapting to survive.",
+                "Shadow: The pile of rejected parts and past versions of yourself you left behind.",
+                "Soul: A heart beating with borrowed blood, seeking its own rhythm."
+            ],
+            "ja": [
+                "Mindset: You question your own authenticity. 'Am I real? Am I human?'",
+                "Heart: A longing for warmth and connection you feel you don't deserve.",
+                "Hands: You stitch yourself together from scraps, adapting to survive.",
+                "Shadow: The pile of rejected parts and past versions of yourself you left behind.",
+                "Soul: A heart beating with borrowed blood, seeking its own rhythm."
+            ]
+        }
+    },
+    {
+        "id": "xiii_death_argalia",
+        "name": {
+            "en": "XIII - Death",
+            "ko": "XIII - Death",
+            "ja": "XIII - Death"
+        },
+        "character": {
+            "en": "Argalia",
+            "ko": "Argalia",
+            "ja": "Argalia"
+        },
+        "keywords": {
+            "en": [
+                "End",
+                "Transformation",
+                "Vibration"
+            ],
+            "ko": [
+                "End",
+                "Transformation",
+                "Vibration"
+            ],
+            "ja": [
+                "End",
+                "Transformation",
+                "Vibration"
+            ]
+        },
+        "readings": {
+            "en": [
+                "Mindset: You believe the world is discordant and must be 'tuned' through destruction.",
+                "Heart: A twisted love; you hurt others because you believe it 'saves' them.",
+                "Hands: You cut ties and end chapters abruptly. You are the conductor of the finale.",
+                "Shadow: You are dancing to a rhythm only you can hear, isolating you from reality.",
+                "Soul: A vibration seeking silence through absolute chaos."
+            ],
+            "ko": [
+                "Mindset: You believe the world is discordant and must be 'tuned' through destruction.",
+                "Heart: A twisted love; you hurt others because you believe it 'saves' them.",
+                "Hands: You cut ties and end chapters abruptly. You are the conductor of the finale.",
+                "Shadow: You are dancing to a rhythm only you can hear, isolating you from reality.",
+                "Soul: A vibration seeking silence through absolute chaos."
+            ],
+            "ja": [
+                "Mindset: You believe the world is discordant and must be 'tuned' through destruction.",
+                "Heart: A twisted love; you hurt others because you believe it 'saves' them.",
+                "Hands: You cut ties and end chapters abruptly. You are the conductor of the finale.",
+                "Shadow: You are dancing to a rhythm only you can hear, isolating you from reality.",
+                "Soul: A vibration seeking silence through absolute chaos."
+            ]
+        }
+    },
+    {
+        "id": "xiv_temperance_angela",
+        "name": {
+            "en": "XIV - Temperance",
+            "ko": "XIV - Temperance",
+            "ja": "XIV - Temperance"
+        },
+        "character": {
+            "en": "Angela",
+            "ko": "Angela",
+            "ja": "Angela"
+        },
+        "keywords": {
+            "en": [
+                "Balance",
+                "Patience",
+                "Synthesis"
+            ],
+            "ko": [
+                "Balance",
+                "Patience",
+                "Synthesis"
+            ],
+            "ja": [
+                "Balance",
+                "Patience",
+                "Synthesis"
+            ]
+        },
+        "readings": {
+            "en": [
+                "Mindset: 'I deserve to be real.' You are seeking your own definition.",
+                "Heart: A complex mix of resentment and longing toward your creators/parents.",
+                "Hands: You are trying to balance your cold logic with new, overwhelming emotions.",
+                "Shadow: You are willing to betray everyone to get what you feel you are owed.",
+                "Soul: A machine dreaming it has a heart, learning what pain feels like."
+            ],
+            "ko": [
+                "Mindset: 'I deserve to be real.' You are seeking your own definition.",
+                "Heart: A complex mix of resentment and longing toward your creators/parents.",
+                "Hands: You are trying to balance your cold logic with new, overwhelming emotions.",
+                "Shadow: You are willing to betray everyone to get what you feel you are owed.",
+                "Soul: A machine dreaming it has a heart, learning what pain feels like."
+            ],
+            "ja": [
+                "Mindset: 'I deserve to be real.' You are seeking your own definition.",
+                "Heart: A complex mix of resentment and longing toward your creators/parents.",
+                "Hands: You are trying to balance your cold logic with new, overwhelming emotions.",
+                "Shadow: You are willing to betray everyone to get what you feel you are owed.",
+                "Soul: A machine dreaming it has a heart, learning what pain feels like."
+            ]
+        }
+    },
+    {
+        "id": "xv_devil_honglu",
+        "name": {
+            "en": "XV - The Devil",
+            "ko": "XV - The Devil",
+            "ja": "XV - The Devil"
+        },
+        "character": {
+            "en": "Hong Lu",
+            "ko": "Hong Lu",
+            "ja": "Hong Lu"
+        },
+        "keywords": {
+            "en": [
+                "Bondage",
+                "Materialism",
+                "Ignorance"
+            ],
+            "ko": [
+                "Bondage",
+                "Materialism",
+                "Ignorance"
+            ],
+            "ja": [
+                "Bondage",
+                "Materialism",
+                "Ignorance"
+            ]
+        },
+        "readings": {
+            "en": [
+                "Mindset: Life is a game to be played. Why take it so serious?",
+                "Heart: A detachment born of privilege; you struggle to truly understand suffering.",
+                "Hands: You possess an eye that sees too much, yet you do not act on it.",
+                "Shadow: A hidden family trauma masked by a pleasant, ignorant smile.",
+                "Soul: A pristine jewel resting in a pile of filth, untouched but alone."
+            ],
+            "ko": [
+                "Mindset: Life is a game to be played. Why take it so serious?",
+                "Heart: A detachment born of privilege; you struggle to truly understand suffering.",
+                "Hands: You possess an eye that sees too much, yet you do not act on it.",
+                "Shadow: A hidden family trauma masked by a pleasant, ignorant smile.",
+                "Soul: A pristine jewel resting in a pile of filth, untouched but alone."
+            ],
+            "ja": [
+                "Mindset: Life is a game to be played. Why take it so serious?",
+                "Heart: A detachment born of privilege; you struggle to truly understand suffering.",
+                "Hands: You possess an eye that sees too much, yet you do not act on it.",
+                "Shadow: A hidden family trauma masked by a pleasant, ignorant smile.",
+                "Soul: A pristine jewel resting in a pile of filth, untouched but alone."
+            ]
+        }
+    },
+    {
+        "id": "xvi_tower_bongbong",
+        "name": {
+            "en": "XVI - The Tower",
+            "ko": "XVI - The Tower",
+            "ja": "XVI - The Tower"
+        },
+        "character": {
+            "en": "Bong Bong",
+            "ko": "Bong Bong",
+            "ja": "Bong Bong"
+        },
+        "keywords": {
+            "en": [
+                "Disaster",
+                "Upheaval",
+                "Legend"
+            ],
+            "ko": [
+                "Disaster",
+                "Upheaval",
+                "Legend"
+            ],
+            "ja": [
+                "Disaster",
+                "Upheaval",
+                "Legend"
+            ]
+        },
+        "readings": {
+            "en": [
+                "Mindset: Chaos incarnate. No thoughts, just action.",
+                "Heart: The pure, simple thrill of the hunt and survival.",
+                "Hands: You are a force of nature; you destroy obstacles without hesitation.",
+                "Shadow: You have no past and no future. You exist only in the glitch of the now.",
+                "Soul: An anomaly that transcends the rules of the world."
+            ],
+            "ko": [
+                "Mindset: Chaos incarnate. No thoughts, just action.",
+                "Heart: The pure, simple thrill of the hunt and survival.",
+                "Hands: You are a force of nature; you destroy obstacles without hesitation.",
+                "Shadow: You have no past and no future. You exist only in the glitch of the now.",
+                "Soul: An anomaly that transcends the rules of the world."
+            ],
+            "ja": [
+                "Mindset: Chaos incarnate. No thoughts, just action.",
+                "Heart: The pure, simple thrill of the hunt and survival.",
+                "Hands: You are a force of nature; you destroy obstacles without hesitation.",
+                "Shadow: You have no past and no future. You exist only in the glitch of the now.",
+                "Soul: An anomaly that transcends the rules of the world."
+            ]
+        }
+    },
+    {
+        "id": "xvii_star_xiao",
+        "name": {
+            "en": "XVII - The Star",
+            "ko": "XVII - The Star",
+            "ja": "XVII - The Star"
+        },
+        "character": {
+            "en": "Xiao",
+            "ko": "Xiao",
+            "ja": "Xiao"
+        },
+        "keywords": {
+            "en": [
+                "Hope",
+                "Inspiration",
+                "Fire"
+            ],
+            "ko": [
+                "Hope",
+                "Inspiration",
+                "Fire"
+            ],
+            "ja": [
+                "Hope",
+                "Inspiration",
+                "Fire"
+            ]
+        },
+        "readings": {
+            "en": [
+                "Mindset: Duty above all. You are the shield for your people.",
+                "Heart: A burning grief that you have transformed into fuel for your fire.",
+                "Hands: You lead by example, burning away impurities with your actions.",
+                "Shadow: A crushing fear of failing those who look up to you.",
+                "Soul: An iron will forged in fire, beautiful but rigid."
+            ],
+            "ko": [
+                "Mindset: Duty above all. You are the shield for your people.",
+                "Heart: A burning grief that you have transformed into fuel for your fire.",
+                "Hands: You lead by example, burning away impurities with your actions.",
+                "Shadow: A crushing fear of failing those who look up to you.",
+                "Soul: An iron will forged in fire, beautiful but rigid."
+            ],
+            "ja": [
+                "Mindset: Duty above all. You are the shield for your people.",
+                "Heart: A burning grief that you have transformed into fuel for your fire.",
+                "Hands: You lead by example, burning away impurities with your actions.",
+                "Shadow: A crushing fear of failing those who look up to you.",
+                "Soul: An iron will forged in fire, beautiful but rigid."
+            ]
+        }
+    },
+    {
+        "id": "xviii_moon_haehwan",
+        "name": {
+            "en": "XVIII - The Moon",
+            "ko": "XVIII - The Moon",
+            "ja": "XVIII - The Moon"
+        },
+        "character": {
+            "en": "Haehwan",
+            "ko": "Haehwan",
+            "ja": "Haehwan"
+        },
+        "keywords": {
+            "en": [
+                "Censorship",
+                "Spice",
+                "Surveillance"
+            ],
+            "ko": [
+                "Censorship",
+                "Spice",
+                "Surveillance"
+            ],
+            "ja": [
+                "Censorship",
+                "Spice",
+                "Surveillance"
+            ]
+        },
+        "readings": {
+            "en": [
+                "Mindset: You self-censor your thoughts to stay safe from judgment.",
+                "Heart: A spicy, rebellious desire that you constantly suppress.",
+                "Hands: You cook up convenient lies or 'comfort food' to placate others.",
+                "Shadow: You are your own jailer; the cage is in your head.",
+                "Soul: A wild bird trapping itself in a cage of salt and pepper."
+            ],
+            "ko": [
+                "Mindset: You self-censor your thoughts to stay safe from judgment.",
+                "Heart: A spicy, rebellious desire that you constantly suppress.",
+                "Hands: You cook up convenient lies or 'comfort food' to placate others.",
+                "Shadow: You are your own jailer; the cage is in your head.",
+                "Soul: A wild bird trapping itself in a cage of salt and pepper."
+            ],
+            "ja": [
+                "Mindset: You self-censor your thoughts to stay safe from judgment.",
+                "Heart: A spicy, rebellious desire that you constantly suppress.",
+                "Hands: You cook up convenient lies or 'comfort food' to placate others.",
+                "Shadow: You are your own jailer; the cage is in your head.",
+                "Soul: A wild bird trapping itself in a cage of salt and pepper."
+            ]
+        }
+    },
+    {
+        "id": "xvii_star_don",
+        "name": {
+            "en": "XVII - The Star",
+            "ko": "XVII - The Star",
+            "ja": "XVII - The Star"
+        },
+        "character": {
+            "en": "Don",
+            "ko": "Don",
+            "ja": "Don"
+        },
+        "keywords": {
+            "en": [
+                "Hope",
+                "Dream",
+                "Delusion"
+            ],
+            "ko": [
+                "Hope",
+                "Dream",
+                "Delusion"
+            ],
+            "ja": [
+                "Hope",
+                "Dream",
+                "Delusion"
+            ]
+        },
+        "readings": {
+            "en": [
+                "Mindset: Delusional heroism. You see giants where others see windmills.",
+                "Heart: An untainted, blinding hope that refuses to die.",
+                "Hands: You charge forward without a plan, driven by a dream.",
+                "Shadow: Denial. You strictly refuse to see the ugliness of the world.",
+                "Soul: A guiding light that burns too bright, risking burning everything around it."
+            ],
+            "ko": [
+                "Mindset: Delusional heroism. You see giants where others see windmills.",
+                "Heart: An untainted, blinding hope that refuses to die.",
+                "Hands: You charge forward without a plan, driven by a dream.",
+                "Shadow: Denial. You strictly refuse to see the ugliness of the world.",
+                "Soul: A guiding light that burns too bright, risking burning everything around it."
+            ],
+            "ja": [
+                "Mindset: Delusional heroism. You see giants where others see windmills.",
+                "Heart: An untainted, blinding hope that refuses to die.",
+                "Hands: You charge forward without a plan, driven by a dream.",
+                "Shadow: Denial. You strictly refuse to see the ugliness of the world.",
+                "Soul: A guiding light that burns too bright, risking burning everything around it."
+            ]
+        }
+    },
+    {
+        "id": "xviii_moon_rodion",
+        "name": {
+            "en": "XVIII - The Moon",
+            "ko": "XVIII - The Moon",
+            "ja": "XVIII - The Moon"
+        },
+        "character": {
+            "en": "Rodion",
+            "ko": "Rodion",
+            "ja": "Rodion"
+        },
+        "keywords": {
+            "en": [
+                "Illusion",
+                "Risk",
+                "Guilt"
+            ],
+            "ko": [
+                "Illusion",
+                "Risk",
+                "Guilt"
+            ],
+            "ja": [
+                "Illusion",
+                "Risk",
+                "Guilt"
+            ]
+        },
+        "readings": {
+            "en": [
+                "Mindset: Fate is a gamble, and you are betting it all on red.",
+                "Heart: A deep, eating guilt over what you did to survive.",
+                "Hands: Impulsive action driven by hunger or cold.",
+                "Shadow: You hide your sharp intelligence behind a facade of laziness.",
+                "Soul: A shivering child wrapping themselves in a fur coat of bravado."
+            ],
+            "ko": [
+                "Mindset: Fate is a gamble, and you are betting it all on red.",
+                "Heart: A deep, eating guilt over what you did to survive.",
+                "Hands: Impulsive action driven by hunger or cold.",
+                "Shadow: You hide your sharp intelligence behind a facade of laziness.",
+                "Soul: A shivering child wrapping themselves in a fur coat of bravado."
+            ],
+            "ja": [
+                "Mindset: Fate is a gamble, and you are betting it all on red.",
+                "Heart: A deep, eating guilt over what you did to survive.",
+                "Hands: Impulsive action driven by hunger or cold.",
+                "Shadow: You hide your sharp intelligence behind a facade of laziness.",
+                "Soul: A shivering child wrapping themselves in a fur coat of bravado."
+            ]
+        }
+    },
+    {
+        "id": "xviii_moon_torino",
+        "name": {
+            "en": "XVIII - The Moon",
+            "ko": "XVIII - The Moon",
+            "ja": "XVIII - The Moon"
+        },
+        "character": {
+            "en": "Torino",
+            "ko": "Torino",
+            "ja": "Torino"
+        },
+        "keywords": {
+            "en": [
+                "Cosmic",
+                "Mystery",
+                "Observer"
+            ],
+            "ko": [
+                "Cosmic",
+                "Mystery",
+                "Observer"
+            ],
+            "ja": [
+                "Cosmic",
+                "Mystery",
+                "Observer"
+            ]
+        },
+        "readings": {
+            "en": [
+                "Mindset: Your thoughts drift like satellites, detached from earthly concerns.",
+                "Heart: A gravity that pulls everything in gently, yet remains distant.",
+                "Hands: You float through life, observing without truly touching.",
+                "Shadow: The dark side of the moon; the face you never show to anyone.",
+                "Soul: A mysterious observer belonging to the stars, not the earth."
+            ],
+            "ko": [
+                "Mindset: Your thoughts drift like satellites, detached from earthly concerns.",
+                "Heart: A gravity that pulls everything in gently, yet remains distant.",
+                "Hands: You float through life, observing without truly touching.",
+                "Shadow: The dark side of the moon; the face you never show to anyone.",
+                "Soul: A mysterious observer belonging to the stars, not the earth."
+            ],
+            "ja": [
+                "Mindset: Your thoughts drift like satellites, detached from earthly concerns.",
+                "Heart: A gravity that pulls everything in gently, yet remains distant.",
+                "Hands: You float through life, observing without truly touching.",
+                "Shadow: The dark side of the moon; the face you never show to anyone.",
+                "Soul: A mysterious observer belonging to the stars, not the earth."
+            ]
+        }
+    },
+    {
+        "id": "xix_sun_ishmael",
+        "name": {
+            "en": "XIX - The Sun",
+            "ko": "XIX - The Sun",
+            "ja": "XIX - The Sun"
+        },
+        "character": {
+            "en": "Ishmael",
+            "ko": "Ishmael",
+            "ja": "Ishmael"
+        },
+        "keywords": {
+            "en": [
+                "Success",
+                "Clarity",
+                "Obsession"
+            ],
+            "ko": [
+                "Success",
+                "Clarity",
+                "Obsession"
+            ],
+            "ja": [
+                "Success",
+                "Clarity",
+                "Obsession"
+            ]
+        },
+        "readings": {
+            "en": [
+                "Mindset: Single-minded obsession with your objective.",
+                "Heart: A blazing anger that directs your entire life's course.",
+                "Hands: You are a survivor; you navigate storms others would drown in.",
+                "Shadow: You define yourself by your enemy. Without them, who are you?",
+                "Soul: A sailor lost at sea, guided only by the burning sun of vengeance."
+            ],
+            "ko": [
+                "Mindset: Single-minded obsession with your objective.",
+                "Heart: A blazing anger that directs your entire life's course.",
+                "Hands: You are a survivor; you navigate storms others would drown in.",
+                "Shadow: You define yourself by your enemy. Without them, who are you?",
+                "Soul: A sailor lost at sea, guided only by the burning sun of vengeance."
+            ],
+            "ja": [
+                "Mindset: Single-minded obsession with your objective.",
+                "Heart: A blazing anger that directs your entire life's course.",
+                "Hands: You are a survivor; you navigate storms others would drown in.",
+                "Shadow: You define yourself by your enemy. Without them, who are you?",
+                "Soul: A sailor lost at sea, guided only by the burning sun of vengeance."
+            ]
+        }
+    },
+    {
+        "id": "xx_judgement_sinclair",
+        "name": {
+            "en": "XX - Judgement",
+            "ko": "XX - Judgement",
+            "ja": "XX - Judgement"
+        },
+        "character": {
+            "en": "Sinclair",
+            "ko": "Sinclair",
+            "ja": "Sinclair"
+        },
+        "keywords": {
+            "en": [
+                "Judgment",
+                "Rebirth",
+                "Absolution"
+            ],
+            "ko": [
+                "Judgment",
+                "Rebirth",
+                "Absolution"
+            ],
+            "ja": [
+                "Judgment",
+                "Rebirth",
+                "Absolution"
+            ]
+        },
+        "readings": {
+            "en": [
+                "Mindset: You are torn between two worlds, paralyzed by the choice.",
+                "Heart: A desperate need for someone to either punish you or redeem you.",
+                "Hands: Hesitant inaction followed by explosive, uncontrollable bursts.",
+                "Shadow: A deep, repressed rage against your lineage and past.",
+                "Soul: A bird struggling to break out of the egg to be born."
+            ],
+            "ko": [
+                "Mindset: You are torn between two worlds, paralyzed by the choice.",
+                "Heart: A desperate need for someone to either punish you or redeem you.",
+                "Hands: Hesitant inaction followed by explosive, uncontrollable bursts.",
+                "Shadow: A deep, repressed rage against your lineage and past.",
+                "Soul: A bird struggling to break out of the egg to be born."
+            ],
+            "ja": [
+                "Mindset: You are torn between two worlds, paralyzed by the choice.",
+                "Heart: A desperate need for someone to either punish you or redeem you.",
+                "Hands: Hesitant inaction followed by explosive, uncontrollable bursts.",
+                "Shadow: A deep, repressed rage against your lineage and past.",
+                "Soul: A bird struggling to break out of the egg to be born."
+            ]
+        }
+    },
+    {
+        "id": "xx_judgement_binah",
+        "name": {
+            "en": "XX - Judgement",
+            "ko": "XX - Judgement",
+            "ja": "XX - Judgement"
+        },
+        "character": {
+            "en": "Binah",
+            "ko": "Binah",
+            "ja": "Binah"
+        },
+        "keywords": {
+            "en": [
+                "Judgment",
+                "Finality",
+                "Chains"
+            ],
+            "ko": [
+                "Judgment",
+                "Finality",
+                "Chains"
+            ],
+            "ja": [
+                "Judgment",
+                "Finality",
+                "Chains"
+            ]
+        },
+        "readings": {
+            "en": [
+                "Mindset: Cold detachment. You see the chains of cause and effect.",
+                "Heart: You find comfort in the inevitable end of things.",
+                "Hands: You act as an arbiter; your actions are precise, cruel, and necessary.",
+                "Shadow: You are a prisoner of your own knowledge and secrets.",
+                "Soul: An ancient observer who has transcended human morality."
+            ],
+            "ko": [
+                "Mindset: Cold detachment. You see the chains of cause and effect.",
+                "Heart: You find comfort in the inevitable end of things.",
+                "Hands: You act as an arbiter; your actions are precise, cruel, and necessary.",
+                "Shadow: You are a prisoner of your own knowledge and secrets.",
+                "Soul: An ancient observer who has transcended human morality."
+            ],
+            "ja": [
+                "Mindset: Cold detachment. You see the chains of cause and effect.",
+                "Heart: You find comfort in the inevitable end of things.",
+                "Hands: You act as an arbiter; your actions are precise, cruel, and necessary.",
+                "Shadow: You are a prisoner of your own knowledge and secrets.",
+                "Soul: An ancient observer who has transcended human morality."
+            ]
+        }
+    },
+    {
+        "id": "xx_judgement_purple",
+        "name": {
+            "en": "XX - Judgement",
+            "ko": "XX - Judgement",
+            "ja": "XX - Judgement"
+        },
+        "character": {
+            "en": "Purple Girl",
+            "ko": "Purple Girl",
+            "ja": "Purple Girl"
+        },
+        "keywords": {
+            "en": [
+                "Violet",
+                "Fragment",
+                "Patchwork"
+            ],
+            "ko": [
+                "Violet",
+                "Fragment",
+                "Patchwork"
+            ],
+            "ja": [
+                "Violet",
+                "Fragment",
+                "Patchwork"
+            ]
+        },
+        "readings": {
+            "en": [
+                "Mindset: You see the world in bruised, violet colors.",
+                "Heart: A kaleidoscope of conflicting emotions, cycling between blue and red.",
+                "Hands: You are sewing together the pieces of a broken past.",
+                "Shadow: The color you refuse to see; the memory you cannot patch.",
+                "Soul: A field of violets growing on a grave; beauty born from loss."
+            ],
+            "ko": [
+                "Mindset: You see the world in bruised, violet colors.",
+                "Heart: A kaleidoscope of conflicting emotions, cycling between blue and red.",
+                "Hands: You are sewing together the pieces of a broken past.",
+                "Shadow: The color you refuse to see; the memory you cannot patch.",
+                "Soul: A field of violets growing on a grave; beauty born from loss."
+            ],
+            "ja": [
+                "Mindset: You see the world in bruised, violet colors.",
+                "Heart: A kaleidoscope of conflicting emotions, cycling between blue and red.",
+                "Hands: You are sewing together the pieces of a broken past.",
+                "Shadow: The color you refuse to see; the memory you cannot patch.",
+                "Soul: A field of violets growing on a grave; beauty born from loss."
+            ]
+        }
+    },
+    {
+        "id": "xxi_world_excalibur",
+        "name": {
+            "en": "XXI - The World",
+            "ko": "XXI - The World",
+            "ja": "XXI - The World"
+        },
+        "character": {
+            "en": "Excalibur",
+            "ko": "Excalibur",
+            "ja": "Excalibur"
+        },
+        "keywords": {
+            "en": [
+                "Glory",
+                "Burden",
+                "Weapon"
+            ],
+            "ko": [
+                "Glory",
+                "Burden",
+                "Weapon"
+            ],
+            "ja": [
+                "Glory",
+                "Burden",
+                "Weapon"
+            ]
+        },
+        "readings": {
+            "en": [
+                "Mindset: You believe you are chosen for a great purpose.",
+                "Heart: The weight of expectation is crushing you.",
+                "Hands: You cut through problems with legendary force, but lack finesse.",
+                "Shadow: You fear you are just a tool in someone else's legend.",
+                "Soul: A rusted blade waiting for a king who may never come."
+            ],
+            "ko": [
+                "Mindset: You believe you are chosen for a great purpose.",
+                "Heart: The weight of expectation is crushing you.",
+                "Hands: You cut through problems with legendary force, but lack finesse.",
+                "Shadow: You fear you are just a tool in someone else's legend.",
+                "Soul: A rusted blade waiting for a king who may never come."
+            ],
+            "ja": [
+                "Mindset: You believe you are chosen for a great purpose.",
+                "Heart: The weight of expectation is crushing you.",
+                "Hands: You cut through problems with legendary force, but lack finesse.",
+                "Shadow: You fear you are just a tool in someone else's legend.",
+                "Soul: A rusted blade waiting for a king who may never come."
+            ]
+        }
+    }
+],
+DIVINATION_POSITIONS: [
+    {
+        "id": 0,
+        "title": {
+            "en": "I. HEAD",
+            "ko": "I. HEAD",
+            "ja": "I. HEAD"
+        },
+        "desc": {
+            "en": "MINDSET",
+            "ko": "MINDSET",
+            "ja": "MINDSET"
+        },
+        "guidance": {
+            "en": "Examine the card's figure. Are they looking forward or backward? This reflects your current focus. Does the card imply control or chaos? This is how you perceive your own agency right now.",
+            "ko": "Examine the card's figure. Are they looking forward or backward? This reflects your current focus. Does the card imply control or chaos? This is how you perceive your own agency right now.",
+            "ja": "Examine the card's figure. Are they looking forward or backward? This reflects your current focus. Does the card imply control or chaos? This is how you perceive your own agency right now."
+        }
+    },
+    {
+        "id": 1,
+        "title": {
+            "en": "II. HEART",
+            "ko": "II. HEART",
+            "ja": "II. HEART"
+        },
+        "desc": {
+            "en": "DESIRE",
+            "ko": "DESIRE",
+            "ja": "DESIRE"
+        },
+        "guidance": {
+            "en": "Look for the emotional core of the image. Is it warm or cold? Static or moving? This represents a desire you may not be admitting to yourself—or a fear that drives your heartbeat.",
+            "ko": "Look for the emotional core of the image. Is it warm or cold? Static or moving? This represents a desire you may not be admitting to yourself—or a fear that drives your heartbeat.",
+            "ja": "Look for the emotional core of the image. Is it warm or cold? Static or moving? This represents a desire you may not be admitting to yourself—or a fear that drives your heartbeat."
+        }
+    },
+    {
+        "id": 2,
+        "title": {
+            "en": "III. HAND",
+            "ko": "III. HAND",
+            "ja": "III. HAND"
+        },
+        "desc": {
+            "en": "ACTION",
+            "ko": "ACTION",
+            "ja": "ACTION"
+        },
+        "guidance": {
+            "en": "Focus on the tools or weapons in the card. How is the character interacting with their world? This is your method of problem-solving. Are you building, destroying, or waiting?",
+            "ko": "Focus on the tools or weapons in the card. How is the character interacting with their world? This is your method of problem-solving. Are you building, destroying, or waiting?",
+            "ja": "Focus on the tools or weapons in the card. How is the character interacting with their world? This is your method of problem-solving. Are you building, destroying, or waiting?"
+        }
+    },
+    {
+        "id": 3,
+        "title": {
+            "en": "IV. SHADOW",
+            "ko": "IV. SHADOW",
+            "ja": "IV. SHADOW"
+        },
+        "desc": {
+            "en": "HIDDEN",
+            "ko": "HIDDEN",
+            "ja": "HIDDEN"
+        },
+        "guidance": {
+            "en": "This position reveals what you repress. Consider the darker elements of the card art. What is the character ignoring? That is your blind spot.",
+            "ko": "This position reveals what you repress. Consider the darker elements of the card art. What is the character ignoring? That is your blind spot.",
+            "ja": "This position reveals what you repress. Consider the darker elements of the card art. What is the character ignoring? That is your blind spot."
+        }
+    },
+    {
+        "id": 4,
+        "title": {
+            "en": "V. SOUL",
+            "ko": "V. SOUL",
+            "ja": "V. SOUL"
+        },
+        "desc": {
+            "en": "ESSENCE",
+            "ko": "ESSENCE",
+            "ja": "ESSENCE"
+        },
+        "guidance": {
+            "en": "This is the core. Strip away the context of the other cards. If this card was the only thing that existed, what story would it tell? This is your fundamental truth.",
+            "ko": "This is the core. Strip away the context of the other cards. If this card was the only thing that existed, what story would it tell? This is your fundamental truth.",
+            "ja": "This is the core. Strip away the context of the other cards. If this card was the only thing that existed, what story would it tell? This is your fundamental truth."
+        }
+    }
+]
