@@ -151,6 +151,8 @@
     position: relative;
     /* "Screen" look */
     box-shadow: inset 0 0 20px rgba(0, 0, 0, 1);
+    flex: 1;
+    min-width: 0;
 }
 
 .div-text-wrapper {
@@ -161,6 +163,9 @@
     color: #eee;
     padding: 10px;
     border-left: 2px solid var(--gold-dark);
+    width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .div-narrative-prefix {
@@ -178,6 +183,9 @@
     font-style: normal;
     /* Monospace doesn't need italics usually */
     color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
 }
 
 /* HOVER EFFECTS */

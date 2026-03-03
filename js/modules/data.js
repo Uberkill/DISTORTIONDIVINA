@@ -880,31 +880,60 @@ export const DB = {
             }
         },
         {
-            id: "v_hierophant_ayin",
-            name: { en: "V - The Hierophant", ko: "V - The Hierophant", ja: "V - The Hierophant" },
+            id: "iv_emperor_ayin",
+            name: { en: "IV - The Emperor", ko: "IV - The Emperor", ja: "IV - The Emperor" },
             character: { en: "Ayin", ko: "Ayin", ja: "Ayin" },
-            keywords: { en: ["System", "Belief", "Sacrifice"], ko: ["System", "Belief", "Sacrifice"], ja: ["System", "Belief", "Sacrifice"] },
+            keywords: { en: ["System", "Authority", "Sacrifice"], ko: ["System", "Authority", "Sacrifice"], ja: ["System", "Authority", "Sacrifice"] },
             readings: {
                 en: [
                     "Mindset: The script is written. You are merely following the necessary plan.",
                     "Heart: Cold utilitarianism. You are willing to sacrifice anything for the 'greater good'.",
-                    "Hands: You build systems or routines that grind you down to produce results.",
+                    "Hands: You build systems or routines that grind others down to produce results.",
                     "Shadow: You have cut away parts of your own humanity to achieve your goal.",
                     "Soul: A visionary willing to become a monster to build a perfect world."
                 ],
                 ko: [
                     "사고: 각본은 이미 쓰여져 있다. 필요한 계획을 따르고 있을 뿐이다.",
                     "욕망: 냉혹한 공리주의. '더 큰 선'을 위해 무엇이든 희생시킬 의향이 있다.",
-                    "행동: 결과를 내기 위해 자신을 갈아넘는 시스템이나 루틴을 구축한다.",
+                    "행동: 결과를 내기 위해 다른 사람들을 갈아넘는 시스템이나 루틴을 구축한다.",
                     "그림자: 목표를 달성하기 위해 자신의 인간성 일부를 잘라냈다.",
                     "본질: 완벽한 세계를 구축하기 위해 괴물이 되려는 비전가."
                 ],
                 ja: [
                     "思考: 台本は書かれている。必要な計画を実行しているだけだ。",
                     "欲望: 冷酷な功利主義。「より大きな善」のために何でも犠牲にする意志がある。",
-                    "行動: 結果を生み出すために自分をすり減らすシステムやルーチンを構築する。",
+                    "行動: 結果を生み出すために他者をすり減らすシステムやルーチンを構築する。",
                     "影: 目標を達成するために自分の人間性の一部を切り捨てた。",
                     "本質: 完璧な世界を構築するために怪物になることをいとわない先見者。"
+                ]
+            }
+        },
+        {
+            id: "v_hierophant_meursault",
+            name: { en: "V - The Hierophant", ko: "V - The Hierophant", ja: "V - The Hierophant" },
+            character: { en: "Meursault", ko: "Meursault", ja: "Meursault" },
+            keywords: { en: ["Creed", "Discipline", "Endurance"], ko: ["Creed", "Discipline", "Endurance"], ja: ["Creed", "Discipline", "Endurance"] },
+            readings: {
+                en: [
+                    "Mindset: Your personal creed is absolute. You follow your own code regardless of what others demand.",
+                    "Heart: A steady, unbreakable calm that others constantly misread as coldness.",
+                    "Hands: You do what must be done — without complaint, without hesitation, without rest.",
+                    "Shadow: Beneath the discipline, you fear what you would become without your rules to hold you.",
+                    "Soul: A guardian who holds the line, not because they were ordered to, but because no one else will."
+                ],
+                ko: [
+                    "사고: 개인적 신조는 절대적이다. 다른 사람들이 무엇을 요구하든 자신의 규율을 따른다.",
+                    "욕망: 다른 사람들이 차갑다고 오해하는 흔들리지 않는 고요함.",
+                    "행동: 해야 할 일을 한다. 불평 없이, 망설임 없이, 쉼 없이.",
+                    "그림자: 규율 아래에는, 지켜줄 규칙 없이 어떤 존재가 될지에 대한 두려움이 있다.",
+                    "본질: 명령받아서가 아니라, 아무도 그러지 않을 것이기에 선을 지키는 수호자."
+                ],
+                ja: [
+                    "思考: 個人的な信条は絶対だ。他者が何を求めようと、自分の規律に従う。",
+                    "欲望: 他者が冷たさと誤解し続ける、揺るぎない静けさ。",
+                    "行動: やるべきことをやる。不平なく、躊躇なく、休みなく。",
+                    "影: 規律の下には、支えてくれる規則なしに何者になるかへの恐怖がある。",
+                    "本質: 命じられたからではなく、他に誰もいないから、一線を守り続ける守護者。"
                 ]
             }
         },

@@ -69,16 +69,29 @@ const CARD_DATABASE = [
         ]
     },
     {
-        id: "v_hierophant_ayin",
-        name: "V - The Hierophant",
+        id: "iv_emperor_ayin",
+        name: "IV - The Emperor",
         character: "Ayin",
-        keywords: ["System", "Belief", "Sacrifice"],
+        keywords: ["System", "Authority", "Sacrifice"],
         readings: [
             "Mindset: The script is written. You are merely following the necessary plan.",
             "Heart: Cold utilitarianism. You are willing to sacrifice anything for the 'greater good'.",
-            "Hands: You build systems or routines that grind you down to produce results.",
+            "Hands: You build systems or routines that grind others down to produce results.",
             "Shadow: You have cut away parts of your own humanity to achieve your goal.",
             "Soul: A visionary willing to become a monster to build a perfect world."
+        ]
+    },
+    {
+        id: "v_hierophant_meursault",
+        name: "V - The Hierophant",
+        character: "Meursault",
+        keywords: ["Creed", "Discipline", "Endurance"],
+        readings: [
+            "Mindset: Your personal creed is absolute. You follow your own code regardless of what others demand.",
+            "Heart: A steady, unbreakable calm that others constantly misread as coldness.",
+            "Hands: You do what must be done — without complaint, without hesitation, without rest.",
+            "Shadow: Beneath the discipline, you fear what you would become without your rules to hold you.",
+            "Soul: A guardian who holds the line, not because they were ordered to, but because no one else will."
         ]
     },
     {
