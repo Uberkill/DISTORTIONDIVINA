@@ -4,6 +4,7 @@ import { AudioManager } from './audio.js';
 import { WindowManager } from './windows.js';
 import { Viewer3D } from './viewer.js';
 import { DB } from './data.js';
+import { DivinationSystem } from './divination_v4.js';
 
 export const System = {
     lang: 'en', loginTimer: null, assistantIdx: 0, assistantSteps: [], isTutorialComplete: false, assistantDragging: false, briefImgIdx: 0, isLoggingIn: false,
@@ -273,37 +274,164 @@ export const System = {
 
 
     setupListeners() {
+        // Global Click Delegation
         document.addEventListener('click', (e) => {
-            const target = e.target.closest('button, .desktop-icon, .shop-link-btn, .win-btn, .lang-btn, .login-submit-btn, .mobile-btn, .assistant-btn, .archive-btn, .v-btn, .gallery-nav, .variant-card, .task-item');
-            if (target) {
+            // 1. Ripple Effect (Visuals)
+            const rippleTarget = e.target.closest('button, .desktop-icon, .shop-link-btn, .win-btn, .lang-btn, .login-submit-btn, .mobile-btn, .assistant-btn, .archive-btn, .v-btn, .gallery-nav, .variant-card, .task-item');
+            if (rippleTarget) {
                 const circle = document.createElement("span");
-                const diameter = Math.max(target.clientWidth, target.clientHeight);
+                const diameter = Math.max(rippleTarget.clientWidth, rippleTarget.clientHeight);
                 const radius = diameter / 2;
-                const rect = target.getBoundingClientRect();
+                const rect = rippleTarget.getBoundingClientRect();
                 circle.style.width = circle.style.height = `${diameter}px`;
                 circle.style.left = `${e.clientX - rect.left - radius}px`;
                 circle.style.top = `${e.clientY - rect.top - radius}px`;
                 circle.classList.add("ripple");
-                const oldRipple = target.getElementsByClassName("ripple")[0];
+                const oldRipple = rippleTarget.getElementsByClassName("ripple")[0];
                 if (oldRipple) oldRipple.remove();
-                target.appendChild(circle);
+                rippleTarget.appendChild(circle);
+            }
+
+            // 2. Data Action Routing (Logic)
+            const actionTarget = e.target.closest('[data-action]');
+            if (actionTarget) {
+                const action = actionTarget.getAttribute('data-action');
+                switch (action) {
+                    case 'toggle-ui-scale': this.toggleUIScale(); break;
+                    case 'toggle-mode': this.toggleMode(); break;
+                    case 'set-language':
+                        AudioManager.play('click');
+                        this.setLanguage(actionTarget.getAttribute('data-lang'));
+                        break;
+                    case 'login': this.login(); break;
+                    case 'reset-layout': this.resetLayout(); break;
+                    case 'close-window': WindowManager.close(actionTarget.getAttribute('data-target')); break;
+                    case 'minimize-window': WindowManager.minimize(actionTarget.getAttribute('data-target')); break;
+                    case 'maximize-window': WindowManager.toggleMaximize(actionTarget.getAttribute('data-target')); break;
+                    case 'switch-window':
+                        WindowManager.close(actionTarget.getAttribute('data-close'));
+                        WindowManager.open(actionTarget.getAttribute('data-open'));
+                        AudioManager.play('click');
+                        break;
+                    case 'change-brief-image':
+                        e.preventDefault();
+                        e.stopPropagation();
+                        this.changeBriefImage(parseInt(actionTarget.getAttribute('data-dir')));
+                        break;
+                    case 'render-grid':
+                        this.renderGrid(actionTarget.getAttribute('data-sort'), actionTarget);
+                        break;
+
+                    // Viewer Actions
+                    case 'viewer-zoom': Viewer3D.adjustZoom(parseFloat(actionTarget.getAttribute('data-zoom'))); break;
+                    case 'viewer-reset': Viewer3D.reset(); break;
+
+                    // Assistant Actions
+                    case 'assistant-close-perm': this.permanentlyCloseAssistant(); break;
+                    case 'assistant-next': this.nextAssistantStep(); break;
+                    case 'assistant-close': this.closeAssistant(); break;
+
+                    // WindowManager Base Actions
+                    case 'show-desktop': WindowManager.showDesktop(); break;
+
+                    // Sound Actions
+                    case 'play-sound': AudioManager.play(actionTarget.getAttribute('data-sound')); break;
+
+                    // Divination Actions (Dynamically routed to prevent strict coupling)
+                    case 'divination-set-slot':
+                        DivinationSystem.setActiveSlot(parseInt(actionTarget.getAttribute('data-slot')));
+                        break;
+                    case 'divination-random':
+                        DivinationSystem.randomReading();
+                        break;
+                    case 'divination-clear-search':
+                        DivinationSystem.setSearchQuery('');
+                        break;
+                    case 'divination-select-card':
+                        DivinationSystem.selectCard(actionTarget.getAttribute('data-card'));
+                        break;
+                    case 'divination-reset':
+                        DivinationSystem.reset();
+                        break;
+                    case 'divination-reveal-resonance':
+                        if (window.DivinationSystem) {
+                            const container = actionTarget.closest('.resonate-content') || document.querySelector('.resonate-content');
+                            if (container) window.DivinationSystem.revealResonance(container);
+                        }
+                        break;
+                }
             }
         });
-        if (document.getElementById('login-input')) {
-            document.getElementById('login-input').addEventListener('keydown', (e) => { if (e.key === 'Enter') this.login(); });
-        }
-        document.querySelectorAll('.desktop-icon').forEach(icon => {
-            const winId = icon.getAttribute('data-window');
-            if (winId) {
-                // Remove custom onclick loop, rely on global listener now
-                icon.onclick = () => WindowManager.open(winId);
+
+        // Global Mouseover Routing
+        document.addEventListener('mouseover', (e) => {
+            const hoverSoundTarget = e.target.closest('[data-hover-sound]');
+            if (hoverSoundTarget && hoverSoundTarget.getAttribute('data-hover-sound') === 'hover') {
+                AudioManager.play('hover');
+            }
+
+            const hoverHighlight = e.target.closest('[data-hover-highlight]');
+            if (hoverHighlight) {
+                const action = hoverHighlight.getAttribute('data-hover-highlight');
+                const slot = parseInt(hoverHighlight.getAttribute('data-slot'));
+                if (action === 'highlight-slot' && DivinationSystem) {
+                    DivinationSystem.highlightSlot(slot);
+                } else if (action === 'highlight-body' && DivinationSystem) {
+                    DivinationSystem.highlightBodyPoint(slot);
+                }
+            }
+        });
+
+        // Global Mouseout Routing
+        document.addEventListener('mouseout', (e) => {
+            const leaveHighlight = e.target.closest('[data-leave-highlight]');
+            if (leaveHighlight) {
+                const action = leaveHighlight.getAttribute('data-leave-highlight');
+                if (action === 'highlight-slot' && DivinationSystem) {
+                    DivinationSystem.highlightSlot(-1);
+                } else if (action === 'highlight-body' && DivinationSystem) {
+                    DivinationSystem.highlightBodyPoint(DivinationSystem.state.activeSlotIndex);
+                }
+            }
+        });
+
+        // Global Keydown Routing
+        document.addEventListener('keydown', (e) => {
+            // Login Enter Handling
+            if (e.target.id === 'login-input' && e.key === 'Enter') {
+                this.login();
+            }
+
+            // Keyboard accessibility for divinations (Enter / Space)
+            if (e.key === 'Enter' || e.key === ' ') {
+                const actionTarget = e.target.closest('[data-action="divination-set-slot"]');
+                if (actionTarget) {
+                    e.preventDefault();
+                    DivinationSystem.setActiveSlot(parseInt(actionTarget.getAttribute('data-slot')));
+                }
+                const cardTarget = e.target.closest('[data-action="divination-select-card"]');
+                if (cardTarget) {
+                    e.preventDefault();
+                    DivinationSystem.selectCard(cardTarget.getAttribute('data-card'));
+                }
+            }
+        });
+
+        // Desktop Icons logic (Replaces explicit window binding loop in HTML)
+        document.addEventListener('click', (e) => {
+            const icon = e.target.closest('.desktop-icon');
+            if (icon) {
+                const winId = icon.getAttribute('data-window');
+                if (winId) {
+                    WindowManager.open(winId);
+                }
             }
         });
 
         // ASSISTANT ICON - Special handler to open OOBOT (no window)
-        const assistantIcon = document.querySelector('.desktop-icon.assistant-icon');
-        if (assistantIcon) {
-            assistantIcon.onclick = () => {
+        document.addEventListener('click', (e) => {
+            const assistantIcon = e.target.closest('.desktop-icon.assistant-icon');
+            if (assistantIcon) {
                 const overlay = document.getElementById('assistant-overlay');
                 if (overlay) {
                     overlay.style.display = 'flex';
@@ -319,8 +447,8 @@ export const System = {
                     if (controls) controls.style.display = 'flex';
                 }
                 AudioManager.play('click');
-            };
-        }
+            }
+        });
 
         // Global Window Open Listener
         document.addEventListener('window-opened', (e) => {

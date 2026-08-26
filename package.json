@@ -1,0 +1,12 @@
+{
+  "name": "distortion-divina-tests",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "playwright test",
+    "serve": "serve . -p 3000"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.42.0",
+    "serve": "^14.2.1"
+  }
+}

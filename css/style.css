@@ -3110,3 +3110,9 @@
             animation: blink 1s infinite;
             margin-left: 2px;
         }
+/* Fix Divination Window Scrolling */
+#win-divination .window-content { overflow-y: auto !important; overflow-x: hidden !important; }
+.div-col-main { overflow-y: auto; max-height: 100%; }
+.div-grid-narrative-col { word-wrap: break-word; white-space: normal; }
+/* Fix 3D Viewer Description Scrolling */
+#win-viewer .viewer-info { overflow-y: auto !important; max-height: 100%; }

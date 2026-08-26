@@ -10,7 +10,7 @@ export const DivinationSystem = {
         version: STATE_VERSION,
         slots: [null, null, null, null, null],
         activeSlotIndex: 0,
-        searchQuery: "",
+        searchQuery:"",
         isComplete: false
     },
 
@@ -83,7 +83,7 @@ export const DivinationSystem = {
         ];
 
         const renderBoot = () => {
-            if (step >= steps.length) {
+            if (step>= steps.length) {
                 setTimeout(() => {
                     this.render();
                     AudioManager.play('confirm');
@@ -109,9 +109,13 @@ export const DivinationSystem = {
     reset: function () {
         this.state.slots = [null, null, null, null, null];
         this.state.activeSlotIndex = 0;
-        this.state.searchQuery = "";
+        this.state.searchQuery ="";
         this.state.isComplete = false;
         this.state.viewMode = 'story';
+        if (this.state.typewriterIntervals) {
+            this.state.typewriterIntervals.forEach(clearInterval);
+            this.state.typewriterIntervals = [];
+        }
         AudioManager.play('glitch'); // Glitch sound on reset
         this.saveState();
         this.render();
@@ -158,7 +162,7 @@ export const DivinationSystem = {
         });
 
         // 2. Mark Active Slot (Pulsing)
-        // If we are passing a specific index (like hover), that takes precedence as "active"
+        // If we are passing a specific index (like hover), that takes precedence as"active"
         if (activeIndex !== -1) {
             const points = document.querySelectorAll(`.chakra-point[data-slot="${activeIndex}"]`);
             points.forEach(p => {
@@ -176,7 +180,7 @@ export const DivinationSystem = {
         const newSlots = [...this.state.slots];
         newSlots[this.state.activeSlotIndex] = card;
         this.state.slots = newSlots;
-        this.state.searchQuery = "";
+        this.state.searchQuery ="";
 
         // Advance to next empty slot or finish
         const nextEmpty = newSlots.findIndex(s => s === null);
@@ -246,19 +250,19 @@ export const DivinationSystem = {
         // 0 = Full Distortion, 50 = Balanced, 100 = Full Awakening
         // We want the bar to start from center (50%)
         // If score < 50: Width is (50 - score)%, Right is 50%
-        // If score > 50: Width is (score - 50)%, Left is 50%
+        // If score> 50: Width is (score - 50)%, Left is 50%
 
-        let barStyle = "";
-        let barClass = "";
+        let barStyle ="";
+        let barClass ="";
 
         if (egoScore < 50) {
             const width = 50 - egoScore;
             barStyle = `width: ${width}%; right: 50%;`;
-            barClass = "distortion";
+            barClass ="distortion";
         } else {
             const width = egoScore - 50;
             barStyle = `width: ${width}%; left: 50%;`;
-            barClass = "awakening";
+            barClass ="awakening";
         }
 
         // Main Container
@@ -274,11 +278,11 @@ export const DivinationSystem = {
                             <div class="body-viz-container">
                                 <div class="body-silhouette"></div>
                                 <!-- Chakra Points -->
-                                <div class="chakra-point point-head" data-slot="0" onclick="DivinationSystem.setActiveSlot(0)" onmouseenter="DivinationSystem.highlightSlot(0)" onmouseleave="DivinationSystem.highlightSlot(-1)" data-label="${DB.TRANSLATIONS[System.lang].divination_head}" role="button" tabindex="0"></div>
-                                <div class="chakra-point point-heart" data-slot="1" onclick="DivinationSystem.setActiveSlot(1)" onmouseenter="DivinationSystem.highlightSlot(1)" onmouseleave="DivinationSystem.highlightSlot(-1)" data-label="${DB.TRANSLATIONS[System.lang].divination_heart}" role="button" tabindex="0"></div>
-                                <div class="chakra-point point-hands" data-slot="2" onclick="DivinationSystem.setActiveSlot(2)" onmouseenter="DivinationSystem.highlightSlot(2)" onmouseleave="DivinationSystem.highlightSlot(-1)" data-label="${DB.TRANSLATIONS[System.lang].divination_hands}" role="button" tabindex="0"></div>
-                                <div class="chakra-point point-shadow" data-slot="3" onclick="DivinationSystem.setActiveSlot(3)" onmouseenter="DivinationSystem.highlightSlot(3)" onmouseleave="DivinationSystem.highlightSlot(-1)" data-label="${DB.TRANSLATIONS[System.lang].divination_shadow}" role="button" tabindex="0"></div>
-                                <div class="chakra-point point-soul" data-slot="4" onclick="DivinationSystem.setActiveSlot(4)" onmouseenter="DivinationSystem.highlightSlot(4)" onmouseleave="DivinationSystem.highlightSlot(-1)" data-label="${DB.TRANSLATIONS[System.lang].divination_soul}" role="button" tabindex="0"></div>
+                                <div class="chakra-point point-head" data-slot="0" data-action="divination-set-slot" data-slot="0" data-hover-highlight="highlight-slot" data-slot="0" data-leave-highlight="highlight-slot" data-label="${DB.TRANSLATIONS[System.lang].divination_head}" role="button" tabindex="0"></div>
+                                <div class="chakra-point point-heart" data-slot="1" data-action="divination-set-slot" data-slot="1" data-hover-highlight="highlight-slot" data-slot="1" data-leave-highlight="highlight-slot" data-label="${DB.TRANSLATIONS[System.lang].divination_heart}" role="button" tabindex="0"></div>
+                                <div class="chakra-point point-hands" data-slot="2" data-action="divination-set-slot" data-slot="2" data-hover-highlight="highlight-slot" data-slot="2" data-leave-highlight="highlight-slot" data-label="${DB.TRANSLATIONS[System.lang].divination_hands}" role="button" tabindex="0"></div>
+                                <div class="chakra-point point-shadow" data-slot="3" data-action="divination-set-slot" data-slot="3" data-hover-highlight="highlight-slot" data-slot="3" data-leave-highlight="highlight-slot" data-label="${DB.TRANSLATIONS[System.lang].divination_shadow}" role="button" tabindex="0"></div>
+                                <div class="chakra-point point-soul" data-slot="4" data-action="divination-set-slot" data-slot="4" data-hover-highlight="highlight-slot" data-slot="4" data-leave-highlight="highlight-slot" data-label="${DB.TRANSLATIONS[System.lang].divination_soul}" role="button" tabindex="0"></div>
                             </div>
                         </div>
 
@@ -309,7 +313,7 @@ export const DivinationSystem = {
                     <div class="div-col-main">
                         <div class="divination-top-panel">
                             <div style="display: flex; justify-content: flex-end; padding: 5px; margin-bottom: 5px;">
-                                <button onclick="DivinationSystem.randomReading()" 
+                                <button data-action="divination-random" 
                                         style="padding: 6px 12px; 
                                                background: rgba(212, 175, 55, 0.15); 
                                                border: 1px solid rgba(212, 175, 55, 0.4); 
@@ -406,7 +410,7 @@ export const DivinationSystem = {
                 // Determine image path (logic from original code: specific character images or default)
                 // Original code used internal imports. Here we match ID logic or use mapped images in DB.
                 // For now, let's look up the card image from the main DB.CARDS if possible, or use a placeholder/styling.
-                // The new data has `id: "0_fool_hod"`. We need to map this to an image.
+                // The new data has `id:"0_fool_hod"`. We need to map this to an image.
                 // The DB.CARDS array has images. Let's try to match by number.
 
                 // Start Update: 2026-02-12 - Robust Image Lookup Refactor
@@ -428,13 +432,13 @@ export const DivinationSystem = {
 
             return `
                 <div class="divination-slot ${isActive ? 'active' : ''} ${isFilled ? 'filled' : ''}" 
-                     onclick="DivinationSystem.setActiveSlot(${index})"
-                     onmouseenter="DivinationSystem.highlightBodyPoint(${index})"
-                     onmouseleave="DivinationSystem.highlightBodyPoint(DivinationSystem.state.activeSlotIndex)"
+                     data-action="divination-set-slot" data-slot="${index}"
+                     data-hover-highlight="highlight-body" data-slot="${index}"
+                     data-leave-highlight="highlight-body"
                      role="button"
                      tabindex="0"
                      aria-label="${position.title[lang]} Slot: ${isFilled ? slot.character[lang] : 'Empty'}"
-                     onkeydown="if(event.key==='Enter'||event.key===' ')DivinationSystem.setActiveSlot(${index})">
+>
                     <div class="slot-header">
                         <span class="slot-title">${position.title[lang]}</span>
                         <span class="slot-desc">${position.desc[lang]}</span>
@@ -492,7 +496,7 @@ export const DivinationSystem = {
             return `
                 <div class="no-results">
                     <div style="margin-bottom: 5px;">${DB.TRANSLATIONS[lang].divination_no_results}</div>
-                    <button class="clear-search-btn" onclick="DivinationSystem.setSearchQuery('')" style="font-size: 0.7rem; color: var(--gold-primary); background: transparent; border: 1px solid var(--gold-dim); padding: 4px 8px; cursor: pointer;">
+                    <button class="clear-search-btn" data-action="divination-clear-search" style="font-size: 0.7rem; color: var(--gold-primary); background: transparent; border: 1px solid var(--gold-dim); padding: 4px 8px; cursor: pointer;">
                         ${DB.TRANSLATIONS[lang].divination_clear_search}
                     </button>
                 </div>
@@ -500,7 +504,7 @@ export const DivinationSystem = {
         }
 
         return filtered.map(card => `
-            <div class="search-item" onclick="DivinationSystem.selectCard('${card.id}')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')DivinationSystem.selectCard('${card.id}')">
+            <div class="search-item" data-action="divination-select-card" data-card="${card.id}" role="button" tabindex="0">
                 <span class="item-name">${card.name[lang]}</span>
                 <span class="item-char">// ${card.character[lang]}</span>
                 <div class="item-keywords">
@@ -519,10 +523,10 @@ export const DivinationSystem = {
             <div class="results-container">
                 <div class="results-toolbar">
                     <div class="results-title">
-                        ${DB.TRANSLATIONS[lang].divination_complete || "SEQUENCE COMPLETE // ANALYSIS:"}
+                        ${DB.TRANSLATIONS[lang].divination_complete ||"SEQUENCE COMPLETE // ANALYSIS:"}
                     </div>
-                    <button class="result-reset" onclick="DivinationSystem.reset()">
-                        ${DB.TRANSLATIONS[lang].divination_reset || "RESET SEQUENCE"}
+                    <button class="result-reset" data-action="divination-reset">
+                        ${DB.TRANSLATIONS[lang].divination_reset ||"RESET SEQUENCE"}
                     </button>
                 </div>
                 <div class="results-content">
@@ -535,14 +539,14 @@ export const DivinationSystem = {
     getUnifiedViewHTML: function () {
         const lang = System.lang || 'en';
         const s = this.state.slots;
-        if (s.some(x => x === null)) return "";
+        if (s.some(x => x === null)) return"";
 
         const transitions = [
-            DB.TRANSLATIONS[lang].divination_transition_0 || "Your conscious mind manifests as",
-            DB.TRANSLATIONS[lang].divination_transition_1 || "Beneath, your heart secretly harbors",
-            DB.TRANSLATIONS[lang].divination_transition_2 || "This drives your hands to act with",
-            DB.TRANSLATIONS[lang].divination_transition_3 || "Lurking in your shadow is",
-            DB.TRANSLATIONS[lang].divination_transition_4 || "Ultimately, your soul is revealed as"
+            DB.TRANSLATIONS[lang].divination_transition_0 ||"Your conscious mind manifests as",
+            DB.TRANSLATIONS[lang].divination_transition_1 ||"Beneath, your heart secretly harbors",
+            DB.TRANSLATIONS[lang].divination_transition_2 ||"This drives your hands to act with",
+            DB.TRANSLATIONS[lang].divination_transition_3 ||"Lurking in your shadow is",
+            DB.TRANSLATIONS[lang].divination_transition_4 ||"Ultimately, your soul is revealed as"
         ];
 
         // Generate Rows
@@ -550,14 +554,14 @@ export const DivinationSystem = {
             const delay = i * 0.1; // Faster stagger
             return `
                 <div class="divination-grid-row slide-in-anim" style="animation-delay: ${delay}s">
-                    <!-- LEFT COL: DATA (The "Container") -->
+                    <!-- LEFT COL: DATA (The"Container") -->
                     <div class="div-grid-data-col">
                         <div class="div-grid-header">${DB.DIVINATION_POSITIONS[i].title[lang]}</div>
                         <div class="div-grid-char">${card.character[lang]}</div>
                         <div class="div-grid-cardname">${card.name[lang]}</div>
                     </div>
                     
-                    <!-- RIGHT COL: NARRATIVE (The "Content") -->
+                    <!-- RIGHT COL: NARRATIVE (The"Content") -->
                     <div class="div-grid-narrative-col">
                         <div class="div-text-wrapper">
                             <span class="div-narrative-prefix">${transitions[i]}</span>
@@ -570,9 +574,9 @@ export const DivinationSystem = {
 
         // Final Resonance with safe onclick handler
         const resonanceHTML = `
-            <div class="divination-grid-row resonance-row slide-in-anim interactive-row" style="animation-delay: 0.8s" onclick="window.DivinationSystem.revealResonance(this.querySelector('.resonate-content'))">
+            <div class="divination-grid-row resonance-row slide-in-anim interactive-row" style="animation-delay: 0.8s" data-action="divination-reveal-resonance">
                 <div class="div-grid-data-col resonate-label">
-                    ${DB.TRANSLATIONS[lang].divination_final_resonance || "FINAL RESONANCE"}
+                    ${DB.TRANSLATIONS[lang].divination_final_resonance ||"FINAL RESONANCE"}
                 </div>
                 <div class="div-grid-narrative-col resonate-content censored">
                     <div class="div-scramble-text">
@@ -625,11 +629,11 @@ export const DivinationSystem = {
         const text = resonanceText;
 
         // BIG REVEAL ANIMATION
-        el.style.transform = "scale(1.02)"; // Subtle pop
-        el.style.transition = "all 0.3s ease";
+        el.style.transform ="scale(1.02)"; // Subtle pop
+        el.style.transition ="all 0.3s ease";
 
         setTimeout(() => {
-            el.style.transform = "scale(1)";
+            el.style.transform ="scale(1)";
 
             // CLEAR AND REPLACE CONTENT
             el.innerHTML = '';
@@ -644,7 +648,7 @@ export const DivinationSystem = {
 
     // === ENHANCED TAROT RESONANCE SYSTEM ===
 
-    // Extract card number from name (e.g., "XIII - Death" -> 13)
+    // Extract card number from name (e.g.,"XIII - Death" -> 13)
     extractCardNumber: function (card) {
         if (!card) return 0;
         const romans = {
@@ -660,7 +664,7 @@ export const DivinationSystem = {
 
     // Numerology: reduce number to single digit
     reduceToSingleDigit: function (num) {
-        while (num > 9) {
+        while (num> 9) {
             num = num.toString().split('').reduce((a, b) => a + parseInt(b), 0);
         }
         return num || 1; // Never return 0, default to 1
@@ -675,8 +679,8 @@ export const DivinationSystem = {
         // Count repeating numbers
         const counts = {};
         numbers.forEach(n => counts[n] = (counts[n] || 0) + 1);
-        const hasRepeats = Object.values(counts).some(c => c >= 2);
-        const mostCommon = Object.keys(counts).reduce((a, b) => counts[a] > counts[b] ? a : b);
+        const hasRepeats = Object.values(counts).some(c => c>= 2);
+        const mostCommon = Object.keys(counts).reduce((a, b) => counts[a]> counts[b] ? a : b);
 
         return {
             lifePath,
@@ -684,7 +688,7 @@ export const DivinationSystem = {
             numbers,
             hasRepeats,
             mostCommonNumber: parseInt(mostCommon),
-            highCards: numbers.filter(n => n >= 11).length, // 11-21
+            highCards: numbers.filter(n => n>= 11).length, // 11-21
             lowCards: numbers.filter(n => n <= 5).length    // 0-5
         };
     },
@@ -725,14 +729,14 @@ export const DivinationSystem = {
         const numbers = slots.map(s => this.extractCardNumber(s));
 
         // Check if ascending/descending
-        const isAscending = numbers.every((n, i) => i === 0 || n >= numbers[i - 1]);
+        const isAscending = numbers.every((n, i) => i === 0 || n>= numbers[i - 1]);
         const isDescending = numbers.every((n, i) => i === 0 || n <= numbers[i - 1]);
 
         // Check if all major arcana (0-21) vs minor  
-        const allMajor = numbers.every(n => n >= 0 && n <= 21);
+        const allMajor = numbers.every(n => n>= 0 && n <= 21);
 
         // Hero's journey (starts low, ends high)
-        const heroJourney = numbers[0] <= 5 && numbers[4] >= 15;
+        const heroJourney = numbers[0] <= 5 && numbers[4]>= 15;
 
         return {
             isAscending,
@@ -821,7 +825,7 @@ export const DivinationSystem = {
 
     // Default fallback
     getDefaultResonance: function () {
-        return "The cards are still forming their message. Complete the spread to receive guidance.";
+        return"The cards are still forming their message. Complete the spread to receive guidance.";
     },
 
     // Resonance templates (50+ variations)
@@ -830,82 +834,82 @@ export const DivinationSystem = {
             // Numerology-based (9 life paths)
             numerology: {
                 1: [
-                    "Life Path 1 - The Initiator: Your spread carries the energy of new beginnings. {SOUL} represents your ultimate destination, but the path starts with {HEAD}'s singular vision. Trust your individuality.",
-                    "The number 1 guides this reading - independence incarnate. Where {HEAD} thinks alone, {HEART} must learn to stand alone as well, for {SOUL} demands self-reliance."
+"Life Path 1 - The Initiator: Your spread carries the energy of new beginnings. {SOUL} represents your ultimate destination, but the path starts with {HEAD}'s singular vision. Trust your individuality.",
+"The number 1 guides this reading - independence incarnate. Where {HEAD} thinks alone, {HEART} must learn to stand alone as well, for {SOUL} demands self-reliance."
                 ],
                 2: [
-                    "Life Path 2 - The Mediator: Duality defines this spread. {HEAD} and {HEART} seek partnership, yet {SHADOW} harbors division. {SOUL} will find peace only through balance.",
-                    "The number 2 reveals cooperation's challenge. Your {HANDS} must unite what {HEAD} and {SHADOW} have torn apart, guided by {SOUL}'s wisdom."
+"Life Path 2 - The Mediator: Duality defines this spread. {HEAD} and {HEART} seek partnership, yet {SHADOW} harbors division. {SOUL} will find peace only through balance.",
+"The number 2 reveals cooperation's challenge. Your {HANDS} must unite what {HEAD} and {SHADOW} have torn apart, guided by {SOUL}'s wisdom."
                 ],
                 3: [
-                    "Life Path 3 - The Creator: Creative expression flows through this reading. From {HEAD}'s conception through {HEART}'s passion to {HANDS}' manifestation - {SOUL} is the masterpiece.",
-                    "The number 3 speaks of growth and expansion. {SHADOW} may doubt, but {SOUL} knows the truth: your {HEART} holds the key to authentic expression."
+"Life Path 3 - The Creator: Creative expression flows through this reading. From {HEAD}'s conception through {HEART}'s passion to {HANDS}' manifestation - {SOUL} is the masterpiece.",
+"The number 3 speaks of growth and expansion. {SHADOW} may doubt, but {SOUL} knows the truth: your {HEART} holds the key to authentic expression."
                 ],
                 4: [
-                    "Life Path 4 - The Builder: Stability and structure ground this spread. {HEAD} lays the foundation, {HANDS} constructs the framework, but {SHADOW} tests every support beam. {SOUL} is the completed edifice.",
-                    "The number 4 demands order from chaos. Where {HEART} desires and {HEAD} plans, only {HANDS} can build what {SOUL} envisions."
+"Life Path 4 - The Builder: Stability and structure ground this spread. {HEAD} lays the foundation, {HANDS} constructs the framework, but {SHADOW} tests every support beam. {SOUL} is the completed edifice.",
+"The number 4 demands order from chaos. Where {HEART} desires and {HEAD} plans, only {HANDS} can build what {SOUL} envisions."
                 ],
                 5: [
-                    "Life Path 5 - The Adventurer: Change and freedom surge through this reading. {HEAD} seeks the new, {HEART} craves experience, {HANDS} reaches for the horizon - but {SHADOW} fears the unknown. {SOUL} is the journey itself.",
-                    "The number 5 heralds transformation. From {START} to {END}, nothing remains static. {SHADOW} clings to what was, but {SOUL} embraces what will be."
+"Life Path 5 - The Adventurer: Change and freedom surge through this reading. {HEAD} seeks the new, {HEART} craves experience, {HANDS} reaches for the horizon - but {SHADOW} fears the unknown. {SOUL} is the journey itself.",
+"The number 5 heralds transformation. From {START} to {END}, nothing remains static. {SHADOW} clings to what was, but {SOUL} embraces what will be."
                 ],
                 6: [
-                    "Life Path 6 - The Nurturer: Responsibility and service define this spread. {HEART} gives freely, perhaps too freely - {SHADOW} asks: at what cost? {SOUL} must learn that caring for others begins with caring for self.",
-                    "The number 6 calls for harmony. {HEAD} understands duty, {HANDS} performs duty, but {SOUL} must transcend duty to find true purpose."
+"Life Path 6 - The Nurturer: Responsibility and service define this spread. {HEART} gives freely, perhaps too freely - {SHADOW} asks: at what cost? {SOUL} must learn that caring for others begins with caring for self.",
+"The number 6 calls for harmony. {HEAD} understands duty, {HANDS} performs duty, but {SOUL} must transcend duty to find true purpose."
                 ],
                 7: [
-                    "Life Path 7 - The Seeker: Spiritual wisdom permeates this reading. {HEAD} questions everything, {SHADOW} knows what others cannot see, and {SOUL} holds mysteries even you don't yet understand.",
-                    "The number 7 speaks of introspection and truth. The path from {START} through {MID} to {END} is a journey inward, not outward."
+"Life Path 7 - The Seeker: Spiritual wisdom permeates this reading. {HEAD} questions everything, {SHADOW} knows what others cannot see, and {SOUL} holds mysteries even you don't yet understand.",
+"The number 7 speaks of introspection and truth. The path from {START} through {MID} to {END} is a journey inward, not outward."
                 ],
                 8: [
-                    "Life Path 8 - The Manifester: Power and abundance flow here. {HANDS} can grasp anything, but {SHADOW} warns - what you gain in material success, you may lose in {HEART}. {SOUL} seeks balance between worlds.",
-                    "The number 8 promises mastery, but demands integrity. {HEAD} strategizes, {HANDS} executes, yet {SOUL} reminds: true power is wielded with wisdom."
+"Life Path 8 - The Manifester: Power and abundance flow here. {HANDS} can grasp anything, but {SHADOW} warns - what you gain in material success, you may lose in {HEART}. {SOUL} seeks balance between worlds.",
+"The number 8 promises mastery, but demands integrity. {HEAD} strategizes, {HANDS} executes, yet {SOUL} reminds: true power is wielded with wisdom."
                 ],
                 9: [
-                    "Life Path 9 - The Humanitarian: Completion and transcendence mark this spread. {START} began a cycle; {END} closes it. {SOUL} carries the weight of all that came before - release it to move forward.",
-                    "The number 9 signals endings that birth beginnings. {SHADOW} mourns what must be released, but {SOUL} knows: only in letting go can you embrace what's next."
+"Life Path 9 - The Humanitarian: Completion and transcendence mark this spread. {START} began a cycle; {END} closes it. {SOUL} carries the weight of all that came before - release it to move forward.",
+"The number 9 signals endings that birth beginnings. {SHADOW} mourns what must be released, but {SOUL} knows: only in letting go can you embrace what's next."
                 ]
             },
 
             // Position-based conflicts
             headHeartConflict: [
-                "Mind wars with heart: {HEAD} speaks logic while {HEART} cries emotion. Your {HANDS} act caught between, and {SHADOW} feeds on this division. Only {SOUL} can reconcile the two.",
-                "Conflict emerges between thought and feeling. {HEAD} offers reason, {HEART} offers passion, but {SOUL} demands you honor both, not sever one for the other."
+"Mind wars with heart: {HEAD} speaks logic while {HEART} cries emotion. Your {HANDS} act caught between, and {SHADOW} feeds on this division. Only {SOUL} can reconcile the two.",
+"Conflict emerges between thought and feeling. {HEAD} offers reason, {HEART} offers passion, but {SOUL} demands you honor both, not sever one for the other."
             ],
 
             handsShadowConflict: [
-                "What you do ({HANDS}) contradicts what you hide ({SHADOW}). This split manifests as inner turmoil. {SOUL} awaits your courage to bring {SHADOW} into light.",
-                "Your actions ({HANDS}) and your secret self ({SHADOW}) pull in opposite directions. {HEAD} may not see it, {HEART} may not admit it, but {SOUL} feels the friction."
+"What you do ({HANDS}) contradicts what you hide ({SHADOW}). This split manifests as inner turmoil. {SOUL} awaits your courage to bring {SHADOW} into light.",
+"Your actions ({HANDS}) and your secret self ({SHADOW}) pull in opposite directions. {HEAD} may not see it, {HEART} may not admit it, but {SOUL} feels the friction."
             ],
 
             // Pattern-based
             heroJourney: [
-                "A hero's journey unfolds: from {START}'s beginning through trials to {END}'s culmination. This is transformation incarnate - you are not who you were when this began.",
-                "The Fool's journey made manifest: {START} set forth naive, but {END} arrives enlightened. {SOUL} has walked the entire path of becoming."
+"A hero's journey unfolds: from {START}'s beginning through trials to {END}'s culmination. This is transformation incarnate - you are not who you were when this began.",
+"The Fool's journey made manifest: {START} set forth naive, but {END} arrives enlightened. {SOUL} has walked the entire path of becoming."
             ],
 
             ascension: [
-                "An upward climb: each card rises higher than the last. From {START} through {MID} to {END} - you are ascending. {SOUL} reaches toward apotheosis.",
-                "Rising energy permeates this spread. {START} was the foundation, {END} is the pinnacle. {SHADOW} may doubt the climb, but {SOUL} knows the summit awaits."
+"An upward climb: each card rises higher than the last. From {START} through {MID} to {END} - you are ascending. {SOUL} reaches toward apotheosis.",
+"Rising energy permeates this spread. {START} was the foundation, {END} is the pinnacle. {SHADOW} may doubt the climb, but {SOUL} knows the summit awaits."
             ],
 
             descent: [
-                "A descent into shadow: {START} began high, but {END} arrives low. This is not failure - it is necessary descent to reclaim what was lost in {SHADOW}.",
-                "Downward movement signals depth, not decline. From {START} to {END}, you dive beneath surfaces. {SOUL} seeks truth in the depths."
+"A descent into shadow: {START} began high, but {END} arrives low. This is not failure - it is necessary descent to reclaim what was lost in {SHADOW}.",
+"Downward movement signals depth, not decline. From {START} to {END}, you dive beneath surfaces. {SOUL} seeks truth in the depths."
             ],
 
             repeating: [
-                "Repeating numbers echo through this spread - the universe emphasizes certain lessons. Pay attention to patterns; {SOUL} is trying to tell you something important.",
-                "The same energy appears multiple times - this is no coincidence. {HEAD} may dismiss it, but {SOUL} recognizes significance in repetition."
+"Repeating numbers echo through this spread - the universe emphasizes certain lessons. Pay attention to patterns; {SOUL} is trying to tell you something important.",
+"The same energy appears multiple times - this is no coincidence. {HEAD} may dismiss it, but {SOUL} recognizes significance in repetition."
             ],
 
             // General templates (when no special pattern detected)
             general: [
-                "Five cards, five aspects of self: {HEAD} thinks, {HEART} feels, {HANDS} act, {SHADOW} hides, {SOUL} integrates. Life Path {LIFE_PATH} guides the synthesis.",
-                "The spread reveals: {START} initiated this chapter, {MID} tests your resolve, {END} promises resolution. {SOUL} carries it all.",
-                "From conscious {HEAD} through passionate {HEART} to tangible {HANDS}, passing hidden {SHADOW} to arrive at essential {SOUL} - this is your current architecture of being.",
-                "What {HEAD} conceives, {HEART} desires, and {HANDS} manifest - but {SHADOW} sabotages and {SOUL} transcends. Life Path {LIFE_PATH} shows the way through.",
-                "{START} speaks of origins, {END} speaks of destination, but {MID} - {MID} is where you stand now. {SOUL} asks: will you move forward or remain frozen?"
+"Five cards, five aspects of self: {HEAD} thinks, {HEART} feels, {HANDS} act, {SHADOW} hides, {SOUL} integrates. Life Path {LIFE_PATH} guides the synthesis.",
+"The spread reveals: {START} initiated this chapter, {MID} tests your resolve, {END} promises resolution. {SOUL} carries it all.",
+"From conscious {HEAD} through passionate {HEART} to tangible {HANDS}, passing hidden {SHADOW} to arrive at essential {SOUL} - this is your current architecture of being.",
+"What {HEAD} conceives, {HEART} desires, and {HANDS} manifest - but {SHADOW} sabotages and {SOUL} transcends. Life Path {LIFE_PATH} shows the way through.",
+"{START} speaks of origins, {END} speaks of destination, but {MID} - {MID} is where you stand now. {SOUL} asks: will you move forward or remain frozen?"
             ]
         };
     },
@@ -921,7 +925,7 @@ export const DivinationSystem = {
         }
 
         // 2. Fallback to Generic Major Arcana Image
-        // Parse "I - The Magician" -> 1
+        // Parse"I - The Magician" -> 1
         const idPart = slot.name.en.split(' - ')[0].trim();
         let cardNum = parseInt(idPart);
 
@@ -962,10 +966,10 @@ export const DivinationSystem = {
 
         // Reuse keyword map logic or simplified one
         const keywordMap = {
-            entropy: ["chaos", "instinct", "glitch", "disaster", "upheaval", "bondage", "materialism", "ignorance", "devil", "tower"],
-            order: ["duty", "balance", "machine", "censorship", "observation", "privilege", "surveillance", "temperance", "justice"],
-            passion: ["fire", "hope", "inspiration", "spice", "dragon", "legend", "star", "sun"],
-            sorrow: ["grief", "end", "heart", "moonlight", "cage", "collapse", "awakening", "death", "moon"]
+            entropy: ["chaos","instinct","glitch","disaster","upheaval","bondage","materialism","ignorance","devil","tower"],
+            order: ["duty","balance","machine","censorship","observation","privilege","surveillance","temperance","justice"],
+            passion: ["fire","hope","inspiration","spice","dragon","legend","star","sun"],
+            sorrow: ["grief","end","heart","moonlight","cage","collapse","awakening","death","moon"]
         };
 
         slots.forEach(card => {
