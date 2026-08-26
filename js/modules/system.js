@@ -354,7 +354,7 @@ export const System = {
         // Global Window Open Listener
         document.addEventListener('window-opened', (e) => {
             if (e.detail.id === 'win-archive') {
-                this.renderGrid('all');
+                EventBus.publish('action:render-grid', { sort: 'all' });
             }
         });
     },
