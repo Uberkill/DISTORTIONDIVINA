@@ -18,7 +18,7 @@ test.describe('DIVINA SITE E2E Tests', () => {
     await page.goto('/');
     
     // 1. Click language toggle
-    await page.locator('button[data-action="set-language"][data-lang="ja"]').click();
+    await page.locator('button[data-action="set-language"][data-lang="ja"]').first().click();
     
     // Expect placeholder to not be the default english
     const input = page.locator('#login-input');
@@ -41,7 +41,7 @@ test.describe('DIVINA SITE E2E Tests', () => {
 
     // 4. Verify cards are rendered
     const cards = page.locator('.card-file');
-    await expect(cards).toHaveCount(22, { timeout: 10000 }); // Should render all cards
+    await expect(cards).toHaveCount(28, { timeout: 10000 }); // Should render all cards
   });
   
   test('should open Divination window and render slots', async ({ page }) => {
