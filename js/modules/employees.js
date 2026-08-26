@@ -19,7 +19,7 @@ export const EmployeeSystem = {
         
         DB.EMPLOYEES.forEach(emp => {
             const tr = document.createElement('tr'); 
-            tr.innerHTML = \<td data-label="\">\</td><td data-label="\">\</td><td data-label="\">\</td><td data-label="\">\</td><td data-label="\">\</td><td><span class="role-badge">\</span></td>\;
+            tr.innerHTML = `<td data-label="${I18n.get('th_id')}">${emp.id}</td><td data-label="${I18n.get('th_name')}">${emp.charName[lang] || emp.charName.en}</td><td data-label="${I18n.get('th_dept')}">${emp.department[lang] || emp.department.en}</td><td data-label="${I18n.get('th_rank')}">${emp.rank}</td><td data-label="${I18n.get('th_status')}">${emp.status[lang] || emp.status.en}</td><td><span class="role-badge">${I18n.get('role_agent')}</span></td>`;
             tbody.appendChild(tr);
         });
     }

@@ -17,7 +17,7 @@ export const EventBus = {
             try {
                 callback(this.history[event]);
             } catch (err) {
-                console.error(\[EventBus] Error in late subscriber for \:\, err);
+                console.error(`[EventBus] Error in late subscriber for ${event}:`, err);
             }
         }
 
@@ -38,7 +38,7 @@ export const EventBus = {
                 callback(data);
             } catch (err) {
                 // Hardening: Prevent one broken subscriber from crashing the event loop
-                console.error(\[EventBus] Subscriber crashed while handling \:\, err);
+                console.error(`[EventBus] Subscriber crashed while handling ${event}:`, err);
             }
         });
     },
