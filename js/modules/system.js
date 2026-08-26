@@ -255,9 +255,9 @@ export const System = {
                         DivinationSystem.reset();
                         break;
                     case 'divination-reveal-resonance':
-                        if (window.DivinationSystem) {
+                        if (DivinationSystem) {
                             const container = actionTarget.closest('.resonate-content') || document.querySelector('.resonate-content');
-                            if (container) window.DivinationSystem.revealResonance(container);
+                            if (container) DivinationSystem.revealResonance(container);
                         }
                         break;
                 }

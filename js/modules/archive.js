@@ -52,10 +52,10 @@ export const ArchiveSystem = {
                 const el = document.createElement('div');
                 el.className = 'card-file';
                 el.innerHTML = `
-                            <img src="${variant.img}" class="img-loaded" loading="lazy" decoding="async">
+                            <img src="${variant.variantImage}" class="img-loaded" loading="lazy" decoding="async">
                             <div class="file-label">
-                                <div style="font-size:0.7em;color:var(--gold-dim);margin-bottom:2px;">${parent.arcana}</div>
-                                ${variant.charName[lang] || variant.charName.en}
+                                <div style="font-size:0.7em;color:var(--gold-dim);margin-bottom:2px;">${parent.title[lang]}</div>
+                                ${variant.char[lang] || variant.char.en}
                             </div>`;
 
                 el.onclick = () => this.openViewer(parent, variant);
@@ -69,7 +69,7 @@ export const ArchiveSystem = {
 
             cards.forEach(card => {
                 const el = document.createElement('div'); el.className = 'card-file';
-                el.innerHTML = `<img src="${card.coverImg}" class="img-loaded" loading="lazy" decoding="async"><div class="file-label">${card.title[lang]}</div>`;
+                el.innerHTML = `<img src="${card.image}" class="img-loaded" loading="lazy" decoding="async"><div class="file-label">${card.title[lang]}</div>`;
                 el.onclick = () => this.openSelector(card);
                 grid.appendChild(el);
             });
@@ -85,11 +85,11 @@ export const ArchiveSystem = {
             if(!grid) return;
             
             grid.innerHTML = '';
-            document.getElementById('selector-title').innerText = `${card.title[lang]} // RECORDS`;
+            document.getElementById('selector-title').innerText = `${I18n.get('selector_prefix') || ''}${card.title[lang]}`;
             
             variants.forEach(v => {
                 const div = document.createElement('div'); div.className = 'variant-card';
-                div.innerHTML = `<div class="variant-img-box"><img src="${v.img}" loading="lazy" decoding="async"></div><div class="variant-info"><div class="variant-char">${v.charName[lang] || v.charName.en}</div><div class="variant-artist">${I18n.get('ui_artist') || 'ARTIST'}: ${v.artist}</div></div>`;
+                div.innerHTML = `<div class="variant-img-box"><img src="${v.variantImage}" loading="lazy" decoding="async"></div><div class="variant-info"><div class="variant-char">${v.char[lang] || v.char.en}</div><div class="variant-artist">${I18n.get('viewer_illus_label') || 'ARTIST'}: ${v.artist}</div></div>`;
                 div.onclick = () => { WindowManager.close('win-selector'); this.openViewer(card, v); };
                 grid.appendChild(div);
             });

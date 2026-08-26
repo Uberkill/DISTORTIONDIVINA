@@ -1,7 +1,7 @@
 
 import { DB } from './data.js?v=nuclear';
 import { AudioManager } from './audio.js';
-import { System } from './system.js';
+import { I18n } from './i18n.js';
 
 const STATE_VERSION = 2; // Increment this to force localStorage clear
 
@@ -109,7 +109,7 @@ export const DivinationSystem = {
     showBootSequence: function () {
         // Boot Sequence Simulation
         let step = 0;
-        const lang = System.lang || 'en';
+        const lang = I18n.getCurrentLang() || 'en';
         const steps = [
             DB.TRANSLATIONS[lang].divination_boot_init,
             DB.TRANSLATIONS[lang].divination_boot_connect,
@@ -314,11 +314,11 @@ export const DivinationSystem = {
                             <div class="body-viz-container">
                                 <div class="body-silhouette"></div>
                                 <!-- Chakra Points -->
-                                <div class="chakra-point point-head" data-slot="0" data-action="divination-set-slot" data-slot="0" data-hover-highlight="highlight-slot" data-slot="0" data-leave-highlight="highlight-slot" data-label="${DB.TRANSLATIONS[System.lang].divination_head}" role="button" tabindex="0"></div>
-                                <div class="chakra-point point-heart" data-slot="1" data-action="divination-set-slot" data-slot="1" data-hover-highlight="highlight-slot" data-slot="1" data-leave-highlight="highlight-slot" data-label="${DB.TRANSLATIONS[System.lang].divination_heart}" role="button" tabindex="0"></div>
-                                <div class="chakra-point point-hands" data-slot="2" data-action="divination-set-slot" data-slot="2" data-hover-highlight="highlight-slot" data-slot="2" data-leave-highlight="highlight-slot" data-label="${DB.TRANSLATIONS[System.lang].divination_hands}" role="button" tabindex="0"></div>
-                                <div class="chakra-point point-shadow" data-slot="3" data-action="divination-set-slot" data-slot="3" data-hover-highlight="highlight-slot" data-slot="3" data-leave-highlight="highlight-slot" data-label="${DB.TRANSLATIONS[System.lang].divination_shadow}" role="button" tabindex="0"></div>
-                                <div class="chakra-point point-soul" data-slot="4" data-action="divination-set-slot" data-slot="4" data-hover-highlight="highlight-slot" data-slot="4" data-leave-highlight="highlight-slot" data-label="${DB.TRANSLATIONS[System.lang].divination_soul}" role="button" tabindex="0"></div>
+                                <div class="chakra-point point-head" data-slot="0" data-action="divination-set-slot" data-slot="0" data-hover-highlight="highlight-slot" data-slot="0" data-leave-highlight="highlight-slot" data-label="${DB.TRANSLATIONS[I18n.getCurrentLang()].divination_head}" role="button" tabindex="0"></div>
+                                <div class="chakra-point point-heart" data-slot="1" data-action="divination-set-slot" data-slot="1" data-hover-highlight="highlight-slot" data-slot="1" data-leave-highlight="highlight-slot" data-label="${DB.TRANSLATIONS[I18n.getCurrentLang()].divination_heart}" role="button" tabindex="0"></div>
+                                <div class="chakra-point point-hands" data-slot="2" data-action="divination-set-slot" data-slot="2" data-hover-highlight="highlight-slot" data-slot="2" data-leave-highlight="highlight-slot" data-label="${DB.TRANSLATIONS[I18n.getCurrentLang()].divination_hands}" role="button" tabindex="0"></div>
+                                <div class="chakra-point point-shadow" data-slot="3" data-action="divination-set-slot" data-slot="3" data-hover-highlight="highlight-slot" data-slot="3" data-leave-highlight="highlight-slot" data-label="${DB.TRANSLATIONS[I18n.getCurrentLang()].divination_shadow}" role="button" tabindex="0"></div>
+                                <div class="chakra-point point-soul" data-slot="4" data-action="divination-set-slot" data-slot="4" data-hover-highlight="highlight-slot" data-slot="4" data-leave-highlight="highlight-slot" data-label="${DB.TRANSLATIONS[I18n.getCurrentLang()].divination_soul}" role="button" tabindex="0"></div>
                             </div>
                         </div>
 
@@ -327,19 +327,19 @@ export const DivinationSystem = {
                             <div class="divination-guidance-panel">
                                 <h4 style="color: var(--gold-primary); margin-bottom: 15px; font-size: 0.9rem; border-bottom: 1px solid var(--gold-dim); padding-bottom: 5px;">// READING GUIDE</h4>
                                 <div style="color: #bbb; font-size: 0.85rem; line-height: 1.6; text-align: left;">
-                                    <p style="margin: 0 0 12px 0; color: var(--gold-dim);"><strong>${DB.TRANSLATIONS[System.lang].divination_positions_title}</strong></p>
-                                    <p style="margin: 0 0 8px 0;">${DB.TRANSLATIONS[System.lang].divination_head_desc}</p>
-                                    <p style="margin: 0 0 8px 0;">${DB.TRANSLATIONS[System.lang].divination_heart_desc}</p>
-                                    <p style="margin: 0 0 8px 0;">${DB.TRANSLATIONS[System.lang].divination_hands_desc}</p>
-                                    <p style="margin: 0 0 8px 0;">${DB.TRANSLATIONS[System.lang].divination_shadow_desc}</p>
-                                    <p style="margin: 0 0 12px 0;">${DB.TRANSLATIONS[System.lang].divination_soul_desc}</p>
+                                    <p style="margin: 0 0 12px 0; color: var(--gold-dim);"><strong>${DB.TRANSLATIONS[I18n.getCurrentLang()].divination_positions_title}</strong></p>
+                                    <p style="margin: 0 0 8px 0;">${DB.TRANSLATIONS[I18n.getCurrentLang()].divination_head_desc}</p>
+                                    <p style="margin: 0 0 8px 0;">${DB.TRANSLATIONS[I18n.getCurrentLang()].divination_heart_desc}</p>
+                                    <p style="margin: 0 0 8px 0;">${DB.TRANSLATIONS[I18n.getCurrentLang()].divination_hands_desc}</p>
+                                    <p style="margin: 0 0 8px 0;">${DB.TRANSLATIONS[I18n.getCurrentLang()].divination_shadow_desc}</p>
+                                    <p style="margin: 0 0 12px 0;">${DB.TRANSLATIONS[I18n.getCurrentLang()].divination_soul_desc}</p>
                                     
-                                    <p style="margin: 12px 0 8px 0; color: var(--gold-dim);"><strong>${DB.TRANSLATIONS[System.lang].divination_resonance_title}</strong></p>
-                                    <p style="margin: 0 0 8px 0;">${DB.TRANSLATIONS[System.lang].divination_resonance_desc}</p>
-                                    <p style="margin: 0 0 6px 0; padding-left: 12px;">${DB.TRANSLATIONS[System.lang].divination_numerology}</p>
-                                    <p style="margin: 0 0 6px 0; padding-left: 12px;">${DB.TRANSLATIONS[System.lang].divination_conflicts}</p>
-                                    <p style="margin: 0 0 6px 0; padding-left: 12px;">${DB.TRANSLATIONS[System.lang].divination_patterns}</p>
-                                    <p style="margin: 8px 0 0 0; font-style: italic; color: #999;">${DB.TRANSLATIONS[System.lang].divination_unique}</p>
+                                    <p style="margin: 12px 0 8px 0; color: var(--gold-dim);"><strong>${DB.TRANSLATIONS[I18n.getCurrentLang()].divination_resonance_title}</strong></p>
+                                    <p style="margin: 0 0 8px 0;">${DB.TRANSLATIONS[I18n.getCurrentLang()].divination_resonance_desc}</p>
+                                    <p style="margin: 0 0 6px 0; padding-left: 12px;">${DB.TRANSLATIONS[I18n.getCurrentLang()].divination_numerology}</p>
+                                    <p style="margin: 0 0 6px 0; padding-left: 12px;">${DB.TRANSLATIONS[I18n.getCurrentLang()].divination_conflicts}</p>
+                                    <p style="margin: 0 0 6px 0; padding-left: 12px;">${DB.TRANSLATIONS[I18n.getCurrentLang()].divination_patterns}</p>
+                                    <p style="margin: 8px 0 0 0; font-style: italic; color: #999;">${DB.TRANSLATIONS[I18n.getCurrentLang()].divination_unique}</p>
                                 </div>
                             </div>
                         </div>
@@ -364,7 +364,7 @@ export const DivinationSystem = {
                                                box-shadow: none;
                                                transition: all 0.2s ease;
                                                opacity: 0.7;">
-                                    ${DB.TRANSLATIONS[System.lang].divination_random_button}
+                                    ${DB.TRANSLATIONS[I18n.getCurrentLang()].divination_random_button}
                                 </button>
                             </div>
                             ${this.getSlotsHTML()}
@@ -376,9 +376,9 @@ export const DivinationSystem = {
                             <div class="ego-indicator" style="left: ${egoScore}%"></div>
                             <div class="ego-fill ${barClass}" style="${barStyle}"></div>
                             
-                            <div class="ego-label left">${DB.TRANSLATIONS[System.lang].divination_distortion}</div>
-                            <div class="ego-label center">${Math.abs(egoScore - 50) * 2}${DB.TRANSLATIONS[System.lang].divination_res}</div>
-                            <div class="ego-label right">${DB.TRANSLATIONS[System.lang].divination_awakening}</div>
+                            <div class="ego-label left">${DB.TRANSLATIONS[I18n.getCurrentLang()].divination_distortion}</div>
+                            <div class="ego-label center">${Math.abs(egoScore - 50) * 2}${DB.TRANSLATIONS[I18n.getCurrentLang()].divination_res}</div>
+                            <div class="ego-label right">${DB.TRANSLATIONS[I18n.getCurrentLang()].divination_awakening}</div>
                         </div>
 
                         <div class="divination-bottom-panel intro-anim" style="flex: 1;">
@@ -439,7 +439,7 @@ export const DivinationSystem = {
             const position = DB.DIVINATION_POSITIONS[index];
             const isActive = index === this.state.activeSlotIndex;
             const isFilled = slot !== null;
-            const lang = System.lang || 'en';
+            const lang = I18n.getCurrentLang() || 'en';
 
             let content = '';
             if (isFilled) {
@@ -488,7 +488,7 @@ export const DivinationSystem = {
     },
 
     getSearchHTML: function () {
-        const lang = System.lang || 'en';
+        const lang = I18n.getCurrentLang() || 'en';
         const position = DB.DIVINATION_POSITIONS[this.state.activeSlotIndex];
 
         return `
@@ -512,7 +512,7 @@ export const DivinationSystem = {
     },
 
     getCardListHTML: function () {
-        const lang = System.lang || 'en';
+        const lang = I18n.getCurrentLang() || 'en';
         const query = this.state.searchQuery.toLowerCase();
 
         // Filter cards
@@ -553,7 +553,7 @@ export const DivinationSystem = {
     // --- UNIFIED RESULTS VIEW ---
 
     getResultsHTML: function () {
-        const lang = System.lang || 'en';
+        const lang = I18n.getCurrentLang() || 'en';
 
         return `
             <div class="results-container">
@@ -573,7 +573,7 @@ export const DivinationSystem = {
     },
 
     getUnifiedViewHTML: function () {
-        const lang = System.lang || 'en';
+        const lang = I18n.getCurrentLang() || 'en';
         const s = this.state.slots;
         if (s.some(x => x === null)) return"";
 
@@ -800,7 +800,7 @@ export const DivinationSystem = {
 
     // Generate unique resonance reading
     generateResonanceText: function (num, pos, prog, slots) {
-        const lang = System.lang || 'en';
+        const lang = I18n.getCurrentLang() || 'en';
         const templates = this.getResonanceTemplates();
         let selected = null;
 
