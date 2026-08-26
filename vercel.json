@@ -8,15 +8,6 @@
                     "value": "no-cache, no-store, must-revalidate"
                 }
             ]
-        },
-        {
-            "source": "/(.*)",
-            "headers": [
-                {
-                    "key": "Clear-Site-Data",
-                    "value": "\"cache\", \"cookies\", \"storage\""
-                }
-            ]
         }
     ]
 }

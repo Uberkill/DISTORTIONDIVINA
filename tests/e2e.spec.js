@@ -3,7 +3,7 @@ const { test, expect } = require('@playwright/test');
 test.describe('DIVINA SITE E2E Tests', () => {
 
   test.beforeEach(async ({ page }) => {
-    await page.goto(`file://${process.cwd()}/index.html`);
+    await page.goto("/");
   });
 
   test('should allow user to log in and see desktop', async ({ page }) => {

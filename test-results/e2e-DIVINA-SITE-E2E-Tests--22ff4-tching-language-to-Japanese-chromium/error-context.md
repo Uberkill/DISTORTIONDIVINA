@@ -40,7 +40,7 @@ Call log:
   3  | test.describe('DIVINA SITE E2E Tests', () => {
   4  | 
   5  |   test.beforeEach(async ({ page }) => {
-  6  |     await page.goto(`file://${process.cwd()}/index.html`);
+  6  |     await page.goto("/");
   7  |   });
   8  | 
   9  |   test('should allow user to log in and see desktop', async ({ page }) => {
