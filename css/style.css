@@ -2931,49 +2931,13 @@
             box-sizing: border-box;
         }
 
-        .body-silhouette {
-            width: 100px;
-            /* Drastic reduction (was 200px -> 160px -> 100px) */
-            height: 200px;
-            /* Drastic reduction (was 400px -> 320px -> 200px) */
-            position: relative;
-            /* Create stylized body shape using borders/box-shadow */
-            border: 2px solid var(--gold-dim);
-            border-radius: 50px 50px 25px 25px;
-            /* Scaled radii */
-            /* Head/Shoulders look */
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.1) inset;
-            margin-top: 30px;
-        }
+        
 
         /* Head circle pseudo-element */
-        .body-silhouette::before {
-            content: '';
-            position: absolute;
-            top: -30px;
-            /* Scaled */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            /* Scaled */
-            height: 40px;
-            /* Scaled */
-            border: 2px solid var(--gold-dim);
-            border-radius: 50%;
-            box-shadow: 0 0 5px rgba(212, 175, 55, 0.1) inset;
-        }
+        
 
         /* Spine line */
-        .body-silhouette::after {
-            content: '';
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 80%;
-            background: linear-gradient(to bottom, var(--gold-dim), transparent);
-        }
+        
 
         /* Chakra Points */
         .chakra-point {
@@ -3116,3 +3080,51 @@
 .div-col-main { overflow-y: auto !important; height: 100%; padding-bottom: 50px; }
 .div-grid-narrative-col { word-wrap: break-word; white-space: normal; }
 #win-viewer .viewer-info { overflow-y: auto !important; max-height: 100%; }
+
+
+/* --- VITRUVIAN MAN SILHOUETTE --- */
+.body-silhouette {
+    width: 280px;
+    height: 280px;
+    position: relative;
+    margin: 20px auto;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect x='20' y='10' width='160' height='160' fill='none' stroke='%23D4AF37' stroke-width='1' stroke-dasharray='4' stroke-opacity='0.25'/%3E%3Ccircle cx='100' cy='100' r='90' fill='none' stroke='%23D4AF37' stroke-width='1' stroke-opacity='0.25'/%3E%3Cg fill='none' stroke='%23D4AF37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' opacity='0.8'%3E%3Ccircle cx='100' cy='40' r='10'/%3E%3Cline x1='100' y1='50' x2='100' y2='110'/%3E%3Cline x1='85' y1='58' x2='115' y2='58'/%3E%3Cline x1='115' y1='58' x2='180' y2='58'/%3E%3Cline x1='85' y1='58' x2='20' y2='58'/%3E%3Cline x1='115' y1='58' x2='175' y2='25'/%3E%3Cline x1='85' y1='58' x2='25' y2='25'/%3E%3Cline x1='100' y1='110' x2='85' y2='175'/%3E%3Cline x1='100' y1='110' x2='115' y2='175'/%3E%3Cline x1='100' y1='110' x2='45' y2='160'/%3E%3Cline x1='100' y1='110' x2='155' y2='160'/%3E%3C/g%3E%3C/svg%3E") no-repeat center center;
+    background-size: contain;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+/* Adjust Point Positions to Match Vitruvian SVG */
+.point-head { top: 20%; left: 50%; }
+.point-heart { top: 38%; left: 50%; }
+.point-hand-l { top: 30%; left: 15%; }
+.point-hand-r { top: 30%; left: 85%; }
+.point-soul { top: 60%; left: 50%; }
+.point-shadow { top: 85%; left: 50%; }
+
+/* Point Lines Fix */
+.point-hand-l::before { left: 100%; width: 45px; }
+.point-hand-r::before { right: 100%; width: 45px; }
+
+/* --- MOBILE RESPONSIVENESS (V3 GRID) --- */
+@media (max-width: 950px) {
+    .divination-layout-grid-v3 {
+        flex-direction: column !important;
+        overflow-y: auto !important;
+    }
+    .div-sidebar {
+        flex: 0 0 auto !important;
+        width: 100% !important;
+        border-right: none !important;
+        border-bottom: 1px solid var(--gold-dim) !important;
+        height: auto !important;
+    }
+    .div-col-body {
+        min-height: 350px !important;
+    }
+    .div-col-main {
+        overflow-y: visible !important;
+        height: auto !important;
+    }
+}
