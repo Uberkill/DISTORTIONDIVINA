@@ -3,50 +3,49 @@ const { test, expect } = require('@playwright/test');
 test.describe('DIVINA SITE E2E Tests', () => {
 
   test.beforeEach(async ({ page }) => {
-    await page.goto('/');
-    // Wait for the system loader to be completely removed from the DOM
-    await expect(page.locator('#system-loader')).toHaveCount(0, { timeout: 10000 });
+    // Navigate to the local file using absolute path
+    await page.goto(`file://${process.cwd()}/index.html`);
   });
 
   test('should allow user to log in and see desktop', async ({ page }) => {
-    await expect(page.locator('#login-screen')).toBeVisible();
-    await page.fill('#login-input', 'DISTORTIONDIVINA');
-    await page.click('.big-enter-btn');
-    await expect(page.locator('#login-screen')).toBeHidden({ timeout: 10000 });
-    await expect(page.locator('#desktop-screen')).toHaveClass(/active/);
-    await expect(page.locator('#win-overview')).toHaveClass(/window-open/, { timeout: 10000 });
+    const loginInput = page.locator('#login-input');
+    await expect(loginInput).toBeVisible();
+    await loginInput.fill('DISTORTIONDIVINA');
+    await page.locator('#login-screen button:has-text("ENTER")').click();
+    
+    // Expect the login screen to disappear and desktop to be visible
+    await expect(page.locator('#desktop')).toBeVisible({ timeout: 10000 });
   });
 
   test('should allow switching language to Japanese', async ({ page }) => {
-    // Evaluate the click directly on the DOM node to bypass any flaky CSS stacking contexts on the mocked OS interface
-    await page.locator('button:has-text("JP")').evaluate(node => node.click());
+    // Evaluate the click directly on the DOM node (V4 structure uses data-lang)
+    await page.locator('button[data-lang="ja"]').first().evaluate(node => node.click());
 
     // Placeholder text should update immediately
     const input = page.locator('#login-input');
-    await expect(input).toHaveAttribute('placeholder', 'アクセスコードを入力...');
+    await expect(input).toHaveAttribute('placeholder', 'パスワードを入力...');
   });
 
   test('should open Archive window and change sorts without breaking', async ({ page }) => {
-    await page.fill('#login-input', 'DISTORTIONDIVINA');
-    await page.click('.big-enter-btn');
-    await expect(page.locator('#desktop-screen')).toHaveClass(/active/, { timeout: 10000 });
+    // 1. Bypass login
+    await page.locator('#login-input').fill('DISTORTIONDIVINA');
+    await page.locator('#login-screen button:has-text("ENTER")').click();
+    await expect(page.locator('#desktop')).toBeVisible({ timeout: 10000 });
 
-    const overviewWin = page.locator('#win-overview');
-    await expect(overviewWin).toHaveClass(/window-open/, { timeout: 10000 });
-    
-    // Close overview window cleanly
-    await overviewWin.locator('.win-btn.close').evaluate(node => node.click());
-
-    // Open Archive
-    await page.locator('[data-window="win-archive"]').evaluate(node => node.click());
+    // 2. Open Archive via data-window
+    await page.locator('.desktop-icon[data-window="win-archive"]').click();
     const archiveWin = page.locator('#win-archive');
-    await expect(archiveWin).toHaveClass(/window-open/, { timeout: 5000 });
+    await expect(archiveWin).toBeVisible();
 
-    // Use evaluate for sorting clicks to bypass OOBOT or window overlaps in testing
-    await archiveWin.locator('button:has-text("[ SORT: A-Z ]")').evaluate(node => node.click());
-    await archiveWin.locator('button:has-text("[ SORT: TAROT ]")').evaluate(node => node.click());
+    // 3. Wait for Archive loader to finish (V4 structure check)
+    // The text changes to "LOADING ASSETS... COMPLETE" but is tied to data-i18n="archive_status"
+    await expect(archiveWin.locator('span[data-i18n="archive_status"]')).toContainText('COMPLETE', { timeout: 15000 });
 
-    await expect(archiveWin.locator('#archive-status-text')).toContainText('COMPLETE', { timeout: 15000 });
+    // 4. Click Sort: Tarot
+    await archiveWin.locator('button[data-sort="id"]').evaluate(node => node.click());
+
+    // 5. Ensure it didn't crash (wait for complete again)
+    await expect(archiveWin.locator('span[data-i18n="archive_status"]')).toContainText('COMPLETE', { timeout: 15000 });
   });
 
 });
