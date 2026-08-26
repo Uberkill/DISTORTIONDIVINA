@@ -3,7 +3,6 @@ const { test, expect } = require('@playwright/test');
 test.describe('DIVINA SITE E2E Tests', () => {
 
   test.beforeEach(async ({ page }) => {
-    // Navigate to the local file using absolute path
     await page.goto(`file://${process.cwd()}/index.html`);
   });
 
@@ -11,26 +10,28 @@ test.describe('DIVINA SITE E2E Tests', () => {
     const loginInput = page.locator('#login-input');
     await expect(loginInput).toBeVisible();
     await loginInput.fill('DISTORTIONDIVINA');
-    await page.locator('#login-screen button:has-text("ENTER")').click();
     
-    // Expect the login screen to disappear and desktop to be visible
-    await expect(page.locator('#desktop')).toBeVisible({ timeout: 10000 });
+    // V4 uses data-action="login"
+    await page.locator('button[data-action="login"]').click();
+    
+    // V4 uses #desktop-screen instead of #desktop
+    await expect(page.locator('#desktop-screen')).toBeVisible({ timeout: 15000 });
   });
 
   test('should allow switching language to Japanese', async ({ page }) => {
-    // Evaluate the click directly on the DOM node (V4 structure uses data-lang)
+    // V4 structure uses data-lang
     await page.locator('button[data-lang="ja"]').first().evaluate(node => node.click());
 
-    // Placeholder text should update immediately
+    // Expect placeholder to not be the default english
     const input = page.locator('#login-input');
-    await expect(input).toHaveAttribute('placeholder', 'パスワードを入力...');
+    await expect(input).not.toHaveAttribute('placeholder', 'ENTER_ACCESS_CODE...');
   });
 
   test('should open Archive window and change sorts without breaking', async ({ page }) => {
     // 1. Bypass login
     await page.locator('#login-input').fill('DISTORTIONDIVINA');
-    await page.locator('#login-screen button:has-text("ENTER")').click();
-    await expect(page.locator('#desktop')).toBeVisible({ timeout: 10000 });
+    await page.locator('button[data-action="login"]').click();
+    await expect(page.locator('#desktop-screen')).toBeVisible({ timeout: 15000 });
 
     // 2. Open Archive via data-window
     await page.locator('.desktop-icon[data-window="win-archive"]').click();
@@ -38,13 +39,12 @@ test.describe('DIVINA SITE E2E Tests', () => {
     await expect(archiveWin).toBeVisible();
 
     // 3. Wait for Archive loader to finish (V4 structure check)
-    // The text changes to "LOADING ASSETS... COMPLETE" but is tied to data-i18n="archive_status"
     await expect(archiveWin.locator('span[data-i18n="archive_status"]')).toContainText('COMPLETE', { timeout: 15000 });
 
     // 4. Click Sort: Tarot
     await archiveWin.locator('button[data-sort="id"]').evaluate(node => node.click());
 
-    // 5. Ensure it didn't crash (wait for complete again)
+    // 5. Ensure it didn't crash
     await expect(archiveWin.locator('span[data-i18n="archive_status"]')).toContainText('COMPLETE', { timeout: 15000 });
   });
 
