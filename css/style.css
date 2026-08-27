@@ -3165,3 +3165,111 @@
         height: auto !important;
     }
 }
+
+/* =========================================================
+   UI STATES (Skeleton, Error, Empty, Disabled, Overflow)
+   ========================================================= */
+
+/* 1. Loading / Skeleton State */
+@keyframes shimmer {
+    0% { background-position: -200px 0; }
+    100% { background-position: calc(200px + 100%) 0; }
+}
+.skeleton {
+    background-color: #1a1a1a;
+    background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.05) 20%, rgba(255, 255, 255, 0) 40%);
+    background-size: 200px 100%;
+    background-repeat: no-repeat;
+    animation: shimmer 1.5s infinite linear;
+}
+.card-file.is-loading img,
+.variant-card.is-loading img,
+.slot-filled.is-loading img {
+    opacity: 0 !important;
+}
+.card-file.is-loading,
+.variant-card.is-loading,
+.slot-filled.is-loading {
+    background-color: #1a1a1a;
+    background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0, rgba(212, 175, 55, 0.1) 20%, rgba(255, 255, 255, 0) 40%);
+    background-size: 200px 100%;
+    background-repeat: no-repeat;
+    animation: shimmer 1.5s infinite linear;
+}
+
+/* 2. Error / Retry State */
+.card-file.is-error,
+.variant-card.is-error,
+.slot-filled.is-error {
+    background: #2a0a0a;
+    border-color: #ff3333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.card-file.is-error::before,
+.variant-card.is-error::before,
+.slot-filled.is-error::before {
+    content: "NO SIGNAL";
+    color: #ff3333;
+    font-family: monospace;
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+    letter-spacing: 2px;
+}
+.card-file.is-error img,
+.variant-card.is-error img,
+.slot-filled.is-error img {
+    display: none;
+}
+
+/* 3. Empty State */
+.empty-state {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 20px;
+    text-align: center;
+    border: 1px dashed var(--gold-dim);
+    color: var(--gold-dim);
+    font-family: monospace;
+    background: rgba(0, 0, 0, 0.3);
+}
+.empty-state-icon {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    opacity: 0.5;
+}
+
+/* 4. Disabled State */
+button:disabled,
+.archive-btn:disabled,
+.btn:disabled {
+    opacity: 0.3;
+    pointer-events: none;
+    cursor: not-allowed;
+    filter: grayscale(100%);
+}
+
+/* 5. Ultra-long String Overflow */
+.text-truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    display: block;
+}
+.file-label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 5px;
+}
+.variant-char {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

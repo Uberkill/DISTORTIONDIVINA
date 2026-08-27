@@ -45,6 +45,9 @@ export const DivinationSystem = {
             const btn = e.target.closest('[data-action]');
             if (!btn) return;
 
+            // Disabled state check
+            if (btn.hasAttribute('disabled') || btn.classList.contains('disabled')) return;
+
             const action = btn.getAttribute('data-action');
             
             try {
@@ -52,7 +55,7 @@ export const DivinationSystem = {
                 else if (action === 'divination-read') this.read();
                 else if (action === 'divination-reset') this.reset();
                 else if (action === 'divination-set-slot') this.setActiveSlot(Number(btn.dataset.slot));
-                else if (action === 'divination-select-card') this.selectCard(btn.dataset.id);
+                else if (action === 'divination-select-card') this.selectCard(btn.dataset.card || btn.dataset.id);
             } catch (err) {
                 console.error("[Divination] Error handling action:", action, err);
             }
@@ -454,10 +457,10 @@ export const DivinationSystem = {
                 // End Update
 
                 content = `
-                    <div class="slot-filled">
-                        <img src="${imgSrc}" class="slot-card-img" />
-                        <div class="slot-card-name">${slot.name[lang]}</div>
-                        <div class="slot-card-char">${slot.character[lang]}</div>
+                    <div class="slot-filled is-loading">
+                        <img src="${imgSrc}" class="slot-card-img" loading="lazy" decoding="async" onload="this.parentElement.classList.remove('is-loading')" onerror="this.parentElement.classList.remove('is-loading'); this.parentElement.classList.add('is-error');" />
+                        <div class="slot-card-name text-truncate">${slot.name[lang]}</div>
+                        <div class="slot-card-char text-truncate">${slot.character[lang]}</div>
                     </div>
                 `;
             } else {
